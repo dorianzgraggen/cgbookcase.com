@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PBR Textures | cgbookcase.com</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Download more than 380 free PBR Texures from cgbookcase.com.">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css"
+        integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="/styles/default.css" rel="stylesheet">
+    <link href="/styles/header.css" rel="stylesheet">
+    <link href="/styles/textures.css" rel="stylesheet">
+    <link href="/styles/font-sizes.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+    <main id="mainM">
+
+
+
+
+                    <div id="textures-list">
+
+                        <% for(i= 0 ; i < textures.length; i++) { %>
+                        <a href="/textures/<%=textures[i].url%>" class="results-itemWrapper">
+                            <div class="results-item"
+                                style="background-image: url('https://www.cgbookcase.com/textures/<%=textures[i].category%>/<%=textures[i].file%>_rend.jpg')">
+                                <!-- <span class="results-item-resolution"><%=textures[i].resolution%>K</span> -->
+                                <!-- <span class="results-item-name"><%=textures[i].title%></span> -->
+
+                            </div>
+                        </a>
+
+                        <% } %>
+
+                      
+                        
+                       
+                    </div>
+                
+                  
+
+
+    </main>
+ 

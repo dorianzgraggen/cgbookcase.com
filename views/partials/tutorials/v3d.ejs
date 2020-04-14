@@ -1,0 +1,407 @@
+<h1>How To Create 3D Interactive Web Experiences in Blender & Verge3D</h1>
+                
+<div class="tutorial-twoSides">
+    <div class="tutorial-timeline whiteBG margin border">
+        <h2 id="timeline-header">Timeline</h2>
+       
+        <button onclick="SkipTo(59)" class="chapter">Modeling</button>
+        <button onclick="SkipTo(60)">Floors, Walls, Ceiling and Baseboard</button>
+        <button onclick="SkipTo(126)">Windows and Door</button>
+        <button onclick="SkipTo(158)">Furniture</button>
+        <button onclick="SkipTo(279)">Kitchen</button>
+        
+        <button onclick="SkipTo(384)" class="chapter">Lighting and Baking</button>
+        <button onclick="SkipTo(385)">Lighting</button>
+        <button onclick="SkipTo(415)">UV Unwrapping</button>
+        <button onclick="SkipTo(463)">Baking</button>
+        <button onclick="SkipTo(570)">Denoising</button>
+
+        <button onclick="SkipTo(620)" class="chapter">Setting up a Verge3D Project</button>
+        <button onclick="SkipTo(630)">Installation</button>
+        <button onclick="SkipTo(686)">Creating a Project</button>
+    
+        <button onclick="SkipTo(766)" class="chapter">Materials</button>
+        <button onclick="SkipTo(774)">Basic Setup</button>
+        <button onclick="SkipTo(869)">Adding Textures</button>
+        <button onclick="SkipTo(53)">Adding Glossiness !!</button>
+
+        <button onclick="SkipTo(1023)" class="chapter">Making it Interactive</button>
+        <button onclick="SkipTo(1041)">Introduction to Puzzles</button>
+        <button onclick="SkipTo(1119)">Outline Effect</button>
+        <button onclick="SkipTo(1219)">Camera Movement</button>
+
+        <button onclick="SkipTo(1287)" class="chapter">User Interface & Making it interactive II</button>
+        <button onclick="SkipTo(1332)">HTML Elements and CSS Styling</button>
+        <button onclick="SkipTo(1442)">Hiding and Showing Controls</button>
+        <button onclick="SkipTo(1476)">Changing Materials</button>
+        <button onclick="SkipTo(1638)">Final Touches</button>
+    </div>
+    <div class="tutorial-outterWrapper"><div class="videoWrapper">
+            <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/U6aGboR_sHE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+       </div>
+    
+</div>
+
+<div class="space"></div>
+
+
+
+<section id="tutorial-description" class="whiteBG margin border">
+    <h2>Information</h2>
+    <p>In this video tutorial you'll get to see the process of creating an interactive interior scene created using Blender and Verge 3D. <a href="https://cgbookcase.com/int/Interactive%20Architecture%20Scene/Interactive%20Architecture%20Scene.html" target="_blank">See it in action.</a></p>
+    <p>Stuff mentioned in the video:</p>
+    <ul>
+        <li><a target="_blank" href="https://www.soft8soft.com/get-verge3d/3dweb/21/?campaign=cgb%20blog%20post">Get Verge3D (affiliate Link)</a></li>
+        <li><a download href="https://www.cgbookcase.com/media/Interactive%20Architecture%20Scene.zip">Download the project files</a></li>
+        <li><a href="/textures">Free PBR Textures by cgbookcase.com</a></li>
+        <li><a target="_blank" href="https://cc0textures.com/">Free PBR Textures by CC0 Textures</a></li>
+        <li><a target="_blank" href="https://hdrihaven.com/">Free HDRIs by HDRI Haven</a></li>
+    </ul>
+</section>
+
+<div class="space"></div>
+
+<section id="tutorial-summary" class="whiteBG margin border">
+    <h2>Text Summary</h2>
+
+
+<% var img = 'partials/tutorials/_d/img.ejs' %>
+<% var path = '/tutorials/2018/v3d_interior/screenshots/'%>
+<% var anchorNum = 1 %>
+
+<ul class="tutorial-listOutter">
+    <li><a href="#header-id-01">Modeling</a></li>
+    <li>
+        <ul>
+            <li><a href="#header-id-02">Floor, Walls, Ceiling and Baseboard</a></li>
+            <li><a href="#header-id-03">Windows and Door</a></li>
+            <li><a href="#header-id-04">Furniture</a></li>
+            <li><a href="#header-id-05">Kitchen</a></li>
+        </ul>
+    </li>
+    <li><a href="#header-id-06">Lighting and Baking</a></li>
+    <li>
+        <ul>
+            <li><a href="#header-id-07">Lighting</a></li>
+            <li><a href="#header-id-08">UV Unwrapping</a></li>
+            <li><a href="#header-id-09">Baking</a></li>
+            <li><a href="#header-id-10">Denoising</a></li>
+        </ul>
+    </li>
+    <li><a href="#header-id-11">Setting up a Verge3D Project</a></li>
+    <li>
+        <ul>
+            <li><a href="#header-id-12">Installation</a></li>
+            <li><a href="#header-id-13">Creating a Project</a></li>
+        </ul>
+    </li>
+    <li><a href="#header-id-14">Creating the Materials</a></li>
+    <li>
+        <ul>
+            <li><a href="#header-id-15">Basic Setup</a></li>
+            <li><a href="#header-id-16">Adding Textures</a></li>
+            <li><a href="#header-id-17">Adding Glossiness</a></li>
+        </ul>
+    </li>
+    <li><a href="#header-id-18">Making it Interactive</a></li>
+    <li>
+        <ul>
+            <li><a href="#header-id-19">Introduction</a></li>
+            <li><a href="#header-id-20">Outline Effect</a></li>
+            <li><a href="#header-id-21">Camera Movement</a></li>
+        </ul>
+    </li>
+    <li><a href="#header-id-22">User Interface & Making it interactive II</a></li>
+    <li>
+        <ul>
+            <li><a href="#header-id-23">HTML Elements and CSS Styling</a></li>
+            <li><a href="#header-id-24">Hiding and Showing Controls</a></li>
+            <li><a href="#header-id-25">Changing Materials</a></li>
+            <li><a href="#header-id-26">Final Touches</a></li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="header-id-01">Modeling</h3>
+
+<h4 id="header-id-02">Floor, wall, ceiling, baseboard</h4>
+
+<p>Add a plane, insert some loop cuts and delete some faces to define the floor shape.</p>
+
+<%- include(img, {src: path + "01.jpg"}); %>
+
+<p>Select all faces, extrude them by 2.4 meters by pressing E and then 2.4 to create the walls and the ceiling.</p>
+
+
+<%- include(img, {src: path + "02.jpg"}); %>
+
+<p>Separate the floor from the walls and the ceiling (Shift + P).</p>
+
+<%- include(img, {src: path + "03.jpg"}); %>
+
+<p>To create the baseboard, select the bottom edges of the walls and duplicate them. Separate them and extrude them on the z-axis to add some height.</p>
+
+<p>Then, add a solidify modifier to add some thickness.</p>
+
+
+<%- include(img, {src: path + "04.jpg"}); %>
+
+<p>Add a bevel modifier to bevel the edges.</p>
+
+<h4 id="header-id-03">Windows, door</h4>
+
+<p>Add loop cuts to the wall to define the edges of the windows. Delete the faces where you want a window to be.</p>
+
+<%- include(img, {src: path + "05.jpg"}); %>
+
+<p>Activate the Archipack add-on (Edit > Preferences > Add-ons). Add a window (Shift + A > Mesh > Archipack > Window and scale it until it fits the holes.</p>
+
+<%- include(img, {src: path + "06.jpg"}); %>
+
+<p>Repeat the same process for the door, but don’t cut a hole for the door, since you can’t open it in the final project anyway.</p>
+
+<h4 id="header-id-04">Furniture</h4>
+
+<p>Most models of the furniture are downloaded from Vitra for free.</p>
+
+<p>Download the 3DS file and import it to Blender (as of 17th December 2018 it is not possible to import 3DS files into Blender 2.8, but this might be because it’s still in beta. You can use Blender 2.79 instead.)</p>
+
+<p>In order to create a smoothly running 3d web application, our 3d models should have as few vertices as possible. You can minimize the vertex count by converting the tris to quads(Alt + J), removing double vertices (Vertex > Remove Doubles) and then selecting several loops and dissolving them (Ctrl + X, must be in Edge Select mode).</p>
+
+<%- include(img, {src: path + "07.jpg"}); %>
+
+<p>On more organic models you can also add a Decimate modifier.</p>
+
+<%- include(img, {src: path + "08.jpg"}); %>
+
+<h4 id="header-id-05">Kitchen</h4>
+
+<p>To model the cabinets in the kitchen, you can just use some cubes and planes and scale them on the X, Y and Z axes.</p>
+
+<p>To model the sink, add a bevelled cube where you want the sink to be. Select the countertop, add a Boolean modifier. Set the Boolean modifier to Difference and select the bevelled cube as the object, so it will cut out a hole where the bevelled cube is. You can use the bottom half of the bevelled cube as the actual sink itself.</p>
+
+<%- include(img, {src: path + "09.jpg"}); %>
+
+<p>Add a Circle (Shift + A > Mesh > Circle) and use Extrude (E) and the Bridge Edge Loops tool (Edges > Bridge Edge Loops) to model the faucet.</p>
+
+<%- include(img, {src: path + "10.jpg"}); %>
+
+<h3 id="header-id-06">Lighting and Baking</h3>
+<h4 id="header-id-07">Lighting</h4>
+<p>To create the lighting, you can use an environment map. (I used one from HDRI Haven.)</p>
+<h4 id="header-id-08">UV Unwrapping</h4>
+
+<p>Since you can’t really render a realistic looking interior in real-time in a web browser, we have to bake the lighting into texture maps.</p>
+<p>Select any mesh object in the scene and then hit Shift + G and choose “Type” to select all mesh objects. Then join them together (Ctrl + J).</p>
+<p>Enter Edit mode, select all faces and unwrap them (U > Smart UV Project).</p>
+
+<%- include(img, {src: path + "11.jpg"}); %>
+
+<p>To not unnecessarily bake light where it’s not even needed, you can scale down the UVs of hidden areas (for instance the bottom of the couch, the sides and the back of the cabinet and so on). I also recommend scaling the UVs of the ceiling down a bit, we don’t need lots of detail there since the nobody will really look at the ceiling very closely.</p>
+
+
+<%- include(img, {src: path + "12.jpg"}); %>
+
+<h4 id="header-id-09">Baking</h4>
+<p>Create a new material that only consists of a Diffuse shader, since we only want to bake diffuse reflections but no specular reflections (= shadows). Add an image node and create a new image. Set the image’s resolution to a power of 2 (for instance: 4069 x 4096 pixels) and check “32 bit float”, so we can bake values greater than 1.</p>
+
+
+<%- include(img, {src: path + "13.jpg"}); %>
+
+<p>Then, to finally bake it, go to the render tab in the Properties editor, scroll to “Bake”, set the Bake Type to “Combined” and the margin to about 4 pixels. Adjust the samples to your liking and then hit “bake”.</p>
+<p>After baking is done, you’ll probably see some overblown highlights. That’s because by default the Filmic View Transform doesn’t affect image textures. To change that, open the properties region in the Image Editor (N) and check “View as render”.</p>
+
+
+<%- include(img, {src: path + "14.jpg"}); %>
+
+<h4 id="header-id-10">Denoising</h4>
+
+<p>Export the texture (Shift + S) and import it to Affinity Photo.</p>
+<p>In Affinity photo, add a Denoise filter, then export it as a JPG with the quality set to something between 60 and 80.</p>
+
+<h3 id="header-id-11">Setting up a Verge 3D Project</h3>
+
+<p class="summaryText">Download Verge 3D for Blender. <a href="https://www.soft8soft.com/get-verge3d/3dweb/21/?campaign=cgb%20blog%20post" target="_blank">You can try it out here for free</a> (affiliate link).
+</p>
+
+<h4 id="header-id-12">Installation</h4>
+
+<p>Unpack the .zip file to a directory of you choice. To install Verge 3D, open the Preferences (Edit > Preferences), go to the File tab and enter the directory where you unpacked the .zip file.</p>
+
+<%- include(img, {src: path + "15.jpg"}); %>
+
+<p>Save the user settings, close and restart Blender, open the Preferences again. Then, search for an add-on called “Verge3D” and activate it.</p>
+
+<%- include(img, {src: path + "16.jpg"}); %>
+
+<p>If you’ve done everything correctly, an “App Manager” and a “Sneak Peek” button should be visible at the top of the 3D view.</p>
+
+<%- include(img, {src: path + "17.jpg"}); %>
+
+<h4 id="header-id-13">Creating a project</h4>
+
+<p>Open the App Manager and create a new project.</p>
+
+<%- include(img, {src: path + "18.jpg"}); %>
+
+<p>After you create the app, it appears in the list of projects. By clicking the blue hexagonal icon next to it, you can run the full application in the browser. By clicking the green hexagonal icon, you can run the 3d scene only, without the user interface. By clicking on the Puzzles icon, you can enter the puzzle editor. By clicking the Blender icon, you can open the scene in Blender, and by clicking the world icon, you can publish your app on the web. Open the scene in Blender.</p>
+
+<%- include(img, {src: path + "19.jpg"}); %>
+
+<p>Append all the objects from the old scene (File > Append).</p>
+
+<h3 id="header-id-14">Creating the Materials</h3>
+
+<p>Before creating the materials, separate all objects that should have a unique material from each other (in Edit mode: P > Selection).</p>
+<h4 id="header-id-15">Basic setup</h4>
+<p>All materials in the scene are built pretty much the same way: Import the baked image texture (Shift + A > Texture > Image Texture) and connect it to an Emission node.</p>
+
+
+<%- include(img, {src: path + "20.jpg"}); %>
+
+<p>Add a MixRGB node set to multiply after the baked image texture. Colorize the material with the bottom color input.</p>
+
+<%- include(img, {src: path + "21.jpg"}); %>
+
+<h4 id="header-id-16">Adding textures</h4>
+<p class="summaryText">If necessary: Add a texture and multiply it using a MixRGB node again. For the couch I used <a href="/textures/blue-cotton-02" target="_blank">Blue Cotton 02</a>, for the floor <a href="/textures/light-wooden-parquet-flooring-01" target="_blank">Light Wooden Parquet Flooring 01</a> and for the table  <a href="https://cc0textures.com/view.php?tex=Wood05" target="_blank">Wood #05</a> (by CC0 Textures).</p>
+<p>To change the scale, add a Mapping Node and a Texture Coordinate node (select image node and press Ctrl + T) and change the values in the scale section.</p>
+
+<%- include(img, {src: path + "22.jpg"}); %>
+
+<h4 id="header-id-17">Adding glossiness</h4>
+<p>If necessary: Add some gloss by mixing in a Glossy node. (Don’t go over the top here, this needs relatively much processing power.)</p>
+<p>Then repeat that process for every object and create a few variations.</p>
+
+<h3 id="header-id-18">Making it interactive</h3>
+
+<h4 id="header-id-19">Introduction</h4>
+
+<p>Export the scene as Verge 3D glTF (File > Export > Verge 3D glTF).</p>
+<p>Open the App Manager and click the puzzles icon to open the Puzzle editor.</p>
+<p>In the Puzzle editor there are two tabs: the main tab and the init tab. In the Main tab, you create scripts that affect the 3D objects in the scene, like changing their materials, moving the camera from A to B and so on. In the Init tab, you can create scripts that don’t affect the objects in the 3D scene, like changing the loading icon.</p>
+<p>We’re only gonna use the main tab in this tutorial.</p>
+
+<h4 id="header-id-20">Outline Effect</h4>
+<p>When hovering over a object, we want it to have this outline:</p>
+
+<%- include(img, {src: path + "23.jpg"}); %>
+
+<p>In order to do that, we need to enable the outline effect in the .blend file by going to the render tab in the Properties editor and scrolling down to the Verge 3D settings. Export the scene again and reload the Puzzle editor.</p>
+<p>Using a when hovered block (Events category) and a selector block (Selectors category) we can enable and disable the outline of an object when hovering over it.</p>
+
+<%- include(img, {src: path + "24.jpg"}); %>
+
+<p>Press “Save” and “Play” to test it.</p>
+
+<h4 id="header-id-21">Camera Movement</h4>
+
+<%- include(img, {src: path + "25.jpg"}); %>
+
+<h3 id="header-id-22">User Interface & Making it interactive II</h3>
+
+<p>The user interface is created with HTML, CSS and JavaScript (JS).</p>
+<p>If you open the folder, where the .blend file of your porject is saved, you’ll notice a few other files: A .html file which actually is opened when we press this blue button in the App Manager, a JavaScript file where we can add more functionality, and a CSS file where we can style the HTML elements.</p>
+
+<h4 id="header-id-23">HTML elements, CSS styling</h4>
+
+<p>The background of the white tab is a <div>. The most important attribute is the z-index which is set to 1. The z-index defines when an element is rendered. The greater the z-index the later the element is rendered. Because the 3D scene has a z-index of 0 (by default), the user interface is rendered on top of the 3D scene.</p>
+
+<div class="cssSyntax border">
+    <div>
+        <span class="coloredCode">position</span><span class="whiteCode">: absolute;</span>
+    </div>
+    <div>
+        <span class="coloredCode">top</span><span class="whiteCode">: 0px;</span>
+    </div>
+    <div>
+        <span class="coloredCode">height</span><span class="whiteCode">: 100%;</span>
+    </div>
+    <div>
+        <span class="coloredCode">width</span><span class="whiteCode">: 25%;</span>
+    </div>
+    <div>
+        <span class="coloredCode">background-color</span><span class="whiteCode">: white;</span>
+    </div>
+    <div>
+        <span class="coloredCode">z-index</span><span class="whiteCode">: 1;</span>
+    </div>
+    <div>
+        <span class="coloredCode">padding</span><span class="whiteCode">: 8px;</span>
+    </div>
+    <div>
+        <span class="coloredCode">box-shadow</span><span class="whiteCode">: 2px 0 20px #00000069;</span>
+    </div>
+</div>
+
+<p>The elements where you can change the material are just a div with the display set to grid, the name as the first element, and two SVGs as the second and third elements.</p>
+
+<h4 id="header-id-24">Hiding and showing controls</h4>
+
+<p>Now to make these buttons work, we need to use some JavaScript. Because we need the buttons of the interface to “communicate” with the objects in the 3D scene, it is not possible to do this with the Puzzles editor only.</p>
+
+<p>In the .js file on line 169 you can add your own code.</p>
+<p>When the couch is clicked, we want the camera to fly to the living area, hide the categories and show only the controls for the living room and the “go back” button. So in JavaScript, we’re gonna create a function that sets the display of the categories and the controls of all other areas to “none”, and the display of the living room controls to “block”.</p>
+
+<div class="jsSyntax border">
+<pre>
+<span class="blue">app</span>.<span class="blue">ExternalInterface</span>.<span class="yellow">showLiving</span> = <span class="dark-blue">function</span>() {
+    <span class="blue">document</span>.<span class="yellow">querySelector</span>(<span class="orange">'#livingitems'</span>).<span class="blue">style</span>.<span class="blue">display</span> = <span class="orange">"block"</span>;
+    <span class="blue">document</span>.<span class="yellow">querySelector</span>(<span class="orange">'#diningitems'</span>).<span class="blue">style</span>.<span class="blue">display</span> = <span class="orange">"none"</span>;
+    <span class="blue">document</span>.<span class="yellow">querySelector</span>(<span class="orange">'#kitchenitems'</span>).<span class="blue">style</span>.<span class="blue">display</span> = <span class="orange">"none"</span>;
+    <span class="blue">document</span>.<span class="yellow">querySelector</span>(<span class="orange">'#miscitems'</span>).<span class="blue">style</span>.<span class="blue">display</span> = <span class="orange">"none"</span>;
+    <span class="pink">for</span> (<span class="dark-blue">var</span> <span class="blue">i</span> = <span class="blue">document</span>.<span class="yellow">querySelectorAll</span>(<span class="orange">'.categories'</span>).<span class="blue">length</span> - <span class="green">1</span>; <span class="blue">i</span> >= <span class="green">0</span>; <span class="blue">i</span>--) {
+        <span class="blue">document</span>.<span class="yellow">querySelectorAll</span>(<span class="orange">'.categories'</span>).[<span class="blue">i</span>].<span class="blue">style</span>.<span class="blue">display</span> = <span class="orange">"none"</span>;
+    }        
+}
+</pre>
+</div>
+
+
+<p>Then, in the Puzzles Editor, we’re gonna call this function when the object is clicked and also add a “tween camera” block to move the camera.</p>
+
+<%- include(img, {src: path + "26.jpg"}); %>
+
+<h4 id="header-id-25">Changing materials when an arrow is clicked</h4>
+
+<p>First, we need to define which material belongs to which object, which you can do using lists. Create a new variable (name it “CouchMaterials” or so) and set it to a list of materials:</p>
+<%- include(img, {src: path + "27.jpg"}); %>
+
+<p>If some materials don’t show up in the drop-down, that’s because only materials that are actually used by an object get exported. In the .blend file, add a plane for each unused material and re-export the scene.</p>
+<p>Reload the Puzzle editor. Now you should be able to select the materials.</p>
+<%- include(img, {src: path + "28.jpg"}); %>
+
+<p>Now we need to figure out how to program it so that if we click the right arrow, the sofa will change to the next material on the list and if we press the left arrow, it will change to the previous material on the list.</p>
+<p>The solution I’ve come up is relatively simple: We first need to create a new variable -let’s call it “CouchMaterialChange” - and set it number which is divisible by the number of materials in the list. For instance: 500.</p>
+<p>To make the material change when we click the right arrow, we need to add an event listener to the JavaScript which reacts when the arrow is clicked. When the event listener reacts, it calls a function called CouchNext,</p>
+
+<div class="jsSyntax border">
+<pre>
+<span class="dark-blue">function</span> <span class="yellow">runCode</span>(<span class="blue">app</span>) {
+    <span class="dark-green">// add your code here, e.g. console.log('Hello, World!');</span>
+
+    <span class="blue">document</span>.<span class="yellow">querySelector</span>(<span class="orange">'#sofaplus'</span>).<span class="yellow">addEventListener</span>(<span class="orange">'click'</span>, <span class="dark-blue">function</span>() {
+        <span class="blue">app</span>.<span class="blue">ExternalInterface</span>.<span class="yellow">CouchNext</span>();
+    });
+
+    <span class="blue">document</span>.<span class="yellow">querySelector</span>(<span class="orange">'#sofaminus'</span>).<span class="yellow">addEventListener</span>(<span class="orange">'click'</span>, <span class="dark-blue">function</span>() {
+        <span class="blue">app</span>.<span class="blue">ExternalInterface</span>.<span class="yellow">CouchPrevious</span>();
+    });
+}
+</pre>
+</div>
+
+<p>When the CouchNext function is called, a script in the Puzzles editor gets triggered and adds 1 to the CouchMaterialChange variable. Then the next block takes the result of the remainder of CouchMaterialChange divided by the length of CouchMaterials, chooses the material in the list with the number of the result and applies it to the object.</p>
+
+<%- include(img, {src: path + "29.jpg"}); %>
+<p>Then, you can do the same for the left button but reduce the CouchMaterialChange variable by 1 each time the function is called instead of adding 1.</p>
+
+<%- include(img, {src: path + "30.jpg"}); %>
+
+<h4 id="header-id-26">Final touches</h4>
+<p>You can do some color adjustments using the post-processing blocks. In my case, it looked a bit washed out and dark, so I added some contrast and increased the brightness a tiny bit.</p>
+
+<%- include(img, {src: path + "31.jpg"}); %>
+
+</section>

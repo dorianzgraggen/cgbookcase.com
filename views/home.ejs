@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>cgbookcase.com | Free PBR Textures and Blender Tutorials</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Discover a library of high-quality PBR textures. Free for every purpose, forever. Some Blender tutorials here and there.">
+        
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+        <link href="/styles/default.css" rel="stylesheet">
+        <link href="/styles/header.css" rel="stylesheet">
+        <link href="/styles/home.css" rel="stylesheet">
+        <link href="/styles/font-sizes.css" rel="stylesheet">
+        <link rel="canonical" href="https://www.cgbookcase.com">
+
+        <!-- START Textures.one integration -->
+        <meta name="tex1:display-name" content="cgbookcase.com">
+        <meta name="tex1:display-domain" content="cgbookcase.com">
+        <meta name="tex1:patreon" content="cgbookcase">
+        <meta name="tex1:twitter" content="dorianzgraggen">
+        <meta name="tex1:instagram" content="cgbtextures">
+        <meta name="tex1:logo" content="https://www.cgbookcase.com/media/brand/logo.svg">
+        <meta name="tex1:icon" content="https://www.cgbookcase.com/media/brand/logo_mobile.svg">
+        <!-- END Textures.one integration -->
+
+        <%- include partials/head.ejs %>
+
+    </head>
+    
+    
+    <body>
+        <%- include partials/header.ejs %>
+
+        <% var bgNum = Math.floor(Math.random() * 3 + 1); %>
+        <main>
+            <div id="home-backgroundImage" style="background-image: url('/media/home/background_<%= bgNum %>.jpg');">
+                <img id="banner-logo" src="/media/brand/logo_white.svg" alt="">
+                <span id="backgroundImage-credit">Image credit: <a target="_blank" href="https://www.twitter.com/dorianzgraggen">Dorian Zgraggen</a></span>
+            </div>
+            
+            <!-- What is cgbookcase.com? -->
+            <section class="whiteBG" id="home-info">
+                <div class="margin w-1400">
+                    <h2 class="text-center">What is cgbookcase.com?</h2>
+                    <div class="list-d3-m1">
+                        <div class="info-item">
+                            <img class="info-image" src="/media/home/icon_textures.svg" alt="">
+                            <h3 class="text-center">Free PBR Textures</h3>
+                            <p class="text-center">Browse <%=textures.length%> free PBR textures. New content added every one to two months.<a href></a></p>
+                            <a href="/textures" class="text-center no-underline button-red button-center">Browse Textures</a>
+                        </div>
+                        <div class="info-item">
+                            <img class="info-image" src="/media/home/icon_tutorials.svg" alt="">
+                            <h3 class="text-center">3D Rendering Tutorials</h3>
+                            <p class="text-center">Watch tutorials and read guides to learn to create better 3D scenes.</p>
+                            <a href="/tutorials" target="_blank" class="text-center no-underline button-red button-center">Watch Tutorials</a>
+                        </div>
+                        <div class="info-item">
+                            <img class="info-image" src="/media/home/icon_support.svg" alt="">
+                            <h3 class="text-center">Possible thanks to you</h3>
+                            <p class="text-center">Find out how to support me creating textures and releasing them in the CC0 license.</p>
+                            <a href="https://www.patreon.com/cgbookcase" target="_blank" class="text-center no-underline button-red button-center">Support the Project</a>
+                        </div>
+                    </div>
+                    <div class="space-large"></div>
+                </div>
+            </section>
+
+            <!-- How to use PBR textures lead magnet -->
+            <section id="home-leadMagnet" class="margin w-1400">
+                <div class="space-large"></div>
+                <div id="leadMagnet-flex">
+                    <div id="leadMagnet-render">
+                            <img src="/media/brand/BlenderPBRTexturesRender.jpg" alt="rendered image of the ebook cover of the PBR textures guide">
+                    </div>
+                    <div id="leadMagnet-description">
+                        <h2>Learn how to use PBR Textures in Blender</h2>
+                        <div class="space mobile-only"></div>
+                        <p class="desktop-only">Having trouble using the textures in Blender? Check out the guide which will teach how to use the different types of textures on cgbookcase.com with the Principled BSDF in Blender Cycles and Eevee.</p>
+                        <p class="mobile-only">Having trouble using the textures in Blender? Check out the guide on how to use PBR textures in Blender.</p>
+                        <div class="space mobile-only"></div>
+                        <a href="/textures/how-to-use-pbr-textures-in-blender" class="text-center no-underline button-red">Read the Guide</a>
+                    </div>
+                </div>
+                <div class="space-large"></div>
+            </section>
+
+            <!-- Most recent products -->
+            <section class="whiteBG" id="home-products" style="display:none">
+                <div class="margin w-1400 ">
+                    <h2 class="text-center">Products</h2>
+                    <div class="list-d3-m1">
+                        <div class="products-item">
+                            <div class="products-image" style="background-image: url(https://www.bennettig.com/wordpress/wp-content/uploads/2018/07/square-placeholder.jpg)"></div>
+                            <h3 class="text-center">Rock Models</h3>
+                        </div>
+                        <div class="products-item">
+                            <div class="products-image" style="background-image: url(https://www.bennettig.com/wordpress/wp-content/uploads/2018/07/square-placeholder.jpg)"></div>
+                            <h3 class="text-center">Guide on Photorealism in Blender</h3>
+                        </div>
+                        <div class="products-item">
+                            <div class="products-image" style="background-image: url(https://www.bennettig.com/wordpress/wp-content/uploads/2018/07/square-placeholder.jpg)"></div>
+                            <h3 class="text-center">Cutout Trees</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texture creation tutorial series -->
+            <section id="home-textureSeries" class="margin">
+                <div class="space-large"></div>
+                <h2 class="text-center">PBR Texture Creation Tutorial Series</h2>
+                <p class="margin w-900 text-center">Learn how to create your own PBR Textures for free. This series of tutorials will teach you what the different types of PBR maps are for, how to properly shoot textures, make them seamless, and much more.</p>
+                <a href="/texture-course" class="text-center no-underline button-red button-center" style="box-shadow: 4px 8px 56px #0000001a;" >Watch Now</a>
+                <div class="space-large"></div>
+            </section>
+
+            <!-- Patreon Supporters-->
+            <section class="whiteBG" id="home-supporters">
+                <div class="margin w-1400">
+                    <h2 class="text-center">Supporters</h2>
+                    <p class="text-center">Thanks a lot to my generous patrons:</p>
+                    <div class="space"></div>
+                    <div id="supporters-list">
+                            <% for(i=0; i < patrons.length; i++) { %>
+                                <div><%=patrons[i].patronname%></div>
+                            <% } %>
+                    </div>
+                    <div class="space"></div>
+                    <a target="_blank" href="https://www.patreon.com/cgbookcase">
+                        <div class="patreonButton"></div>
+                    </a>
+                    <div class="space"></div>
+                </div>
+            </section>
+
+            <!-- Short about text -->
+            <section id="home-about" class="margin w-900">
+                <div class="space"></div>
+                <h2 id="about" class="text-center">About</h2>
+                <div class="main-div">
+                    <div id="about-img-container">
+                        <img src="/media/brand/feteli.jpg" alt="headshot of Dorian Zgraggen, the most famous person in the world">
+
+                    </div>
+                    <div id="about-text">
+                            <div class="space mobile-only"></div>
+                        <p>Hey, I'm <a href="https://www.dorianzgraggen.com/">Dorian Zgraggen</a> and I run cgbookcase.com.</p>
+                        <p class="desktop-only">My goal with this website is to provide free and high quality content for 3D artists. You can contact me via E-mail: <a href="mailto:dorian@cgbookcase.com">dorian[at]cgbookcase.com</a></p>
+                        <p class="mobile-only">My goal with this website is to provide free and high quality content for 3D artists.</p>
+                        <p>If you like my work, feel free to <a href="http://www.patreon.com/cgbookcase">support me on Patreon.</a></p>
+                    </div>
+                </div>
+                <div class="space-large desktop-only"></div>
+                <div class="space mobile-only"></div>
+                <div class="space mobile-only"></div>
+            </section>
+        </main>
+        <%- include partials/footer.ejs %>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PBR Textures | cgbookcase.com</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Download more than 380 free PBR Texures from cgbookcase.com.">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css"
+        integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="/styles/default.css" rel="stylesheet">
+    <link href="/styles/header.css" rel="stylesheet">
+    <link href="/styles/textures.css" rel="stylesheet">
+    <link href="/styles/font-sizes.css" rel="stylesheet">
+
+    <%- include partials/head.ejs %>
+</head>
+
+
+<body>
+    <%- include partials/header.ejs %>
+    <main id="mainM">
+        <div class="margin ">
+            <div id="textures-divider">
+
+                <!-- LEFT SIDE: FILTERS -->
+                <section id="textures-filters">
+                    <h3 class="text-center">Filters</h2>
+                        <form action="/textures" method="get" id="filtersForm">
+                            <label for="category">Category</label>
+                            <br>
+                            <select name="category" form="filtersForm" onchange="setCategory()">
+                                <option id="v-All" value="All">All Categories</option>
+                                <option id="v-Bark" value="Bark">Bark</option>
+                                <option id="v-Cutout" value="Cutout Objects">Cutout Objects</option>
+                                <option id="v-Fabric" value="Fabric">Fabric</option>
+                                <option id="v-Food" value="Food">Food</option>
+                                <option id="v-Ground" value="Ground">Ground</option>
+                                <option id="v-Leaves" value="Leaves & Plants">Leaves & Plants</option>
+                                <option id="v-Metal" value="Metal">Metal</option>
+                                <option id="v-Parquet" value="Parquet">Parquet</option>
+                                <option id="v-Patterns" value="Patterns">Patterns</option>
+                                <option id="v-Paving" value="Paving & Cobblestone">Paving & Cobblestone</option>
+                                <option id="v-Rock" value="Rock">Rock</option>
+                                <option id="v-Surface" value="Surface Imperfections">Surface Imperfections</option>
+                                <option id="v-Street" value="Street">Street</option>
+                                <option id="v-Tiles" value="Tiles">Tiles</option>
+                                <option id="v-Walls" value="Walls">Walls</option>
+                                <option id="v-Wood" value="Wood">Wood</option>
+                            </select>
+
+                            <div class="space"></div>
+
+                            <label for="">Min. Resolution</label>
+                            <div id="filters-resolution">
+                                <button type="button" onclick="setResolution(1)" <% if(req.query.resolution == 1){ %>
+                                    class="active" <%}%> style="border-left: 1px solid #c8c8c8;"><span>1K</span></button>
+                                <button type="button" onclick="setResolution(2)" <% if(req.query.resolution == 2){ %>
+                                    class="active" <%}%> ><span>2K</span></button>
+                                <button type="button" onclick="setResolution(3)" <% if(req.query.resolution == 3){ %>
+                                    class="active" <%}%>><span>3K</span></button>
+                                <button type="button" onclick="setResolution(4)" <% if(req.query.resolution == 4){ %>
+                                    class="active" <%}%> style="border-right: 1px solid #c8c8c8;"><span>4K</span></button>
+                            </div>
+                            <% if(req.query.resolution) {%> <input type="hidden" name="resolution"
+                                    value="<%= req.query.resolution %>" id="hiddenResolution">
+                                    <% } else { %>
+                                    <input type="hidden" name="resolution" value="1" id="hiddenResolution">
+                                    <% } %>
+
+
+                                    <% if(req.query.page) {%>
+                                    <input type="hidden" name="page" value="<%= req.query.page %>" id="hiddenPage">
+                                    <% } else { %>
+                                    <input type="hidden" name="page" value="1" id="hiddenPage">
+                                    <% } %>
+
+                                    <div class="space"></div>
+
+                                    <label for="filters-colors">Color</label>
+
+
+
+                                    <% if(req.query.color != "all" && req.query.color){%><button type="button" onclick="setColor('all')"
+                                        style="background: none; color: #0000007d; text-decoration: underline; display: inline; padding: 0; margin-left: 12px;">Reset
+                                        color</button><%}%>
+                            <div id="filters-colors">
+                                <button aria-label="Show red textures only" type="button" onclick="setColor('red')" class="filters-colorSelect <% if(req.query.color == 'red'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #f42222, #f42222); border-color: #cc1b1b;"></button>
+                                <button aria-label="Show orange textures only" type="button" onclick="setColor('orange')" class="filters-colorSelect <% if(req.query.color == 'orange'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #ff9e0e, #f49406); border-color: #d3830d; filter: saturate(1.2);"></button>
+                                <button aria-label="Show yellow textures only" type="button" onclick="setColor('yellow')" class="filters-colorSelect <% if(req.query.color == 'yellow'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #ffe822, #ffe822); border-color: #ddc602;"></button>
+                                <button aria-label="Show green textures only" type="button" onclick="setColor('green')" class="filters-colorSelect <% if(req.query.color == 'green'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #22B73B, #22B73B); border-color: #187e29;"></button>
+                                <button aria-label="Show blue textures only" type="button" onclick="setColor('blue')" class="filters-colorSelect <% if(req.query.color == 'blue'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #313FB5, #313FB5); border-color: #242e80;"></button>
+                                <button aria-label="Show purple textures only" type="button" onclick="setColor('purple')" class="filters-colorSelect <% if(req.query.color == 'purple'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #B531A8, #B531A8); border-color: #742f6d;"></button>
+                                <button aria-label="Show brown textures only" type="button" onclick="setColor('brown')" class="filters-colorSelect <% if(req.query.color == 'brown'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #734B41, #734B41); border-color: #513730;"></button>
+                                <button aria-label="Show black textures only" type="button" onclick="setColor('black')" class="filters-colorSelect <% if(req.query.color == 'black'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #222222, #222222); border-color: #181818;"></button>
+                                <button aria-label="Show gray textures only" type="button" onclick="setColor('gray')" class="filters-colorSelect <% if(req.query.color == 'gray'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #a4a4a4, #a4a4a4); border-color: #747474;"></button>
+                                <button aria-label="Show white textures only" type="button" onclick="setColor('white')" class="filters-colorSelect <% if(req.query.color == 'white'){ %>activeColor<%}%>" id="color-red" style="background: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(255,255,255,0.1)), linear-gradient(0deg, #ffffff, #ffffff); border-color: #c6c6c6;"></button>
+                            </div>
+                            <% if(req.query.color) {%>
+                                    <input type="hidden" name="color" value="<%= req.query.color %>" id="hiddenColor">
+                                    <% } else { %>
+                                    <input type="hidden" name="color" value="all" id="hiddenColor">
+                                    <% } %>
+
+
+                                    <% if(req.query.search) { var searchQuery = req.query.search; } else { var searchQuery = ""; }%>
+                                    <input type="hidden" name="search" value="<%= searchQuery %>" id="hiddenSearch">
+
+
+
+                                    <div class="space"></div>
+                        </form>
+
+
+                        <h3 class="text-center">Information</h3>
+                        <p class="text-center"><a
+                                href="/textures/how-to-use-pbr-textures-in-blender?texture=stone-wall-04">How to use the
+                                textures in Blender</a></p>
+                        <p class="text-center"><a href="/license-information">License information</a></p>
+                        <p class="text-center"><a href="/request-a-texture">Request a texture</a></p>
+                        <p class="text-center"><a target="_blank" href="https://www.notion.so/fe590bbea0ac4b3a96e99d2263a0d535?v=7f2d7f07ec2e4dc0a739050ee95572c5">Future releases</a></p>
+                        <div class="space"></div>
+                       
+                        <h3 class="text-center">Most Recent Releases</h3>
+                        <p class="text-center">Overviews and making-ofs of the most recent releases.</p>
+                        
+                        <a href="/blog/<%= blogPost.slug %>">
+                            <div class="future-release" style="background-image: url(/blog/<%= blogPost.folder %>/thumbnail.jpg)">
+                                <div class="future-release-overlay">
+
+                                </div>
+                                <p class="future-release-title"><%= blogPost.release_name %></p>
+                            </div>
+                        </a>
+
+                        <div class="space"></div>
+                       
+
+                        
+
+                        <h3 class="text-center">Support</h3>
+                        <p class="text-center">Providing free PBR textures is only possible thanks to my amazing
+                            patrons.</p>
+                        <div class="space"></div>
+                        <a target="_blank" href="https://www.patreon.com/cgbookcase" aria-label="Become a patron">
+                            <div class="patreonButton"></div>
+                        </a>
+                        <div class="space"></div>
+                        <div class="space"></div>
+                        <div class="space"></div>
+
+                        <div style="background:white;border-radius: 4px;">
+                            <a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank">
+                                <img style="width: 100%;" src="/media/affiliate/evo.jpg">
+                                
+                            </a>
+                            <p class="" style="margin: 0;padding: 7px 14px 12px 14px;">Extreme PBR Evo makes using PBR Materials in Blender easier and comes with more than 1100 ready-made materials.</p>
+                            <p class="" style="margin: 0;padding: 7px 14px 12px 14px;"><a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank">Use the code 'cgbookcase' for 20% off.</a> <span style="color: lightgray">[affiliate link]</span></p>
+                        </div>
+                        
+                      
+                        <div class="space"></div>
+
+                      
+                        <div class="space"></div>
+                </section>
+
+                <!-- RIGHT SIDE: TEXTURES -->
+                <section id="textures-results">
+
+
+
+
+                    <div id="textures-search">
+                        <input type="text" name="search" id="searchbar" value="<%= searchQuery %>"
+                            placeholder="Search PBR Textures">
+                        <button id="search-button" aria-label="Search" onclick="setSearch()" type="button"><i
+                                class="fas fa-search"></i></button>
+                    </div>
+
+                    <!-- <div style="text-align: center; margin: 24px;">
+                            <a href="https://forms.gle/Qpc68BGQJ5itLBhJ7" target="_blank">Want to help shape the future of cgbookcase.com? Fill out the survey!</a> 🖊️
+                        </div> -->
+                    <div id="textures-list">
+
+                        <% for(i= 0 ; i < textures.length; i++) { %>
+                        <a href="/textures/<%=textures[i].url%>" class="results-itemWrapper">
+                            <div class="results-item"
+                                style="background-image: url('https://www.cgbookcase.com/textures/<%=textures[i].category%>/<%=textures[i].file%>_rend.jpg')">
+                                <span class="results-item-resolution"><%=textures[i].resolution%>K</span>
+                                <span class="results-item-name"><%=textures[i].title%></span>
+
+                            </div>
+                        </a>
+
+                        <% } %>
+
+                        <% if(textures.length == 0) { %>
+                        <a id="notexture-meme" href="/request-a-texture" aria-label="Request a texture">
+                            <img src="/media/textures/texturerequest_meme.jpg">
+                        </a>
+
+                      
+                        
+                       
+                        <% } %>
+                    </div>
+                    <!-- <% if(textures.length == 0) { %>
+
+                    <p style="text-align: center;">
+                        <a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank">You might find something in the Extreme PBR add-on for Blender, though. (affiliate link)
+                        </a>
+                    </p>
+                    <% } %> -->
+
+                    <div id="page-controls" <% if(req.query.page == 1 || !req.query.page){%>
+                        style="flex-direction: row-reverse;" <%}%>>
+                            <% if(req.query.page > 1) { %> <button onclick="previousPage()"><i
+                            style="font-size: 24px; margin-right: 12px;" class="fas fa-angle-left"></i> Previous
+                        Page</button>
+                        <%}%>
+                            <% if(textures.length == limit) { %>
+                        <button onclick="nextPage()">Next Page <i style="font-size: 24px; margin-left: 12px;"
+                                class="fas fa-angle-right"></i></button>
+                        <%}%>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+
+            <div id="textures-supporters">
+                <div class="w-1400 text-center margin">
+                        <div class="space"></div>
+                    <h2>Supporters</h2>
+                    <div id="supporters-list">
+                            <% for(i=0; i < patrons.length; i++) { %>
+                        <div><%=patrons[i].patronname%></div>
+                        <% } %>
+                    </div>
+                    <div class="space"></div>
+
+                    <a target="_blank" href="https://www.patreon.com/cgbookcase" aria-label="Become a patron">
+                        <div class="patreonButton"></div>
+                    </a>
+            </div>
+            <div class="space"></div>
+        </div>
+
+
+    </main>
+    <script>
+
+            <% if (req.query.category) { %>
+
+            var categoryBeginning = "v-<%=req.query.category%>".split(" ")[0];
+
+            document.getElementById(categoryBeginning).selected = "selected";
+            <% } %>
+
+            function resetPage() {
+                document.getElementById("hiddenPage").value = 1;
+            }
+
+        function setResolution(resolution) {
+            document.getElementById("hiddenResolution").value = resolution;
+            resetPage();
+            document.getElementById("filtersForm").submit();
+        }
+
+        function setColor(color) {
+            document.getElementById("hiddenColor").value = color;
+            resetPage();
+            document.getElementById("filtersForm").submit();
+        }
+
+        function setCategory() {
+            resetPage();
+            document.getElementById("filtersForm").submit();
+        }
+
+        function setSearch() {
+            document.getElementById("hiddenSearch").value = "";
+            document.getElementById("hiddenSearch").value = document.getElementById("searchbar").value;
+            resetPage();
+            document.getElementById("filtersForm").submit();
+        }
+
+        var input = document.getElementById("searchbar");
+
+        document.getElementById("textures-results").addEventListener("keyup", function (event) {
+            // 13 = Enter key
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                setSearch();
+            }
+        });
+
+        function nextPage() {
+            document.getElementById("hiddenPage").value = Number(document.getElementById("hiddenPage").value) + 1;
+            document.getElementById("filtersForm").submit();
+        }
+
+        function previousPage() {
+            document.getElementById("hiddenPage").value = Number(document.getElementById("hiddenPage").value) - 1;
+            document.getElementById("filtersForm").submit();
+        }
+    </script>
+    <%- include partials/footer.ejs %>

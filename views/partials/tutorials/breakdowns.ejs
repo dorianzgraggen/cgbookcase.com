@@ -1,0 +1,142 @@
+<h1>Immersion VR Substance Designer Material Breakdowns</h1>
+                
+
+
+
+
+<section id="tutorial-summary" class="whiteBG margin border">
+
+
+<% var img = 'partials/tutorials/_d/img.ejs' %>
+<% var path = '/tutorials/2019/breakdowns/WhiteBrickWall01/'%>
+<% var anchorNum = 1 %>
+
+
+
+
+<p>Over the last few months, I designed and programmed an <a target="_blank" href="https://www.dorianzgraggen.com/projects/immersion-vr">interactive building for virtual reality</a>. Below you can see breakdowns of the Substance Designer graphs of two different PBR materials I created during this project.</p>
+
+<p>If you'd like to know more about the project, feel free to <a href="https://www.youtube.com/watch?v=k-Kr6gCmdKU" target="_blank">watch the demo video</a>.</p>
+
+<h2>White Brick Wall 01</h2>
+<p>The first one I'd like to break down is the <a href="/textures/white-brick-wall-01">White Brick Wall 01</a>:</p>
+
+<%- include(img, {src: path + "render.jpg"}); %>
+
+<p>I started with a Brick Generator and then made the brick shapes have less straight-lined edges using the Warp node with a Gaussian Noise as the strength.</p>
+<%- include(img, {src: path + "01.jpg"}); %>
+
+
+<p>Next, I wanted to make the bricks a bit bumpy and less perfect. To do that, I used two layers of noises with different levels of detail which creates some kind of depth and interesting height variation. Here it was important to warp the noises by a different factor for each brick, so they don't look like they've just been overlayed over the entire texture, which was achieved using the <span class="scrn-highlight orange">Directional Warp node and another Brick Generator</span> where every brick has a random value.</p>
+
+
+<%- include(img, {src: path + "02.jpg"}); %>
+
+<p>Then, I added some height information to the crevices between the bricks.</p>
+
+<%- include(img, {src: path + "03.jpg"}); %>
+
+<p>The bricks still look too clean and perfect, so I tried to add some kind of slightly damaged type of look to the edges of the bricks.</p>
+
+<%- include(img, {src: path + "04.jpg"}); %>
+
+<p>Next, I added some minute detail to the entire texture to mimic the tiny height bumps painted bricks often have. I also mixed in another Brick Generator to make the bricks have varying heights.</p>
+
+<%- include(img, {src: path + "05.jpg"}); %>
+
+<p>Then I added a bunch of holes in the crevices.</p>
+
+<%- include(img, {src: path + "06.jpg"}); %>
+
+<p>One challenge of making the bricks look like actual painted bricks and not just some bricks that are white for some weird reason, I wanted to make the walls look like they've been painted multiple times in some areas. To achieve this, I've used the Slope Blur node with a rather low amount of samples using two different types of noises as inputs.</p>
+
+<%- include(img, {src: path + "07.jpg"}); %>
+
+<p>Since the wall was used in a building where lots of people would walk around, I also added some tiny bumps indicating that some stuff bumped into the wall.</p>
+
+<%- include(img, {src: path + "08.jpg"}); %>
+
+<p>Next, I added some cracks two some bricks, which I think really helped to make it look more realistic and "used".</p>
+
+<%- include(img, {src: path + "09.jpg"}); %>
+
+<p>Between the bricks, I also added some height, as if some paint was covering some of the crevices.</p>
+
+<%- include(img, {src: path + "10.jpg"}); %>
+
+<p>The map is then plugged into the Height channel, and after a conversion to normals in the Normal channel.</p>
+
+<%- include(img, {src: path + "11.jpg"}); %>
+
+<p>The roughness map of this material is pretty simple since it is just two different noises: One for the crevices, one for the bricks.</p>
+
+
+<%- include(img, {src: path + "12.jpg"}); %>
+
+<p>The Base Color map is quite simple as well: It is mostly a white map with some soft color variation overall and a slight yellowish/brownish white color for the cracks.</p>
+<p>(Note: Rendered in the screenshot below is the mask for the cracks, not the last node.)</p>
+<%- include(img, {src: path + "13.jpg"}); %>
+
+<p>The entire graph can be <a href="<%=path%>White_Brick_Wall_01_graph.png">downloaded at 1:1 resolution</a></p>
+
+<% var path = '/tutorials/2019/breakdowns/ParquetFlooring09/'%>
+
+
+<h2>Parquet Flooring 09</h2>
+<p>The next one I'd like to break down is the <a href="/textures/parquet-flooring-09">Parquet Flooring 09</a>:</p>
+<%- include(img, {src: path + "render.jpg"}); %>
+
+
+<p>Here, I started with a bunch of lines created using a linear bottom-to-top gradient and a bunch of gradient maps. These lines will end up being wood grains.</p>
+
+
+<%- include(img, {src: path + "01.jpg"}); %>
+
+<p>Then, to make them wavy and shaky, I warped them using three different noises: One large Gaussian noise, a smaller one and Clouds 2 node. The first one helps to make the lines follow a curve rather than a perfectly straight line, the other two produce more noise and detailed edges of the lines.</p>
+
+
+<%- include(img, {src: path + "02.jpg"}); %>
+
+<p>Next, I wanted to create some wood knot thingy. To create the base for this, I used the Tile Generator with a stretched bell (a round, soft shape) as the input shape.</p>
+
+<%- include(img, {src: path + "03.jpg"}); %>
+
+
+<p>After that, wood grains that wrap around the oval shape are created with the help of the Gradient Map node.</p>
+
+
+<%- include(img, {src: path + "04.jpg"}); %>
+
+<p>Then, the (more or less) straight wood grains and the oval-shaped ones are combined. A Directional Noise 2 node helps to add detail.</p>
+
+
+
+<%- include(img, {src: path + "05.jpg"}); %>
+
+<p>The pattern is warped based on planks with random values generated using a Tile Generator. The Tile Generator also is used to darken some of the planks.</p>
+
+<%- include(img, {src: path + "06.jpg"}); %>
+
+<p>Then, the wood texture is colorized using a bunch of gradient maps, HSL and Levels nodes. Here I was mostly picking colors from reference photos of wood and tweaking and combining them until it looked right.</p>
+
+
+<%- include(img, {src: path + "07.jpg"}); %>
+
+<p>Some dark spots are added.</p>
+
+<%- include(img, {src: path + "08.jpg"}); %>
+
+<p>The normal map and the height map are created using the grayscale wood grains.</p>
+
+<%- include(img, {src: path + "09.jpg"}); %>
+
+<p>For the roughness map, I simply used the inverse of the grayscale wood grains and adjusted them using the Levels and the Curve node.</p>
+
+<%- include(img, {src: path + "10.jpg"}); %>
+
+<p>The entire graph can be <a href="<%=path%>Parquet_flooring_09_graph.png">downloaded at 1:1 resolution</a></p>
+
+<p>The PBR maps of most of the materials created for the building are <a href="/textures/?category=All&resolution=1&page=1&color=all&search=Immersion+VR">available for download</a>.</p>
+
+
+</section>

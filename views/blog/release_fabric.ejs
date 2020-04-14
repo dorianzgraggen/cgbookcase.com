@@ -1,0 +1,119 @@
+
+
+<% let releasedTextures = [] %> 
+<% var nicee = textures.find(x => x.cgbID === 348); %> 
+
+<script>
+
+console.log("<%= releasedTextures[0] %>");
+
+</script>
+
+<p class="readable-text">The number of fabric materials on the site was a bit lacking, so this month's release is all about them! It was definitely one of the most requested types of materials, so another set of fabrics is coming later this year, as well.</p>
+
+<p class="readable-text">Also, to be more organized, I’ve set up a Notion board, where you can <a href="https://www.notion.so/fe590bbea0ac4b3a96e99d2263a0d535?v=7f2d7f07ec2e4dc0a739050ee95572c5" target="_blank">get more information about future releases</a>.</p>
+
+
+<h2 class="readable-text">Overview</h2>
+
+<p class="readable-text">A quick overview of this months PBR textures:</p>
+
+
+<%- include("release/textureList.ejs", {listOfTextures: [431, 432, 433, 426], textures:textures, title: "Jeans and Rag"}); %>
+
+
+<%- include("release/textureList.ejs", {listOfTextures: [430, 429, 428, 427], textures:textures, title: "Net Curtain and Tulle"}); %>
+
+<%- include("release/textureList.ejs", {listOfTextures: [420, 421, 422, 423, 424, 425], textures:textures, title: "Leathers"}); %>
+
+<%- include("release/textureList.ejs", {listOfTextures: [408, 409, 410, 411, 412, 413, 414, 415, 416], textures:textures, title: "Fabric 01 - 09"}); %>
+
+<%- include("release/textureList.ejs", {listOfTextures: [419, 418, 417], textures:textures, title: "Fabric 10"}); %>
+
+
+<div class="space"></div>
+<h2 class="readable-text">Creating procedural fabrics</h2>
+
+<p class="readable-text">Most textures in this release were created procedurally using Substance Designer. When creating procedural textures it can be difficult to achieve photorealistic results, so I used a lot of real fabrics and/or reference, which helped a lot.</p>
+
+<p class="readable-text">For the fabrics 01 - 09, I created a generator that allows to quickly change various properties of the fabric, for example, the number of threads, colors, and more.</p>
+<p class="readable-text">While they might take a bit of an extra effort to create in the beginning, it is very useful for coming up with fabric ideas. I will create more generators for future releases and I’m looking forward to publishing those as well someday.</p>
+
+<p class="readable-text">Here’s what you can create with the generator by changing a few values only:</p>
+<div class="space"></div>
+
+<!-- <div id="imagechange" style="padding-bottom: 41.06%; background-image: url('/blog/release_fabric/generator_01.jpg'); background-size: cover; transition-duration: .3s;"></div> -->
+
+<div class="fade-image-container" style="padding-bottom: 41.06%;">
+    <img class="fade-image" src="/blog/release_fabric/generator_05.jpg">
+    <img class="fade-image" src="/blog/release_fabric/generator_04.jpg">
+    <img class="fade-image" src="/blog/release_fabric/generator_03.jpg">
+    <img class="fade-image" src="/blog/release_fabric/generator_02.jpg">
+    <img class="fade-image" src="/blog/release_fabric/generator_01.jpg">
+</div>
+
+
+
+<script>
+    var src = "/blog/release_fabric/generator_0"
+    var filetype = "jpg";
+    var startNum = 4;
+    var endNum = 0;
+
+    var currentNum = startNum;
+
+    var images = document.querySelectorAll(".fade-image");
+
+    var duration = 3000;
+
+    function updateImage() {
+
+        if (currentNum < 1) {
+            console.log("IF")
+            currentNum = startNum;
+            images[4].style.opacity = 1;
+            setTimeout(function () {
+                images.forEach(element => {
+                    element.style.opacity = 1;
+                });
+            }, 1000);
+
+        } else {
+            console.log("ELSE")
+            images[currentNum].style.opacity = 0;
+            currentNum--;
+
+        }
+        console.log(currentNum);
+        setTimeout(updateImage, duration);
+    }
+
+    setTimeout(updateImage, duration);
+
+
+</script>
+
+<div class="space"></div>
+
+
+<h2 class="readable-text">Scanning the rag</h2>
+
+<p class="readable-text">What I also experimented with for this set of textures, was building the following texture scanner:</p>
+<div class="space"></div>
+
+<div style="display: flex; flex-wrap: nowrap;">
+    <img class="w-100" style="margin-right: 16px;" src="/blog/release_fabric/scan1.jpg">
+    <img class="w-100" src="/blog/release_fabric/scan2.jpg">
+</div>
+<div class="space"></div>
+
+
+<p class="readable-text">I ended up using it for the texture Rag 01. I first took 8 photos of the fabric with the light coming from a different angle each time (first image). Those were used to create the normal map. Additionally, I took a photo of the fabric with light coming from underneath the fabric, which was then used for the translucency map (second image).</p>
+
+<p class="readable-text">If you find the content on this site useful and have a few dollars to spend, you can become a patron on Patreon and help me to continue running cgbookcase.com.</p>
+<div class="space"></div>
+
+<a target="_blank" href="https://www.patreon.com/cgbookcase" aria-label="Become a patron">
+    <div class="patreonButton"></div>
+</a>
+<div class="space"></div>

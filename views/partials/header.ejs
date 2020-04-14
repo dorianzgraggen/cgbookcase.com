@@ -1,0 +1,48 @@
+        <header class="whiteBG">
+            <div id="header-redBar"></div>
+            <nav>
+                <div id="header-container" class="desktop-only">
+                    <a aria-label="Home" href="/"><img id="logo" src="/media/brand/logo.svg" alt=""></a>
+                    <!-- <a href="/products">Products</a> -->
+                    <a href="/textures">Textures</a>
+                    <a href="/learn">Learn</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/#about">About</a>
+                    <a href="http://www.patreon.com/cgbookcase" id="header-buttonRight">Become a Patron</a>
+                </div>
+
+
+                <div id="header-container-mobile" class="mobile-only text-center">
+
+                    
+
+                    <div id="header-mobile-top">
+                        <a aria-label="Home" href="/">
+                            <img id="logo-mobile" src="/media/brand/logo_mobile.svg" alt="">
+                        </a>
+                        <i  id="hamburger" class="fas fa-bars"></i>
+                    </div>
+                    <!-- <a href="/products">Products</a> -->
+                    <div id="hiddenMobileNav">
+                            <div class="mobile-headerLink" style="background-color: #f7f7f7">
+                                <a href="/textures">Textures</a>
+                            </div>
+                            <div class="mobile-headerLink"><a href="/learn">Learn</a></div>
+                            <div class="mobile-headerLink" style="background-color: #f7f7f7"><a href="/blog">Blog</a></div>
+                            <div class="mobile-headerLink"><a href="/#about">About</a></div>
+                    </div>
+                   
+                    <!-- <a href="http://www.patreon.com/cgbookcase" id="header-buttonRight">Become a Patron</a> -->
+                </div>
+            </nav>
+            <script>
+            document.getElementById("hamburger").addEventListener("click", function(){
+                if(document.getElementById("hiddenMobileNav").style.display == "block"){
+                    document.getElementById("hiddenMobileNav").style.display = "none";
+                } else {
+                    document.getElementById("hiddenMobileNav").style.display = "block";
+                }
+                
+            })
+            </script>
+        </header> 

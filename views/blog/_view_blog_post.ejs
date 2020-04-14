@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title><%= post.title %> | cgbookcase.com</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description"
+        content="The frequency of new textures being released has been really suffering from it, but finally, the new site is up!">
+    <meta name="author" content="Dorian Zgraggen">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css"
+        integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="/styles/default.css" rel="stylesheet">
+    <link href="/styles/header.css" rel="stylesheet">
+    <link href="/styles/textures.css" rel="stylesheet">
+    <link href="/styles/tutorials.css" rel="stylesheet">
+    <link href="/styles/font-sizes.css" rel="stylesheet">
+    <link href="/styles/blog.css" rel="stylesheet">
+    <link rel="canonical" href="https://www.cgbookcase.com/blog/new-site-and-roadmap-for-texture-creation-course">
+
+    <%- include("../partials/head.ejs") %>
+</head>
+
+
+<body>
+    <%- include("../partials/header.ejs") %>
+    <main class=" w-1200 margin">
+        <div class="">
+            <h1><%= post.title %></h1>
+
+        </div>
+
+
+
+        <div class="whiteBG border margin" style="margin-bottom: 20px;">
+
+            <%- include(post.folder + ".ejs") %>
+
+
+
+        </div>
+        <div style="margin-top: 12px; opacity: 0.8; display: none"><i style="margin-right: 6px"
+                class="far fa-calendar-day"></i>May 1, 2019 <i style="margin-left: 12px; margin-right: 6px"
+                class="far fa-user"></i>Dorian Zgraggen </div>
+
+        <% if (!(post.folder == "new_site")) { %>
+        <div id="commento"></div>
+        <script src="https://cdn.commento.io/js/commento.js" data-no-fonts="true"
+            data-page-id="<%= post.folder %>"></script>
+        <% } %>
+
+    </main>
+
+    <script>
+        // Redirect to www (needed so Commento works)
+        if (window.location.hostname.indexOf("www") == -1 && window.location.hostname != "localhost") {
+            window.location = window.location.href.replace("cgbookcase", "www.cgbookcase");
+        }
+    </script>
+
+    <%- include("../partials/footer.ejs") %>

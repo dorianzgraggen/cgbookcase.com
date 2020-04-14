@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How To Create 3D Interactive Web Experiences in Blender & Verge3D | cgbookcase.com</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Get to know the process of creating an interactive 3d scene using Blender 2.80 (beta) and Verge3D.">
+        
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <link href="/styles/default.css" rel="stylesheet">
+        <link href="/styles/header.css" rel="stylesheet">
+        <link href="/styles/tutorials.css" rel="stylesheet">
+        <link href="/styles/font-sizes.css" rel="stylesheet">
+
+        <%- include partials/head.ejs %>
+        
+    </head>
+    
+    
+    <body onresize="adjustTimeline()">
+        <%- include partials/header.ejs %>
+        <main>
+            <div class="margin w-1400">
+                  
+
+                    <%- include partials/tutorials/v3d.ejs %>
+
+
+            
+
+
+
+
+                <div class="space"></div>
+
+                
+
+             
+            </div>
+            
+            
+        </main>
+
+        <script>
+        
+            var videoHeight = document.querySelector(".videoWrapper").clientHeight;
+            document.querySelector(".tutorial-timeline").style.height = videoHeight + "px"
+
+            function adjustTimeline(){
+                var videoHeight = document.querySelector(".videoWrapper").clientHeight;
+            document.querySelector(".tutorial-timeline").style.height = videoHeight + "px"
+            }
+
+            function SkipTo(seconds) {
+                document.querySelector(".video").src="https://www.youtube.com/embed/U6aGboR_sHE?start=" + seconds + "&rel=0&autoplay=1"
+            }
+        
+        </script>
+        <%- include partials/footer.ejs %>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Manage</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+        
+    
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+
+            input {
+                margin: 5px;
+            }
+            
+            img {
+                width: 700px;
+            }
+
+        </style>
+    </head>
+    
+    
+    <body>
+
+        <img src="https://cgbookcase.com/textures/<%=textures[0].category%>/<%=textures[0].file%>_rend.jpg">
+
+        <form method="POST" action="/update-texture">
+
+            <strong>cgbID: </strong><input type="number" name="cgbID" value="<%=textures[0].cgbID%>" class="hiddenItem" readonly><br>
+
+            <strong>Title: </strong><input type="text" name="title" value="<%=textures[0].title%>" class="hiddenItem" readonly><br>
+
+            <strong>File Name: </strong><input type="text" name="file" value="<%=textures[0].file%>" class="hiddenItem" readonly><br>
+
+            <strong>URL: </strong><input type="text" name="url" value="<%=textures[0].url%>" class="hiddenItem" readonly><br>
+        
+            <strong>Type: </strong><input type="text" name="type" value="pbr"><br>
+
+            <strong>Method: </strong><input type="text" name="method" value="bitmap"><br>
+            
+            <strong>Tags: </strong><input style="width: 80%" type="text" name="tags" value="autum, leaf, fall, tree, nature"><br>
+
+            <strong>Colors: </strong><input type="text" name="colors" value=""><br>
+
+            <input type="submit">
+
+        </form>
+
+
+        <div style="padding-top: 20px">Possible colors: red, orange, yellow, green, blue, purple, brown. black, gray, white</div>
+
+    </body>
+
+
+</html>

@@ -1,0 +1,19 @@
+
+<h3 style="margin-left: 5px; margin-top: 40px"><%= title %></h3>
+<div class="textureList" style="margin-bottom: 30px;">
+
+    <% listOfTextures.forEach(cgbID => { %>
+        <% var element = textures.find(x => x.cgbID === cgbID); %>
+    
+    
+        <a href="/textures/<%=element.url%>" class="results-itemWrapper textureListElement">
+            <div class="results-item"
+                style="background-image: url('https://www.cgbookcase.com/textures/<%=element.category%>/<%=element.file%>_rend.jpg')">
+                <span class="results-item-name"><%=element.title%></span>
+    
+            </div>
+        </a>
+    
+    <% }) %>
+
+</div>

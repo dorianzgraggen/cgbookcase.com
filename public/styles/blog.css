@@ -1,0 +1,38 @@
+.textureList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.textureListElement {
+    width: 24%;
+}
+
+.readable-text {
+    max-width: 720px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .textureList {
+        flex-wrap: wrap;
+    }
+
+    .textureListElement {
+        width: 100%;
+    }
+}
+
+.fade-image-container {
+    position: relative;
+}
+
+.fade-image {
+    width: 100%;
+    position: absolute;
+    transition-duration: .5s;
+}
+
+/* .fade-image-first {
+    position: initial !important;
+} */

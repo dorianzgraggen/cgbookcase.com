@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How to Use PBR Textures in Blender | cgbookcase.com</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Find out how to use PBR textures in Blender Cycles and Eevee.">
+        
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+        <link href="/styles/default.css" rel="stylesheet">
+        <link href="/styles/header.css" rel="stylesheet">
+        <link href="/styles/textures.css" rel="stylesheet">
+        <link href="/styles/tutorials.css" rel="stylesheet">
+        <link href="/styles/font-sizes.css" rel="stylesheet">
+        <link rel="canonical" href="https://www.cgbookcase.com/textures/how-to-use-pbr-textures-in-blender">
+
+        <%- include partials/head.ejs %>
+    </head>
+    
+    
+    <body>
+        <%- include partials/header.ejs %>
+        <main class=" w-1400 margin">
+            <div class="">
+                <h1>How to Use PBR Textures in Blender </h1>
+                
+            </div>
+
+
+
+            <div class="whiteBG border margin">
+                <div>
+                    <h2>Overview</h2>
+
+                    <ul class="tutorial-listOutter">
+                            <li><a href="#header-BasicMaterials">Basic Materials</a></li>
+                            <li>
+                                <ul>
+                                    <li><a href="#header-BaseColor">Base Color</a></li>
+                                    <li><a href="#header-Roughness">Roughness</a></li>
+                                    <li><a href="#header-Height">Height</a></li>
+                                    <li><a href="#header-Normal">Normal</a></li>
+                                    <li><a href="#header-Metallic">Metallic</a></li>
+                                    <li><a href="#header-AmbientOcclusion">Ambient Occlusion</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a href="#header-Leaves">Leaves</a></li>
+                            <li>
+                                <ul>
+                                    <li><a href="#header-BasicSetup">Basic Setup</a></li>
+                                    <li><a href="#header-UseOpacity">Use Opacity</a></li>
+                                    <li><a href="#header-AddTranslucency">Add Translucency</a></li>
+                                    <li><a href="#header-DoublesidedLeaves">Double-sided Leaves</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#header-SurfaceImperfections">Surface Imperfections</a></li>
+                            <li>
+                                <ul>
+                                    <li><a href="#header-SmudgesAndFingerprints">Smudges and Fingerprints</a></li>
+                                    <li><a href="#header-WaterDroplets">Water Droplets</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                </div>
+
+                <section><h2 id="header-BasicMaterials">Basic Materials</h2>
+                    <p>Usage of most materials using the Principled Shader. Apart from the Displacement section, this setup works for both Cycles and Eevee.</p>
+    
+                    <h3 id="header-BaseColor">Base Color</h3>
+                    <p>The Base Color map defines the color of a surface. It should be plugged into the Base Color input of the Principled BSDF. Make sure the image file’s color space is set to Color.</p>
+                    <img src="/media/textures/docs/blender/default/01_base-color_c.jpg" class="tutorial-screenshot">
+                    
+                    <h3 id="header-Roughness">Roughness</h3>
+                    <p>The Roughness map defines how rough a surface is. It should be plugged into the Roughness input of the Principled BSDF. Make sure the image file’s color space is set to Non-Color Data. Optionally, you can add a Gamma Node to easily the roughness of the material. Lower gamma means rougher surface and vice versa.</p>
+                    <img src="/media/textures/docs/blender/default/02_roughness_c.jpg" class="tutorial-screenshot">
+    
+                    <h3 id="header-Height">Height</h3>
+                    <p>The Height map can be used to create detailed shadows and highlights on a material or to actually displace the geometry of an object.</p>
+                    <p>If you want to use it for create detailed shadows and highlights, it should be plugged into the Height input of a Bump node, which then should be plugged into the Normal input of the Principled BSDF. Make sure the image file’s color space is set to Non-Color Data. Using the Strength slider of the Bump node, you can control the strength of the effect.</p>
+                    <img src="/media/textures/docs/blender/default/03_height-bump_c.jpg" class="tutorial-screenshot">
+                    <p>If you want to use it for actually displacing the geometry of your object, it should be plugged into the Height input of a Displacement node, which then should be plugged into the Displacement input of the Material Output node. Make sure the image file’s color space is set to Non-Color Data here as well. Using the Scale slider of the Bump node, you can control how much the geometry should be displaced.</p>
+                    <img src="/media/textures/docs/blender/default/04_height-displacement_c.jpg" class="tutorial-screenshot">
+                    <p>Also, make sure that the Displacement method in the Material Settings is set to either ‘Displacement’ only or to ‘Displacement and Bump’.</p>
+                    <img src="/media/textures/docs/blender/default/05_height-displacement-settings_c.jpg" class="tutorial-screenshot">
+                    <h3 id="header-Normal">Normal</h3>
+    
+                    <p>The Normal map defines in which direction a part of a surface is faced, which is used to create detailed shadows and highlights.</p>
+                    <p>Normally, it should be plugged into the Color input of a Normal Map node, which then should be plugged into the Normal input of the Principled BSDF. However, all normal maps on cgbookcase.com are ‘DirectX’ normal maps, but Blender uses ‘OpenGL’, which means we have to invert the Green channel of the normal map. You can do that by adding an RGB Curves node between the Image node and the Normal node and then changing the curve in the ‘G’ channel to match the curve in the screenshot below. Make sure the image file’s color space is set to Non-Color Data.</p>
+                    <img src="/media/textures/docs/blender/default/06_normal_c.jpg" class="tutorial-screenshot">
+                    <p>Theoretically, you can use a normal map in combination with a height map. I recommend only using one of them, since in most cases, the effect they create is very similar.</p>
+    
+    
+                    <h3 id="header-Metallic">Metallic</h3>
+                    <p>The Metallic map defines which parts of a material are metallic, and which are not. It should be plugged into the Metallic input of the Principled BSDF. Make sure the image file’s color space is set to Non-Color Data. Only materials that are both metallic and non-metallic have this map available. If a metallic material doesn’t have this map, change the metallic value in the Principled BSDF to 1.</p>
+                    <img src="/media/textures/docs/blender/default/07_metallic_c.jpg" class="tutorial-screenshot">
+                    <h3 id="header-AmbientOcclusion">Ambient Occlusion</h3>
+    
+                    <p>The Ambient Occlusion (AO) map can be used to fake soft shadowing in the bumps of a surface. It isn’t really needed to create realistic materials in Blender (especially with Cycles), but you can still use it to darken the tiny shadows in the surface.</p>
+                    <p>If you want to use this map, it should be multiplied from the Base Color map using a MixRGB node, with the Ambient Occlusion map being the second color input, so you can easily control the strength of it with the slider of the MixRGB node.</p>
+                    <img src="/media/textures/docs/blender/default/08_ao_c.jpg" class="tutorial-screenshot">
+                </section>
+
+                <section><h2 id="header-Leaves">Leaves</h2>
+                    <p>I’m just using a plane as the 3D model for the leaf, but you can also create a more complex one that follows the form of the leaf. Make sure your object is UV unwrapped before following the instructions below. </p>
+    
+                    <h3 id="header-BasicSetup">Basic Setup</h3>
+                    <p>Import the Base Color, Roughness and Normal map from the front of the leaf the way you learned it in the previous guide.</p>
+                    <img src="/media/textures/docs/blender/leaves/01_basic-setup_c.jpg" class="tutorial-screenshot-fullWidth">
+
+                    <h3 id="header-UseOpacity">Use Opacity</h3>
+                    <p>Mix the Principled BSDF with a Transparent BSDF and use the Opacity map as the factor of the Mix Shader. Make sure the Principled BSDF is plugged into the bottom Shader input of the Mix Shader, and the Transparent BSDF into the top.</p>
+                    <img src="/media/textures/docs/blender/leaves/02_transparent_c.jpg" class="tutorial-screenshot-fullWidth">
+                    <h3 id="header-AddTranslucency">Add Translucency</h3>
+                    <p>Translucency is when light passes through a leaf. It creates this glowing effect that you see when leaves are lit from behind:</p>
+                    <img src="/media/textures/docs/blender/leaves/translucency-irl.jpg" class="tutorial-screenshot">
+                    <p>In Blender, we can achieve this effect using the Translucent BSDF. Combine it with the Principled BSDF using the Add Shader node, and connect the Base Color map to the color of the Translucent BSDF. Add a Hue/Saturation node between the Base Color map and the Translucent BSDF. By lowering the value of the Hue/Saturation node, you can lower the strength of the translucency. (A value between 0.010 and 0.200 usually works best for me.)</p>
+                    <img src="/media/textures/docs/blender/leaves/03_translucency_c.jpg" class="tutorial-screenshot-fullWidth">
+                    <p>Translucency helps make the leaf look thinner.</p>
+                    <img src="/media/textures/docs/blender/leaves/04_translucency-comparison_c.jpg" class="tutorial-screenshot">
+
+                    <h3 id="header-DoublesidedLeaves">Double-sided Leaves</h3>
+                    <p>Most leaf textures on cgbookcase.com come with the back side of the leaf as well. If you want to make a double sided leaf, duplicate your entire node setup, change the image files of your copy to the ‘_back’ files and mix them together using the Backfacing output of a Geometry node. This way, the leaf will use different textures when viewing it from to front or back.</p>
+                    <img src="/media/textures/docs/blender/leaves/05_backfacing_c.jpg" class="tutorial-screenshot-fullWidth">
+                </section>
+
+                <section>
+                    <h2 id="header-SurfaceImperfections">Surface Imperfections</h2>
+                    <p>Surface imperfections are great to add detail to a material, which can make a render look much more realistic. Make sure your object is UV unwrapped before following the instructions below.</p>
+                    <h3 id="header-SmudgesAndFingerprints">Smudges and Fingerprints</h3>
+                    <p>Smudges and fingerprint textures work best on glossy surfaces. In this example, I’m using a shiny, red material, but you can use any material you want.</p>
+                    <img src="/media/textures/docs/blender/surface imperfections/dirt_base.jpg" class="tutorial-screenshot-fullWidth">
+                    <p>Import the texture and make sure it’s color space is set to Non-Color Data. Mix it with the roughness of the material (this can either be a single value or a roughness map). Set the blend mode to screen. If you’ve plugged the surface imperfection texture into the bottom color slot, you can control the strength of the effect by using the factor (Fac.) slider of the MixRGB node.</p>
+                    <img src="/media/textures/docs/blender/surface imperfections/dirt_setup.jpg" class="tutorial-screenshot-fullWidth">
+                    <h3 id="header-WaterDroplets">Water Droplets</h3>
+                    <p>By using the water droplets textures you can make a material look like it got wet in the rain (i. e. windshields). I’m using a shiny, blue material for demonstration purposes.</p>
+                    <img src="/media/textures/docs/blender/surface imperfections/droplets_base.jpg" class="tutorial-screenshot-fullWidth">
+                    <p>Import the texture and make sure it’s color space is set to Non-Color Data. To make the water droplets look 3D, connect the texture to a Bump node, which then should be plugged into the Normal input of the Principled BSDF. Then, connect the texture to the Clearcoat of the Principled BSDF. The Clearcoat adds a white specular layer on top of the material, which makes it look like the droplets were on top of the blue material. Set the Clearcoat Roughness (= the water droplets’ roughness)  to 0.</p>
+                    <img src="/media/textures/docs/blender/surface imperfections/droplets_setup.jpg" class="tutorial-screenshot-fullWidth">
+                </section>
+            </div>
+
+                <p>Written by <a href="https://twitter.com/dorianzgraggen" target="_blank">Dorian Zgraggen</a></p>
+            
+            
+        </main>
+        <%- include partials/footer.ejs %>
