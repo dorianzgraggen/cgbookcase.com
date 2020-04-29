@@ -16,12 +16,12 @@
     <link href="/styles/textures.css" rel="stylesheet">
     <link href="/styles/font-sizes.css" rel="stylesheet">
 
-    <%- include partials/head.ejs %>
+    <%- include("../partials/head.ejs") %>
 </head>
 
 
 <body>
-    <%- include partials/header.ejs %>
+    <%- include("../partials/header.ejs") %>
     <main id="mainM">
         <div class="margin ">
             <div id="textures-divider">
@@ -109,7 +109,7 @@
                                     <% if(req.query.search) { var searchQuery = req.query.search; } else { var searchQuery = ""; }%>
                                     <input type="hidden" name="search" value="<%= searchQuery %>" id="hiddenSearch">
 
-
+                                        
 
                                     <div class="space"></div>
                         </form>
@@ -309,4 +309,4 @@
             document.getElementById("filtersForm").submit();
         }
     </script>
-    <%- include partials/footer.ejs %>
+    <%- include("../partials/footer.ejs") %>

@@ -25,13 +25,13 @@
         <meta name="tex1:icon" content="https://www.cgbookcase.com/media/brand/logo_mobile.svg">
         <!-- END Textures.one integration -->
 
-        <%- include partials/head.ejs %>
+        <%- include("../partials/head.ejs") %>
 
     </head>
     
     
     <body>
-        <%- include partials/header.ejs %>
+        <%- include("../partials/header.ejs") %>
 
         <% var bgNum = Math.floor(Math.random() * 3 + 1); %>
         <main>
@@ -158,4 +158,4 @@
                 <div class="space mobile-only"></div>
             </section>
         </main>
-        <%- include partials/footer.ejs %>
+        <%- include("../partials/footer.ejs") %>

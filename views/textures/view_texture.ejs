@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title><%=textures[0].title%> | Free PBR texture from cgbookcase.com</title>
+        <title><%=texture.title%> | Free PBR texture from cgbookcase.com</title>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <% var text= "" %>
 
-        <% for(j = 0; j < textures[0].files.length -1 ; j++) { text = text + textures[0].files[j]; if(j != textures[0].files.length -2) {divider = ", ";} else {divider = " ";} text = text + divider } %>
-        <% text = text + "and " + textures[0].files[textures[0].files.length -1] %>
+        <% for(j = 0; j < texture.files.length -1 ; j++) { text = text + texture.files[j]; if(j != texture.files.length -2) {divider = ", ";} else {divider = " ";} text = text + divider } %>
+        <% text = text + "and " + texture.files[texture.files.length -1] %>
 
-        <meta name="description" content="Download the <%= text %> maps of the '<%=textures[0].title%>' PBR texture. Licensed as CC0.">
+        <meta name="description" content="Download the <%= text %> maps of the '<%=texture.title%>' PBR texture. Licensed as CC0.">
         
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
@@ -19,41 +19,41 @@
         <link href="/styles/textures.css" rel="stylesheet">
         <link href="/styles/font-sizes.css" rel="stylesheet">
 
-        <link rel="canonical" href="https://www.cgbookcase.com/textures/<%=textures[0].url%>">
+        <link rel="canonical" href="https://www.cgbookcase.com/textures/<%=texture.url%>">
 
         
 
-        <%- include partials/head.ejs %>
+        <%- include("../partials/head.ejs") %>
         <% var tags = ""; %>
-        <% textures[0].tags.forEach(function(item, index){ tags = tags + item + ","})%>
-        <% textures[0].colors.forEach(function(item, index){ tags = tags + item + ","})%>
+        <% texture.tags.forEach(function(item, index){ tags = tags + item + ","})%>
+        <% texture.colors.forEach(function(item, index){ tags = tags + item + ","})%>
 
-        <meta name="cgb:cgbID" content="<%= textures[0].cgbID%>">
+        <meta name="cgb:cgbID" content="<%= texture.cgbID%>">
 
         <!-- START Textures.one integration -->
-            <meta name="tex1:name" content="<%=textures[0].title%>">
+            <meta name="tex1:name" content="<%=texture.title%>">
             <meta name="tex1:tags" content="<%=tags%>">
-            <meta name="tex1:preview-image" content="https://www.cgbookcase.com/textures/<%=textures[0].category%>/<%=textures[0].file%>_rend.jpg">
+            <meta name="tex1:preview-image" content="https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg">
             
-            <meta name="tex1:resolution" content="<%=textures[0].resolution%>">
+            <meta name="tex1:resolution" content="<%=texture.resolution%>">
             <% var oneType = "tex-pbr" %>
-            <% if(textures[0].category == "Cutout Objects"){oneType = "plain" } %>
+            <% if(texture.category == "Cutout Objects"){oneType = "plain" } %>
             <meta name="tex1:type" content="<%= oneType %>">
 
 
             <% var releasedate = "2019-05-01" %>
 
-            <% if(textures[0].cgbID > 381){releasedate = textures[0].releasedate } %>
+            <% if(texture.cgbID > 381){releasedate = texture.releasedate } %>
 
 
 
-            <meta name="tex1:releasedate" content="<%=textures[0].releasedate%>">
+            <meta name="tex1:releasedate" content="<%=texture.releasedate%>">
 
             <% var method = "generic" %>
 
-            <% if(textures[0].method == "bitmap"){method = "from-bitmap" } %>
+            <% if(texture.method == "bitmap"){method = "from-bitmap" } %>
             
-            <% if(textures[0].method == "procedural"){method = "substance" } %>
+            <% if(texture.method == "procedural"){method = "substance" } %>
 
             <meta name="tex1:method" content="<%=method%>">
             
@@ -62,28 +62,28 @@
     
     
     <body>
-        <%- include partials/header.ejs %>
+        <%- include("../partials/header.ejs") %>
         <main class="margin w-1400">
           
             
             <div id="view-texture">
 
                 <div id="view-imageContainer">
-                    <img alt="Preview render of the PBR texture <%= textures[0].title %>" src="https://www.cgbookcase.com/textures/<%=textures[0].category%>/<%=textures[0].file%>_rend.jpg">
+                    <img alt="Preview render of the PBR texture <%= texture.title %>" src="https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg">
                 </div>
 
                 <div id="view-downloadSection">
-                    <h1><%=textures[0].title%></h1>
+                    <h1><%=texture.title%></h1>
 
                     
-                    <% if(textures[0].doublesided != 1) { %>
+                    <% if(texture.doublesided != 1) { %>
 
-                        <% if(textures[0].category == "Surface Imperfections") { %>
+                        <% if(texture.category == "Surface Imperfections") { %>
                         <div id="view-downloadLinks">
-                            <% for(i = textures[0].resolution; i > 0; i--) { %>
+                            <% for(i = texture.resolution; i > 0; i--) { %>
                             <div class="view-downloadResolutionSection">
                             
-                                <a aria-label="Download the <%=i%>K version of this surface imperfection" href="/textures/<%=textures[0].category%>/<%=textures[0].file%>/<%=textures[0].file%>_<%=i%>K.png" download style="text-decoration: none">
+                                <a aria-label="Download the <%=i%>K version of this surface imperfection" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K.png" download style="text-decoration: none">
                                     <div class="view-directDownload"><strong><%=i%>K</strong> Map <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                 </a>
                             </div> 
@@ -91,20 +91,20 @@
                         </div>
                         <% } else { %>
                             <div id="view-downloadLinks">
-                                <% for(i = textures[0].resolution; i > 0; i--) { %>
+                                <% for(i = texture.resolution; i > 0; i--) { %>
                                     <div class="view-downloadResolutionSection">
-                                        <% for(e = 0 ; e < textures[0].files.length; e++) { %>
-                                        <% var file = textures[0].files[e]%>
-                                        <% if( textures[0].files[e] == "Base_Color" ) { file = "Base Color"} %>
-                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=textures[0].category%>/<%=textures[0].file%>/<%=textures[0].file%>_<%=i%>K_<%=textures[0].files[e]%>.png" download style="text-decoration: none;">
-                                            <div onmouseout="changeRenderTo('https://www.cgbookcase.com/textures/<%=textures[0].category%>/<%=textures[0].file%>_rend.jpg')" onmouseover="changeRenderTo('https://www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_<%= textures[0].files[e] %>_preview.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
+                                        <% for(e = 0 ; e < texture.files.length; e++) { %>
+                                        <% var file = texture.files[e]%>
+                                        <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
+                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_<%=texture.files[e]%>.png" download style="text-decoration: none;">
+                                            <div onmouseout="changeRenderTo('https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg')" onmouseover="changeRenderTo('https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_<%= texture.files[e] %>_preview.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
         
         
-                                        <% if(textures[0].category == "Cutout Objects") { %>
+                                        <% if(texture.category == "Cutout Objects") { %>
         
-                                            <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=textures[0].category%>/<%=textures[0].file%>/<%=textures[0].file%>_<%=i%>K.png" download style="text-decoration: none;">
+                                            <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K.png" download style="text-decoration: none;">
                                                 <div class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                             </a>
                                 
@@ -125,12 +125,12 @@
                         
 
 
-                                <% for(i = textures[0].resolution; i > 0; i--) { %>
+                                <% for(i = texture.resolution; i > 0; i--) { %>
                                     <div class="view-downloadResolutionSection">
-                                        <% for(e = 0 ; e < textures[0].files.length; e++) { %>
-                                        <% var file = textures[0].files[e]%>
-                                        <% if( textures[0].files[e] == "Base_Color" ) { file = "Base Color"} %>
-                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=textures[0].category%>/<%=textures[0].file%>/<%=textures[0].file%>_<%=i%>K_front_<%=textures[0].files[e]%>.png" download style="text-decoration: none;">
+                                        <% for(e = 0 ; e < texture.files.length; e++) { %>
+                                        <% var file = texture.files[e]%>
+                                        <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
+                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_front_<%=texture.files[e]%>.png" download style="text-decoration: none;">
                                             <div class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
@@ -146,12 +146,12 @@
                         
 
 
-                                <% for(i = textures[0].resolution; i > 0; i--) { %>
+                                <% for(i = texture.resolution; i > 0; i--) { %>
                                     <div class="view-downloadResolutionSection">
-                                        <% for(e = 0 ; e < textures[0].files.length; e++) { %>
-                                        <% var file = textures[0].files[e]%>
-                                        <% if( textures[0].files[e] == "Base_Color" ) { file = "Base Color"} %>
-                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=textures[0].category%>/<%=textures[0].file%>/<%=textures[0].file%>_<%=i%>K_back_<%=textures[0].files[e]%>.png" download style="text-decoration: none;">
+                                        <% for(e = 0 ; e < texture.files.length; e++) { %>
+                                        <% var file = texture.files[e]%>
+                                        <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
+                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_back_<%=texture.files[e]%>.png" download style="text-decoration: none;">
                                             <div class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
@@ -172,31 +172,31 @@
             </div>
 
 
-            <% if(textures[0].category != "Leaves & Plants" && textures[0].category != "Cutout Objects" && textures[0].category != "Surface Imperfections" && textures[0].category != "Patterns" && textures[0].files[1] != "Base_Color_A") { %>
+            <% if(texture.category != "Leaves & Plants" && texture.category != "Cutout Objects" && texture.category != "Surface Imperfections" && texture.category != "Patterns" && texture.files[1] != "Base_Color_A") { %>
 
-            <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_Base_Color_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_Base_Color_preview.jpg)">
+            <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_preview.jpg)">
                 <button onclick="zoomIn();" id="map-plus" aria-label="Zoom in" class="view-mapZoom" style="top: 0;"><i class="far fa-plus"></i></button>
                 <button onclick="zoomOut();" id="map-minus" aria-label="Zoom out" class="view-mapZoom" style="top: 40px;"><i class="far fa-minus"></i></button>
                 <span id="view-mapNote">This tiling preview uses a low-res version of the texture.</span>
             </div>
 
-            <% } else if(textures[0].category == "Surface Imperfections") {%>
-                <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_preview.jpg)">
+            <% } else if(texture.category == "Surface Imperfections") {%>
+                <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=texture.file%>_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_preview.jpg)">
                     <button onclick="zoomIn();" id="map-plus" aria-label="Zoom in" class="view-mapZoom" style="top: 0;"><i class="far fa-plus"></i></button>
                     <button onclick="zoomOut();" id="map-minus" aria-label="Zoom out" class="view-mapZoom" style="top: 40px;"><i class="far fa-minus"></i></button>
                     <span id="view-mapNote">This tiling preview uses a low-res version of the texture.</span>
                 </div>
 
 
-            <% } else if(textures[0].category == "Patterns") {%>
-                <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_Var_A_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_Var_A_preview.jpg)">
+            <% } else if(texture.category == "Patterns") {%>
+                <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=texture.file%>_Var_A_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_Var_A_preview.jpg)">
                     <button onclick="zoomIn();" id="map-plus" aria-label="Zoom in" class="view-mapZoom" style="top: 0;"><i class="far fa-plus"></i></button>
                     <button onclick="zoomOut();" id="map-minus" aria-label="Zoom out" class="view-mapZoom" style="top: 40px;"><i class="far fa-minus"></i></button>
                     <span id="view-mapNote">This tiling preview uses a low-res version of the texture. PAAA</span>
                 </div>
 
-            <% } else if(textures[0].files[1] == "Base_Color_A") {%>
-                <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_Base_Color_A_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_Base_Color_A_preview.jpg)">
+            <% } else if(texture.files[1] == "Base_Color_A") {%>
+                <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_A_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_A_preview.jpg)">
                     <button onclick="zoomIn();" id="map-plus" aria-label="Zoom in" class="view-mapZoom" style="top: 0;"><i class="far fa-plus"></i></button>
                     <button onclick="zoomOut();" id="map-minus" aria-label="Zoom out" class="view-mapZoom" style="top: 40px;"><i class="far fa-minus"></i></button>
                     <span id="view-mapNote">This tiling preview uses a low-res version of the texture. PAAA</span>
@@ -205,9 +205,9 @@
             <% } %>
 
 
-            <% if(textures[0].title == "Moss 01") {%>
+            <% if(texture.title == "Moss 01") {%>
 
-                <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_Base_Color_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=textures[0].file%>_Base_Color_preview.jpg)">
+                <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_preview.jpg)">
                     <button onclick="zoomIn();" id="map-plus" aria-label="Zoom in" class="view-mapZoom" style="top: 0;"><i class="far fa-plus"></i></button>
                     <button onclick="zoomOut();" id="map-minus" aria-label="Zoom out" class="view-mapZoom" style="top: 40px;"><i class="far fa-minus"></i></button>
                     <span id="view-mapNote">This tiling preview uses a low-res version of the texture.</span>
@@ -221,9 +221,9 @@
             <h2 style="font-size: 1.4em;" class="text-center desktop-only">Learn how to use PBR Textures</h2>
 
             <div id="view-software" class="desktop-only">
-                <a aria-label="Learn how to use this texture in Blender" href="/textures/how-to-use-pbr-textures-in-blender?texture=<%=textures[0].url%>"><img alt="" src="/media/brand/software/blender_logo.svg"></a>
-                <!-- <a aria-label="Learn how to use this texture in Unreal Engine 4" href="/textures/how-to-use-pbr-textures-in-unreal-engine?texture=<%=textures[0].url%>"><img alt="" src="/media/brand/software/unreal_logo.png"></a>
-                <a aria-label="Learn how to use this texture in Godot" href="/textures/how-to-use-pbr-textures-in-godot?texture=<%=textures[0].url%>"><img alt="" src="/media/brand/software/godot_logo.svg"></a> -->
+                <a aria-label="Learn how to use this texture in Blender" href="/textures/how-to-use-pbr-textures-in-blender?texture=<%=texture.url%>"><img alt="" src="/media/brand/software/blender_logo.svg"></a>
+                <!-- <a aria-label="Learn how to use this texture in Unreal Engine 4" href="/textures/how-to-use-pbr-textures-in-unreal-engine?texture=<%=texture.url%>"><img alt="" src="/media/brand/software/unreal_logo.png"></a>
+                <a aria-label="Learn how to use this texture in Godot" href="/textures/how-to-use-pbr-textures-in-godot?texture=<%=texture.url%>"><img alt="" src="/media/brand/software/godot_logo.svg"></a> -->
             </div>
 
             <h2 style="font-size: 1.4em;" class="text-center desktop-only">Blender Add-on</h2>
@@ -251,7 +251,7 @@
 
         <script>
             var map = document.getElementById("view-map");
-            var tilingImg = 'https:/www.cgbookcase.com//texturepreviews/<%=textures[0].file%>_Base_Color_preview.jpg';
+            var tilingImg = 'https:/www.cgbookcase.com//texturepreviews/<%=texture.file%>_Base_Color_preview.jpg';
             var tilingString = "url(" + tilingImg + ")";
 
             function zoomIn(){
@@ -295,8 +295,8 @@
             // Log texture info
 
             function TextureInfo() {
-                this.cgbID = <%= textures[0].cgbID %>;
-                this.tags = "<%= textures[0].tags %>";
+                this.cgbID = <%= texture.cgbID %>;
+                this.tags = "<%= texture.tags %>";
                 this.releaseDate = "<%= releasedate %>";
             }
 
@@ -307,4 +307,4 @@
         </script>
 
         
-<%- include partials/footer.ejs %>
+<%- include("../partials/footer.ejs") %>

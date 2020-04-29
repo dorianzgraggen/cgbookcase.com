@@ -70,7 +70,7 @@ app.get("/", function (req, res) {
             if (err3) throw err3;
             let allPatrons = JSON.parse(data_patrons);
 
-            res.render("home.ejs", { textures: allTextures, patrons: allPatrons });
+            res.render("more/home.ejs", { textures: allTextures, patrons: allPatrons });
         });
 
 
@@ -78,7 +78,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/texture-course", function (req, res) {
-    res.render("texture-course.ejs");
+    res.render("textures/texture-course.ejs");
 });
 
 
@@ -130,11 +130,11 @@ app.get("/blog/:url", function (req, res) {
 
 
 app.get("/privacy-and-cookies", function (req, res) {
-    res.render("privacy-and-cookies.ejs");
+    res.render("more/privacy-and-cookies.ejs");
 });
 
 app.get("/license-information", function (req, res) {
-    res.render("license-information.ejs");
+    res.render("more/license-information.ejs");
 });
 
 app.get("/tutorials", function (req, res) {
@@ -143,7 +143,7 @@ app.get("/tutorials", function (req, res) {
 
 
 app.get("/learn", function (req, res) {
-    res.render("tutorials.ejs");
+    res.render("tutorials/list.ejs");
 });
 
 app.get("/license-information", function (req, res) {
@@ -164,7 +164,7 @@ app.get("/learn/immersion-vr-substance-designer-breakdowns", function (req, res)
 });
 
 app.get("/learn/immersion-vr-substance-designer-material-breakdowns", function (req, res) {
-    res.render("view_breakdowns.ejs", { path: "v3d_interior", year: "2018", req: req });
+    res.render("tutorials/posts/view_breakdowns.ejs", { path: "v3d_interior", year: "2018", req: req });
 
 });
 
@@ -319,7 +319,7 @@ app.get("/textures", function (req, res) {
 
 
 
-                res.render("textures.ejs", { textures: validResults, patrons: allPatrons, req: req, limit: limit, blogPost: blogPosts[0] });
+                res.render("textures/textures.ejs", { textures: validResults, patrons: allPatrons, req: req, limit: limit, blogPost: blogPosts[0] });
 
             });
 
@@ -331,15 +331,7 @@ app.get("/textures", function (req, res) {
 
 
 app.get("/textures/how-to-use-pbr-textures-in-blender", function (req, res) {
-    res.render("blender-guide.ejs", { textures: "null", req: req });
-});
-
-app.get("/textures/how-to-use-pbr-textures-in-unreal-engine", function (req, res) {
-    res.render("unreal-guide.ejs", { textures: "null", req: req });
-});
-
-app.get("/textures/how-to-use-pbr-textures-in-godot", function (req, res) {
-    res.render("godot-guide.ejs", { textures: "null", req: req });
+    res.render("textures/guides/blender-guide.ejs", { textures: "null", req: req });
 });
 
 
@@ -363,14 +355,14 @@ app.get("/textures/:url", function (req, res) {
 
         console.log(searchResults[0].item)
 
-        res.render("view_texture.ejs", { texture: searchResults[0].item, req: req });
+        res.render("textures/view_texture.ejs", { texture: searchResults[0].item, req: req });
 
 
     });
 });
 
 app.get("/request-a-texture", function (req, res) {
-    res.render("texture-requests.ejs");
+    res.render("textures/texture-requests.ejs");
 });
 
 
@@ -397,7 +389,7 @@ app.get("/textures-list", function (req, res) {
         for (let i = 0; i < allTextures.length; i++) {
             textureURLs.push(allTextures[i].url)
         }
-        res.render("textures-list-one.ejs", { textures: textureURLs });
+        res.render("textures/textures-list-one.ejs", { textures: textureURLs });
     });
 });
 
