@@ -97,7 +97,7 @@ app.get("/blog", function (req, res) {
         let blogPosts = JSON.parse(data_posts);
         console.log(blogPosts);
        
-        res.render("blog.ejs", {posts: blogPosts});
+        res.render("blog/list.ejs", {posts: blogPosts});
 
     });
 });
@@ -123,9 +123,6 @@ app.get("/blog/:url", function (req, res) {
 
 });
 
-// app.get("/blog/new-site-and-roadmap-for-texture-creation-course", function (req, res) {
-//     res.render("new-site.ejs");
-// });
 
 
 
@@ -396,7 +393,7 @@ app.get("/textures-list", function (req, res) {
 
 // 404 page
 app.use(function (req, res, next) {
-    res.render("404.ejs");
+    res.render("more/404.ejs");
 });
 
 
