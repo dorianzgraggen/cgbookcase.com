@@ -153,7 +153,7 @@ app.get("/tutorials/how-to-create-3d-interactive-web-experiences-in-blender-verg
 });
 
 app.get("/learn/how-to-create-3d-interactive-web-experiences-in-blender-verge-3d", function (req, res) {
-    res.render("view_tutorial.ejs", { path: "v3d_interior", year: "2018", req: req });
+    res.render("tutorials/view_tutorial.ejs", { path: "v3d_interior", year: "2018", req: req });
 });
 
 app.get("/learn/immersion-vr-substance-designer-breakdowns", function (req, res) {

@@ -26,7 +26,6 @@ section {
 }
 
 #backgroundImage-credit {
-    color: white;
     opacity: 0.8;
     position: absolute;
     bottom: 0;
@@ -36,9 +35,6 @@ section {
     font-size: 12px;
 }
 
-#backgroundImage-credit  a {
-    color: white;
-}
 
 .info-image {
     width: 50%;
@@ -90,14 +86,10 @@ section {
     background-blend-mode: color;
     background-size: cover;
     background-position: center;
-    color: white;
     text-shadow: 4px 8px 36px #000000b3;
     
 }
 
-#home-textureSeries p {
-    color: white;
-}
 
 #supporters-list {
     display: flex;

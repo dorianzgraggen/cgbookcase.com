@@ -2,29 +2,18 @@
     box-sizing: border-box;
 }
 
-::selection {
-    background: rgba(28, 162, 196, 0.65); /* WebKit/Blink Browsers */
-    color: white;
-}
-  ::-moz-selection {
-    background: rgba(28, 162, 196, 0.65); /* Gecko Browsers */
-    color: white;
-}
+
 
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
-    background-color: #ECF0F1;
 }
 
 .flex {
     display: flex;
 }
 
-.headerLink {
-    text-decoration: none !important; color: black !important;
-}
 
 .w50p {
     width: 50%;
@@ -40,6 +29,10 @@ body {
     }
 }
 
+.headerLink {
+    text-decoration: none;
+}
+
 .w100p {
     width: 100%;
 }
@@ -50,18 +43,6 @@ body {
 
 .margin-top-0 {
     margin-top: 0;
-}
-
-.whiteBG {
-    background-color: white;
-}
-
-p {
-    color: #484848;
-}
-
-a {
-    color: #ec032b;
 }
 
 select {
@@ -87,7 +68,6 @@ input {
 }
 
 .patreonButton {
-    background-color: rgb(229, 72, 49);
     height: 44px;
     width: 190px;
     border-radius: 22px;
@@ -193,8 +173,6 @@ button {
 }
 
 .button-red {
-    background-color: #F73859;
-    color: white;
     padding: 8px 12px;
     border-radius: 4px;
     border: none;
@@ -205,8 +183,6 @@ button {
 }
 
 .button-disabled {
-    background-color: lightgrey;
-    color: white;
     padding: 8px 12px;
     border-radius: 4px;
     border: none;

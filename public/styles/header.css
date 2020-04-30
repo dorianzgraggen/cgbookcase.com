@@ -7,8 +7,6 @@
 }
 
 #header-buttonRight {
-    color: black;
-    background-color: #E5E5E5;
     height: 39px;
     padding: 8px 11px;
     border: none;
@@ -24,10 +22,6 @@
 
 #header-redBar {
     height: 4px;
-    background-color: #F73859;
-    background: -moz-linear-gradient(top, hsl(350,94%,62%) 0%, hsl(350,81%,53%) 100%);
-    background: -webkit-linear-gradient(top, hsl(350,94%,62%) 0%,hsl(350,81%,53%) 100%);
-    background: linear-gradient(to bottom, hsl(350,94%,62%) 0%,hsl(350,81%,53%) 100%);
 }
 
 #logo {
@@ -40,7 +34,6 @@ nav div a:first-of-type {
 }
 
 #header-container a {
-    color: #484848;
     text-decoration: none;
     margin: 0 20px;
     line-height: 3;
@@ -71,7 +64,6 @@ img#logo-mobile {
 
 .mobile-headerLink a {
     text-decoration: none;
-    color: black;
     display: block;
     width: 100%;
     text-align: center;

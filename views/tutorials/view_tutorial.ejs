@@ -15,18 +15,20 @@
         <link href="/styles/tutorials.css" rel="stylesheet">
         <link href="/styles/font-sizes.css" rel="stylesheet">
 
-        <%- include partials/head.ejs %>
+        <link href="/styles/colors.css" rel="stylesheet">
+
+        <%- include("../partials/head.ejs") %>
         
     </head>
     
     
     <body onresize="adjustTimeline()">
-        <%- include partials/header.ejs %>
+        <%- include("../partials/header.ejs") %>
         <main>
             <div class="margin w-1400">
                   
 
-                    <%- include partials/tutorials/v3d.ejs %>
+                    <%- include("../partials/tutorials/v3d.ejs") %>
 
 
             
@@ -59,4 +61,4 @@
             }
         
         </script>
-        <%- include partials/footer.ejs %>
+        <%- include("../partials/footer.ejs") %>
