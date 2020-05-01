@@ -1,0 +1,179 @@
+::selection {
+    background: rgba(28, 162, 196, 0.65);
+    /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+    background: rgba(28, 162, 196, 0.65);
+    /* Gecko Browsers */
+}
+
+.red-col {
+    color: #ec032b;
+}
+
+.red-bg {
+    background-color: #F73859;
+}
+
+.button-red,
+.red-button {
+    background-color: #F73859;
+    color: white !important;
+}
+
+.button-disabled {
+    background-color: lightgrey;
+    color: white;
+}
+
+.white-col {
+    color: white;
+}
+
+.white-bg,
+.whiteBG {
+    background-color: #090F1D;
+}
+
+.always-white-col {
+    color: white;
+}
+
+body {
+    background-color: #040509;
+}
+
+a {
+    color: #ec032b;
+}
+
+p, label {
+    color: #D7DAE6;
+}
+
+h1, h2, h3, h4 {
+    color: #D7DAE6;
+}
+
+.grey-link, .gray-link {
+    color: #D7DAE6;
+}
+
+.patreonButton {
+    background-color: rgb(229, 72, 49);
+}
+
+/*
+ * ─── NAVIGATION ─────────────────────────────────────────────────────────────────
+ */
+
+#header-buttonRight {
+    color: #D7DAE6;
+    background-color: #07080C;
+    border: 1px solid #14203b;
+}
+
+#header-redBar {
+    background-color: #F73859;
+    background: -moz-linear-gradient(top, hsl(350, 94%, 62%) 0%, hsl(350, 81%, 53%) 100%);
+    background: -webkit-linear-gradient(top, hsl(350, 94%, 62%) 0%, hsl(350, 81%, 53%) 100%);
+    background: linear-gradient(to bottom, hsl(350, 77%, 44.3%) 0%, hsl(350, 87.3%, 43.1%) 100%);
+}
+
+.mobile-headerLink a {
+    color: black !important;
+}
+
+.headerLink {
+    color: black;
+}
+
+/*
+ * ─── TEXTURES ───────────────────────────────────────────────────────────────────
+ */
+
+select, input {
+    border: 1px solid #172846 !important;;
+    background-color: #090F1D;
+    color: #989CB0;
+}
+
+#filters-resolution button {
+    background-color: white;
+    border-color: #172846 !important;
+    background-color: #090F1D;
+    color: #989CB0;
+}
+
+
+#filters-resolution button.active {
+    background-color: #ececec;
+}
+
+#search-button {
+    color: white;
+    background-color: #CA0B2C;
+}
+
+
+.results-item {
+    background-color: #00000022
+}
+
+.results-item-resolution {
+    color: white;
+    text-shadow: 2px 2px 4px #00000012;
+    background: #00000029;
+}
+
+.results-item-name {
+    color: white;
+    text-shadow: 2px 2px 12px #0000004a;
+}
+
+#page-controls button {
+    background-color: white;
+}
+
+
+#textures-supporters {
+    color: #D7DAE6;
+    background-color: #0E1525;
+}
+
+.view-directDownload {
+    background-color: white;
+    color: black;
+}
+
+.view-directDownload:hover {
+    background-color: #e6e6e6;
+}
+
+#view-map {
+    background-color: grey;
+}
+
+.view-mapZoom {
+    background-color: white;
+    color: black;
+}
+
+#view-mapNote {
+    color: white;
+    background: #0000004a;
+}
+
+.future-release-title {
+    color: white;
+}
+
+/*
+ * ─── TUTORIALS ──────────────────────────────────────────────────────────────────
+ */
+
+.tutorial-timeline button {
+    background-color: white;
+    border: 2px solid gainsboro;
+}
