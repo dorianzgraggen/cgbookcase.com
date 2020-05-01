@@ -13,9 +13,6 @@ const port = 8192;
 app.use(express.static("public"));
 
 // SITEMAP
-
-
-
 var sitemap = sm.createSitemap({
     hostname: 'https://www.cgbookcase.com',
     cacheTime: 6000,        // 6 sec - cache purge period
@@ -77,9 +74,7 @@ app.get("/", function (req, res) {
     });
 });
 
-app.get("/texture-course", function (req, res) {
-    res.render("textures/texture-course.ejs");
-});
+
 
 
 function searchInObject(arr, searchKey) {
@@ -96,8 +91,8 @@ app.get("/blog", function (req, res) {
         if (err) throw err;
         let blogPosts = JSON.parse(data_posts);
         console.log(blogPosts);
-       
-        res.render("blog/list.ejs", {posts: blogPosts});
+
+        res.render("blog/list.ejs", { posts: blogPosts });
 
     });
 });
@@ -116,37 +111,29 @@ app.get("/blog/:url", function (req, res) {
         fs.readFile('public/textures.json', (err2, data_posts) => {
             if (err2) throw err2;
             let allTextures = JSON.parse(data_posts);
-            res.render("blog/_view_blog_post.ejs", { post: post, textures: allTextures});
+            res.render("blog/_view_blog_post.ejs", { post: post, textures: allTextures });
 
         });
     });
 
 });
 
+function simpleRoute(route, ejsPath) {
+    app.get(route, function (req, res) {
+        res.render(ejsPath);
+    });
+}
 
+simpleRoute("/privacy-and-cookies", "more/privacy-and-cookies.ejs");
+simpleRoute("/license-information", "more/license-information.ejs");
+simpleRoute("/learn", "tutorials/list.ejs");
+simpleRoute("/request-a-texture", "textures/texture-requests.ejs");
+simpleRoute("/texture-course", "textures/texture-course.ejs");
 
-
-app.get("/privacy-and-cookies", function (req, res) {
-    res.render("more/privacy-and-cookies.ejs");
-});
-
-app.get("/license-information", function (req, res) {
-    res.render("more/license-information.ejs");
-});
 
 app.get("/tutorials", function (req, res) {
     res.redirect("/learn")
 });
-
-
-app.get("/learn", function (req, res) {
-    res.render("tutorials/list.ejs");
-});
-
-app.get("/license-information", function (req, res) {
-    res.render("license-information.ejs");
-});
-
 
 app.get("/tutorials/how-to-create-3d-interactive-web-experiences-in-blender-verge-3d", function (req, res) {
     res.redirect("/learn/how-to-create-3d-interactive-web-experiences-in-blender-verge-3d");
@@ -259,7 +246,7 @@ app.get("/textures", function (req, res) {
 
                 console.log(bHasColor)
 
-               
+
 
                 console.log(obj.resolution)
                 if (obj.resolution >= resolution && (category == "All" || obj.category == category || category == undefined) && bHasColor) {
@@ -358,9 +345,7 @@ app.get("/textures/:url", function (req, res) {
     });
 });
 
-app.get("/request-a-texture", function (req, res) {
-    res.render("textures/texture-requests.ejs");
-});
+
 
 
 // Redirect old "/downloads" to "/textures"
@@ -377,7 +362,6 @@ app.get("/downloads/:url", function (req, res) {
 
 
 // Textures.one
-
 app.get("/textures-list", function (req, res) {
     fs.readFile('public/textures.json', (err, data_posts) => {
         if (err) throw err;
