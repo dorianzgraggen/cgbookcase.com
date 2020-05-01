@@ -7,7 +7,7 @@ var timestamp = require("unix-timestamp")
 const Fuse = require("fuse.js");
 
 
-const port = 8080;
+const port = 8192;
 
 // Set Static Path
 app.use(express.static("public"));
@@ -398,5 +398,5 @@ app.use(function (req, res, next) {
 
 
 app.listen(port, "localhost", function () {
-    console.log("Eeeh, de Server lauft uf Port " + port);
+    console.log("Server is running at http://localhost:" + port);
 });
