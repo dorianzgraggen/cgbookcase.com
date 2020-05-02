@@ -418,3 +418,11 @@ select[name="sortby"] {
   text-shadow: 2px 2px 4px #00000047;
   opacity: 1;
 }
+
+.prev-container img {
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  opacity: 0;
+  transition-duration: .1s;
+}

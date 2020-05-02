@@ -186,16 +186,155 @@
                     <!-- <div style="text-align: center; margin: 24px;">
                             <a href="https://forms.gle/Qpc68BGQJ5itLBhJ7" target="_blank">Want to help shape the future of cgbookcase.com? Fill out the survey!</a> 🖊️
                         </div> -->
+                    
+                    <script>
+
+                        let currentlyChangingNum = 0;
+                        let bCurrentlyHovering = false;
+
+                        function startHover(element) {
+                            
+                            bCurrentlyHovering = true;
+
+                            currentlyChangingNum++;
+
+                            let files = element.dataset.files.split(",");
+                            let filename = element.dataset.filename;
+                            let imageURLs = [];
+
+                            function loopThroughPreviews(j) {
+                                element.style.backgroundImage = "url(" + imageURLs[j % files.length].src + ")";
+                                console.log("bg set to", j);
+                                setInterval(function() {
+                                    loopThroughPreviews(j + 1)
+                                }, 2000);
+                            }
+
+                          
+
+
+
+                            console.log("eeee")
+
+
+                            var myImage = new Image();
+                            myImage.src = 'https://cgbookcase.com/texturepreviews/Jeans_03_Base_Color_preview.jpg';
+                            
+                            let date = new Date();
+
+                            console.log(date.getMilliseconds())
+
+                            let div = document.createElement("div");
+                            div.className = "previews-container";
+                            
+
+                            // myImage.onload = function(){
+                            //     let date2 = new Date();
+                            //     console.log(date2.getMilliseconds())
+                            // };
+
+
+                            var container = null;
+                            for (var i = 0; i < element.childNodes.length; i++) {
+                                if (element.childNodes[i].className == "prev-container") {
+                                    container = element.childNodes[i];
+                                    break;
+                                }        
+                            }
+                            console.log(container)
+                            
+
+                            let domImages = [];
+
+                            function loadImage(i) {
+                                let image = new Image();
+                                
+                                image.src = "https://cdn.cgbookcase.cloud/file/cgbookcase/textures/previews/400w/" + filename + "_" + files[i] + ".jpg";
+                                console.log(image.src)
+                                image.onload = function() {
+                                    container.appendChild(image);
+                                    //image.style.zIndex = (20 - i).toString();
+                                    domImages.push(image);
+                                    console.log("Loaded and appended", image.src)
+                                    
+                                    i++;
+
+                                    if (i < files.length) {
+                                        loadImage(i);
+                                    } else {
+                                        console.log("All images loaded.")
+                                        console.log(domImages)
+                                        
+                                        setInterval(loopImages, 1000)
+                                    }
+                                }
+                            }
+
+                            loadImage(0);
+
+                            let num = 0;
+                            function loopImages() {
+                                if (num % domImages.length === 0) {
+                                    domImages.forEach(e => {
+                                        e.style.opacity = 0;
+                                    });
+                                }
+                                
+                                domImages[num % domImages.length].style.opacity = 1;
+                                num++;
+
+                                if (currentlyChangingNum > 1) {
+                                    let divs = document.querySelectorAll(".prev-container");
+                                    divs.forEach(container => {
+                                        if (element != container) {
+                                            container.innerHTML = "";
+                                        }
+                                    });
+                                }
+
+                            }
+
+
+
+                        }
+
+                        function destroyPreviews(element) {
+                            // var container = null;
+                            // for (var i = 0; i < element.childNodes.length; i++) {
+                            //     if (element.childNodes[i].className == "prev-container") {
+                            //         container = element.childNodes[i];
+                            //         break;
+                            //     }        
+                            // }
+                            // console.log(container);
+                            // container.innerHTML = "";
+                            // console.log(container);
+
+                            let divs = document.querySelectorAll(".prev-container");
+                            divs.forEach(container => {
+                                container.innerHTML = "";
+                            });
+
+                            currentlyChangingNum--;
+
+                        }
+
+                    </script>
+                    
                     <div id="textures-list">
 
                         <% for(i= 0 ; i < textures.length; i++) { %>
                         <a href="/textures/<%=textures[i].url%>" class="results-itemWrapper">
-                            <div class="results-item"
-                                style="background-image: url('https://www.cgbookcase.com/textures/<%=textures[i].category%>/<%=textures[i].file%>_rend.jpg')">
+                            <div class="results-item" onmouseover="startHover(this)" onmouseout="destroyPreviews(this)" data-files="<%= textures[i].files %>" data-filename="<%= textures[i].file %>"
+                                style="transition-duration: 0.2s; background-image: url('https://www.cgbookcase.com/textures/<%=textures[i].category%>/<%=textures[i].file%>_rend.jpg')">
+                                
+                                <div class="prev-container"></div>
+
                                 <span class="results-item-resolution"><%=textures[i].resolution%>K</span>
                                 <span class="results-item-name"><%=textures[i].title%></span>
 
                             </div>
+                            <div class="previews-container"></div>
                         </a>
 
                         <% } %>
