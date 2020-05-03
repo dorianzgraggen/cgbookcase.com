@@ -192,6 +192,8 @@
                         let currentlyChangingNum = 0;
                         let bCurrentlyHovering = false;
 
+                        let hoverItem = "";
+
                         function startHover(element) {
                             
                             bCurrentlyHovering = true;
@@ -200,6 +202,8 @@
 
                             let files = element.dataset.files.split(",");
                             let filename = element.dataset.filename;
+                            hoverItem = filename;
+
                             let imageURLs = [];
 
                             function loopThroughPreviews(j) {
@@ -265,7 +269,10 @@
                                         console.log("All images loaded.")
                                         console.log(domImages)
                                         
-                                        setInterval(loopImages, 1000)
+                                        // Only start looping through images if the last item was this one
+                                        if (hoverItem == filename) {
+                                            setInterval(loopImages, 1000)
+                                        }
                                     }
                                 }
                             }
@@ -316,6 +323,7 @@
                             });
 
                             currentlyChangingNum--;
+                            hoverItem = "";
 
                         }
 
