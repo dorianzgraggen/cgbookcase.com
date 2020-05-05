@@ -194,6 +194,9 @@
 
                         let hoverItem = "";
 
+                        let imagesToLoad = 0;
+                        let imagesLoaded = 0;
+
                         function startHover(element) {
                             
                             bCurrentlyHovering = true;
@@ -203,6 +206,9 @@
                             let files = element.dataset.files.split(",");
                             let filename = element.dataset.filename;
                             hoverItem = filename;
+
+                            imagesLoaded = 0;
+                            imagesToLoad = files.length;
 
                             let imageURLs = [];
 
@@ -245,7 +251,17 @@
                                     break;
                                 }        
                             }
-                            console.log(container)
+
+                            var progressBar = null;
+                            for (var i = 0; i < element.childNodes.length; i++) {
+                                if (element.childNodes[i].className == "progress-bar") {
+                                    progressBar = element.childNodes[i];
+                                    break;
+                                }        
+                            }
+                            console.log(progressBar)
+                            progressBar.style.display = "block";
+
                             
 
                             let domImages = [];
@@ -262,17 +278,28 @@
                                     console.log("Loaded and appended", image.src)
                                     
                                     i++;
+                                    imagesLoaded++;
+                                    console.log("Loaded", imagesLoaded / imagesToLoad * 100, "%");
+                                    progressBar.style.width = imagesLoaded / imagesToLoad * 100 + "%";
 
                                     if (i < files.length) {
                                         loadImage(i);
                                     } else {
                                         console.log("All images loaded.")
                                         console.log(domImages)
+                                        setTimeout(function() {
+                                            progressBar.style.display = "none";
+
+                                        }, 220)
                                         
                                         // Only start looping through images if the last item was this one
                                         if (hoverItem == filename) {
-                                            setInterval(loopImages, 1000)
+                                            setTimeout(loopImages, 200);
                                         }
+                                    }
+
+                                    if (hoverItem != filename) {
+                                        progressBar.style.display = "none";
                                     }
                                 }
                             }
@@ -281,7 +308,9 @@
 
                             let num = 0;
                             function loopImages() {
+                                
                                 if (num % domImages.length === 0) {
+                                    console.log(domImages)
                                     domImages.forEach(e => {
                                         e.style.opacity = 0;
                                     });
@@ -297,6 +326,11 @@
                                             container.innerHTML = "";
                                         }
                                     });
+                                }
+
+                                if (hoverItem == filename) {
+                                    setTimeout(loopImages, 1000);
+                                    console.log("newRoudn")
                                 }
 
                             }
@@ -340,6 +374,7 @@
 
                                 <span class="results-item-resolution"><%=textures[i].resolution%>K</span>
                                 <span class="results-item-name"><%=textures[i].title%></span>
+                                <div class="progress-bar" style="display: none; position: absolute; top: 0; left: 0; background-color: #f73859; height: 4px; transition-duration: .2s;"></div>
 
                             </div>
                             <div class="previews-container"></div>

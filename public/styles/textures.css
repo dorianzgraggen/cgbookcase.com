@@ -116,6 +116,7 @@ select[name="sortby"] {
   padding-bottom: 100%;
   position: relative;
   border-radius: 4px;
+  overflow-x: hidden;
 }
 
 .results-item-resolution {
@@ -424,6 +425,6 @@ select[name="sortby"] {
   max-width: 100%;
   position: absolute;
   opacity: 0;
-  transition-duration: .1s;
+  /* transition-duration: .1s; */
   border-radius: 4px;
 }
