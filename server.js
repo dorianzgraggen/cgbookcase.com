@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose');
 var sm = require('sitemap')
 const fs = require('fs');
 var timestamp = require("unix-timestamp")
