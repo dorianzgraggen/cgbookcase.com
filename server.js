@@ -8,7 +8,7 @@ const Fuse = require("fuse.js");
 const http = require('http');
 const https = require('https');
 
-const port = 8192;
+let port = 8192;
 
 // Set Static Path
 app.use(express.static("public"));
@@ -446,6 +446,10 @@ app.use(function (req, res, next) {
     res.render("more/404.ejs");
 });
 
+
+if (process.argv[2]) {
+    port = parseInt(process.argv[2], 10);
+}
 
 app.listen(port, "localhost", function () {
     console.log("Server is running at http://localhost:" + port);
