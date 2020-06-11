@@ -35,7 +35,7 @@
         <!-- START Textures.one integration -->
             <meta name="tex1:name" content="<%=texture.title%>">
             <meta name="tex1:tags" content="<%=tags%>">
-            <meta name="tex1:preview-image" content="https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg">
+            <meta name="tex1:preview-image" content="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg">
             
             <meta name="tex1:resolution" content="<%=texture.resolution%>">
             <% var oneType = "tex-pbr" %>
@@ -71,7 +71,19 @@
             <div id="view-texture">
 
                 <div id="view-imageContainer">
-                    <img alt="Preview render of the PBR texture <%= texture.title %>" src="https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg">
+                    <img alt="Preview render of the PBR texture <%= texture.title %>" src="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/600w/<%=texture.file%>_default.jpg">
+                    
+                    <!-- For later use. Currently prevents displaying the different map types when hovering over them, because only the src is updated, but not the srcset -->
+                    <!-- <img
+                        alt="Preview render of the PBR texture <%= texture.title %>"
+                        src="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg"
+                        srcset="
+                            https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/720w/<%=texture.file%>_default.jpg 720w,
+                            https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/600w/<%=texture.file%>_default.jpg 600w,
+                            https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg 480w,
+                            https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/360w/<%=texture.file%>_default.jpg 360w,
+                            "
+                        > -->
                 </div>
 
                 <div id="view-downloadSection">
@@ -99,7 +111,7 @@
                                         <% var file = texture.files[e]%>
                                         <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
                                         <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_<%=texture.files[e]%>.png" download style="text-decoration: none;">
-                                            <div onmouseout="changeRenderTo('https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg')" onmouseover="changeRenderTo('https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_<%= texture.files[e] %>_preview.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
+                                            <div onmouseout="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg')" onmouseover="changeRenderTo('https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_<%= texture.files[e] %>_preview.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
         
