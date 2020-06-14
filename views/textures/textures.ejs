@@ -200,6 +200,7 @@
 
                         function startHover(element) {
                             
+                            
                             bCurrentlyHovering = true;
 
                             currentlyChangingNum++;
@@ -207,6 +208,7 @@
                             let files = element.dataset.files.split(",");
                             let filename = element.dataset.filename;
                             hoverItem = filename;
+
 
                             imagesLoaded = 0;
                             imagesToLoad = files.length;
@@ -270,7 +272,12 @@
                             function loadImage(i) {
                                 let image = new Image();
                                 
-                                image.src = "https://cdn2.cgbookcase.cloud/textures/previews/400w/" + filename + "_" + files[i] + ".jpg";
+                                if (element.dataset.category == "Surface Imperfections") {
+                                    image.src = "https://cdn2.cgbookcase.cloud/textures/previews/400w/" + filename + "" + files[i] + ".jpg";
+                                } else {
+                                    image.src = "https://cdn2.cgbookcase.cloud/textures/previews/400w/" + filename + "_" + files[i] + ".jpg";
+
+                                }
                                 console.log(image.src)
                                 image.onload = function() {
                                     container.appendChild(image);
@@ -368,7 +375,7 @@
 
                         <% for(i= 0 ; i < textures.length; i++) { %>
                         <a href="/textures/<%=textures[i].url%>" class="results-itemWrapper">
-                            <div class="results-item" onmouseover="startHover(this)" onmouseout="destroyPreviews(this)" data-files="<%= textures[i].files %>" data-filename="<%= textures[i].file %>"
+                            <div class="results-item" onmouseover="startHover(this)" onmouseout="destroyPreviews(this)" data-files="<%= textures[i].files %>" data-category="<%= textures[i].category %>" data-filename="<%= textures[i].file %>"
                                 style="transition-duration: 0.2s; background-image: url('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/360w/<%=textures[i].file%>_default.jpg')">
                                 
                                 <div class="prev-container"></div>
