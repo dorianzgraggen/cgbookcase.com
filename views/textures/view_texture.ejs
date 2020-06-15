@@ -111,7 +111,7 @@
                                         <% var file = texture.files[e]%>
                                         <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
                                         <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_<%=texture.files[e]%>.png" download style="text-decoration: none;">
-                                            <div onmouseout="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg')" onmouseover="changeRenderTo('https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_<%= texture.files[e] %>_preview.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
+                                            <div onmouseout="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg')" onmouseover="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K_<%= texture.files[e] %>.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
         
@@ -188,7 +188,7 @@
 
             <% if(texture.category != "Leaves & Plants" && texture.category != "Cutout Objects" && texture.category != "Surface Imperfections" && texture.category != "Patterns" && texture.files[1] != "Base_Color_A") { %>
 
-            <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_preview.jpg)">
+            <div data-backgroundimage="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K_Base_Color.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K_Base_Color.jpg)">
                 <button onclick="zoomIn();" id="map-plus" aria-label="Zoom in" class="view-mapZoom" style="top: 0;"><i class="far fa-plus"></i></button>
                 <button onclick="zoomOut();" id="map-minus" aria-label="Zoom out" class="view-mapZoom" style="top: 40px;"><i class="far fa-minus"></i></button>
                 <span id="view-mapNote">This tiling preview uses a low-res version of the texture.</span>
