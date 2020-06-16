@@ -71,7 +71,8 @@
             <div id="view-texture">
 
                 <div id="view-imageContainer">
-                    <img alt="Preview render of the PBR texture <%= texture.title %>" src="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/600w/<%=texture.file%>_default.jpg">
+                    <% var renderedPreview = "https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/720w/" + texture.file + "_default.jpg" %>
+                    <img alt="Preview render of the PBR texture <%= texture.title %>" src="<%= renderedPreview %>">
                     
                     <!-- For later use. Currently prevents displaying the different map types when hovering over them, because only the src is updated, but not the srcset -->
                     <!-- <img
@@ -97,8 +98,11 @@
                             <% for(i = texture.resolution; i > 0; i--) { %>
                             <div class="view-downloadResolutionSection">
                             
-                                <a aria-label="Download the <%=i%>K version of this surface imperfection" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K.png" download style="text-decoration: none">
-                                    <div class="view-directDownload"><strong><%=i%>K</strong> Map <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
+                                <a aria-label="Download the <%=i%>K version of this surface imperfection" href="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/downloads/<%=texture.file%>/<%=texture.file%>_<%=i%>K.png" target="_blank" style="text-decoration: none">
+                                    <div
+                                        class="view-directDownload"
+                                        onmouseout="changeRenderTo('<%= renderedPreview %>')"
+                                        onmouseover="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K.jpg')"><strong><%=i%>K</strong> Map <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                 </a>
                             </div> 
                             <% } %>  
@@ -110,8 +114,8 @@
                                         <% for(e = 0 ; e < texture.files.length; e++) { %>
                                         <% var file = texture.files[e]%>
                                         <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
-                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_<%=texture.files[e]%>.png" download style="text-decoration: none;">
-                                            <div onmouseout="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg')" onmouseover="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K_<%= texture.files[e] %>.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
+                                        <a target="_blank" class="downloadLink" aria-label="Download the <%= file %> map for this texture" href="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/downloads/<%=texture.file%>/<%=texture.file%>_<%=i%>K_<%=texture.files[e]%>.png" style="text-decoration: none;">
+                                            <div onmouseout="changeRenderTo('<%= renderedPreview %>')" onmouseover="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K_<%= texture.files[e] %>.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
         
@@ -144,7 +148,7 @@
                                         <% for(e = 0 ; e < texture.files.length; e++) { %>
                                         <% var file = texture.files[e]%>
                                         <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
-                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_front_<%=texture.files[e]%>.png" download style="text-decoration: none;">
+                                        <a aria-label="Download the <%= file %> map for this texture" href="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/downloads/<%=texture.file%>/<%=texture.file%>_<%=i%>K_front_<%=texture.files[e]%>.png" target="_blank" style="text-decoration: none;">
                                             <div class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
