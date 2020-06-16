@@ -81,7 +81,7 @@ section {
 }
 
 #home-textureSeries {
-    background: url(/media/home/mapscourse.jpg);
+    background: url(https://cdn2.cgbookcase.cloud/media/backgrounds/mapscourse.jpg);
     background-color: rgba(0, 0, 0, 0.35);
     background-blend-mode: color;
     background-size: cover;

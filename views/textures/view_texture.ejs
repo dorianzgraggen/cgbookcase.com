@@ -35,7 +35,7 @@
         <!-- START Textures.one integration -->
             <meta name="tex1:name" content="<%=texture.title%>">
             <meta name="tex1:tags" content="<%=tags%>">
-            <meta name="tex1:preview-image" content="https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg">
+            <meta name="tex1:preview-image" content="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg">
             
             <meta name="tex1:resolution" content="<%=texture.resolution%>">
             <% var oneType = "tex-pbr" %>
@@ -71,7 +71,20 @@
             <div id="view-texture">
 
                 <div id="view-imageContainer">
-                    <img alt="Preview render of the PBR texture <%= texture.title %>" src="https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg">
+                    <% var renderedPreview = "https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/720w/" + texture.file + "_default.jpg" %>
+                    <img alt="Preview render of the PBR texture <%= texture.title %>" src="<%= renderedPreview %>">
+                    
+                    <!-- For later use. Currently prevents displaying the different map types when hovering over them, because only the src is updated, but not the srcset -->
+                    <!-- <img
+                        alt="Preview render of the PBR texture <%= texture.title %>"
+                        src="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg"
+                        srcset="
+                            https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/720w/<%=texture.file%>_default.jpg 720w,
+                            https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/600w/<%=texture.file%>_default.jpg 600w,
+                            https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg 480w,
+                            https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/360w/<%=texture.file%>_default.jpg 360w,
+                            "
+                        > -->
                 </div>
 
                 <div id="view-downloadSection">
@@ -85,8 +98,11 @@
                             <% for(i = texture.resolution; i > 0; i--) { %>
                             <div class="view-downloadResolutionSection">
                             
-                                <a aria-label="Download the <%=i%>K version of this surface imperfection" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K.png" download style="text-decoration: none">
-                                    <div class="view-directDownload"><strong><%=i%>K</strong> Map <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
+                                <a aria-label="Download the <%=i%>K version of this surface imperfection" href="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/downloads/<%=texture.file%>/<%=texture.file%>_<%=i%>K.png" target="_blank" style="text-decoration: none">
+                                    <div
+                                        class="view-directDownload"
+                                        onmouseout="changeRenderTo('<%= renderedPreview %>')"
+                                        onmouseover="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K.jpg')"><strong><%=i%>K</strong> Map <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                 </a>
                             </div> 
                             <% } %>  
@@ -98,8 +114,8 @@
                                         <% for(e = 0 ; e < texture.files.length; e++) { %>
                                         <% var file = texture.files[e]%>
                                         <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
-                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_<%=texture.files[e]%>.png" download style="text-decoration: none;">
-                                            <div onmouseout="changeRenderTo('https://www.cgbookcase.com/textures/<%=texture.category%>/<%=texture.file%>_rend.jpg')" onmouseover="changeRenderTo('https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_<%= texture.files[e] %>_preview.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
+                                        <a target="_blank" class="downloadLink" aria-label="Download the <%= file %> map for this texture" href="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/downloads/<%=texture.file%>/<%=texture.file%>_<%=i%>K_<%=texture.files[e]%>.png" style="text-decoration: none;">
+                                            <div onmouseout="changeRenderTo('<%= renderedPreview %>')" onmouseover="changeRenderTo('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K_<%= texture.files[e] %>.jpg')" class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
         
@@ -132,7 +148,7 @@
                                         <% for(e = 0 ; e < texture.files.length; e++) { %>
                                         <% var file = texture.files[e]%>
                                         <% if( texture.files[e] == "Base_Color" ) { file = "Base Color"} %>
-                                        <a aria-label="Download the <%= file %> map for this texture" href="/textures/<%=texture.category%>/<%=texture.file%>/<%=texture.file%>_<%=i%>K_front_<%=texture.files[e]%>.png" download style="text-decoration: none;">
+                                        <a aria-label="Download the <%= file %> map for this texture" href="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/downloads/<%=texture.file%>/<%=texture.file%>_<%=i%>K_front_<%=texture.files[e]%>.png" target="_blank" style="text-decoration: none;">
                                             <div class="view-directDownload"><strong><%=i%>K</strong> <%= file %> <span style="float: right; font-size: 1.12em;"><i class="fas fa-download"></i></span></div>
                                         </a>
                                         <% } %>
@@ -176,7 +192,7 @@
 
             <% if(texture.category != "Leaves & Plants" && texture.category != "Cutout Objects" && texture.category != "Surface Imperfections" && texture.category != "Patterns" && texture.files[1] != "Base_Color_A") { %>
 
-            <div data-backgroundimage="https:/www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_preview.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://www.cgbookcase.com/texturepreviews/<%=texture.file%>_Base_Color_preview.jpg)">
+            <div data-backgroundimage="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K_Base_Color.jpg)" id="view-map" style="background-size: 32%; background-image: url(https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/<%=texture.file%>_1K_Base_Color.jpg)">
                 <button onclick="zoomIn();" id="map-plus" aria-label="Zoom in" class="view-mapZoom" style="top: 0;"><i class="far fa-plus"></i></button>
                 <button onclick="zoomOut();" id="map-minus" aria-label="Zoom out" class="view-mapZoom" style="top: 40px;"><i class="far fa-minus"></i></button>
                 <span id="view-mapNote">This tiling preview uses a low-res version of the texture.</span>
@@ -234,7 +250,7 @@
                 <a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank"
                     style="width: 50%;">
                     <img style="width: 100%;border-top-left-radius: 4px;border-bottom-left-radius: 4px;height: 100%;"
-                        src="/media/affiliate/evo.jpg">
+                        src="https://cdn2.cgbookcase.cloud/media/affiliate/evo.jpg">
             
                 </a>
                 <div style="width: 50%;padding: 23px 32px;">

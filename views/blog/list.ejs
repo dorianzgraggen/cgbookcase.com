@@ -34,7 +34,7 @@
             <% posts.forEach(element => { %>
                 
                 <article class="whiteBG border flex" style="margin-bottom: 20px;">
-                    <a href="/blog/<%= element.slug %>" class="w50p"><img class="w100p h100p border-left" src="/blog/<%= element.folder %>/thumbnail.jpg"></a>
+                    <a href="/blog/<%= element.slug %>" class="w50p"><img class="w100p h100p border-left" src="https://cdn2.cgbookcase.cloud/blog/posts/<%= element.folder %>/thumbnail2.jpg"></a>
                     <div class="w50p margin">
                             <a href="/blog/<%= element.slug %>" class="headerLink" style="text-decoration: none; color: black"><h2 class="margin-top-0"><%= element.title %></h2></a>
                         <p><%= element.excerpt %> </p>

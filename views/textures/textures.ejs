@@ -42,6 +42,7 @@
                                 <option id="v-Food" value="Food">Food</option>
                                 <option id="v-Ground" value="Ground">Ground</option>
                                 <option id="v-Leaves" value="Leaves & Plants">Leaves & Plants</option>
+                                <option id="v-Marble" value="Marble">Marble</option>
                                 <option id="v-Metal" value="Metal">Metal</option>
                                 <option id="v-Parquet" value="Parquet">Parquet</option>
                                 <option id="v-Patterns" value="Patterns">Patterns</option>
@@ -130,7 +131,7 @@
                         <p class="text-center">Overviews and making-ofs of the most recent releases.</p>
                         
                         <a href="/blog/<%= blogPost.slug %>">
-                            <div class="future-release" style="background-image: url(/blog/<%= blogPost.folder %>/thumbnail.jpg)">
+                            <div class="future-release" style="background-image: url('https://cdn2.cgbookcase.cloud/blog/posts/<%= blogPost.folder %>/thumbnail2.jpg')">
                                 <div class="future-release-overlay">
 
                                 </div>
@@ -156,7 +157,7 @@
 
                         <div style="background:white;border-radius: 4px;">
                             <a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank">
-                                <img style="width: 100%;" src="/media/affiliate/evo.jpg">
+                                <img style="width: 100%;" src="https://cdn2.cgbookcase.cloud/media/affiliate/evo.jpg">
                                 
                             </a>
                             <p class="" style="margin: 0;padding: 7px 14px 12px 14px;">Extreme PBR Evo makes using PBR Materials in Blender easier and comes with more than 1100 ready-made materials.</p>
@@ -199,6 +200,7 @@
 
                         function startHover(element) {
                             
+                            
                             bCurrentlyHovering = true;
 
                             currentlyChangingNum++;
@@ -206,6 +208,7 @@
                             let files = element.dataset.files.split(",");
                             let filename = element.dataset.filename;
                             hoverItem = filename;
+
 
                             imagesLoaded = 0;
                             imagesToLoad = files.length;
@@ -268,8 +271,14 @@
 
                             function loadImage(i) {
                                 let image = new Image();
+
                                 
-                                image.src = "https://cdn2.cgbookcase.cloud/textures/previews/400w/" + filename + "_" + files[i] + ".jpg";
+                                if (element.dataset.category == "Surface Imperfections") {
+                                    image.src = "https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/" + filename + "" + files[i] + "_1K.jpg";
+                                } else {
+                                    image.src = "https://cdn.cgbookcase.cloud/file/cgbookcase/textures/prevs/400w/" + filename + "_1K_" + files[i] + ".jpg";
+
+                                }
                                 console.log(image.src)
                                 image.onload = function() {
                                     container.appendChild(image);
@@ -367,8 +376,8 @@
 
                         <% for(i= 0 ; i < textures.length; i++) { %>
                         <a href="/textures/<%=textures[i].url%>" class="results-itemWrapper">
-                            <div class="results-item" onmouseover="startHover(this)" onmouseout="destroyPreviews(this)" data-files="<%= textures[i].files %>" data-filename="<%= textures[i].file %>"
-                                style="transition-duration: 0.2s; background-image: url('https://www.cgbookcase.com/textures/<%=textures[i].category%>/<%=textures[i].file%>_rend.jpg')">
+                            <div class="results-item" onmouseover="startHover(this)" onmouseout="destroyPreviews(this)" data-files="<%= textures[i].files %>" data-category="<%= textures[i].category %>" data-filename="<%= textures[i].file %>"
+                                style="transition-duration: 0.2s; background-image: url('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=textures[i].file%>_default.jpg')">
                                 
                                 <div class="prev-container"></div>
 
@@ -384,7 +393,7 @@
 
                         <% if(textures.length == 0) { %>
                         <a id="notexture-meme" href="/request-a-texture" aria-label="Request a texture">
-                            <img src="/media/textures/texturerequest_meme.jpg">
+                            <img src="https://cdn2.cgbookcase.cloud/textures/texturerequest_meme.jpg">
                         </a>
 
                       
