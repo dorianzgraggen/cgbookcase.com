@@ -1,14 +1,6 @@
 [
     {
-        "title": "Tile Textures: Overview and Behind the Scenes",
-        "excerpt": "The number of fabric materials on the site was a bit lacking, so this month's release is all about them",
-        "slug": "tile-textures-overview-and-behind-the-scenes",
-        "folder": "release_tiles",
-        "date": "April 27, 2020",
-        "release_name": "Tile Textures"
-    },
-    {
-        "title": "Fabric Textures: Overview and Behind the Scenes",
+        "title": "Fabric Textures: Overview and Making-of",
         "excerpt": "The number of fabric materials on the site was a bit lacking, so this month's release is all about them",
         "slug": "fabric-textures-overview-and-making-of",
         "folder": "release_fabric",

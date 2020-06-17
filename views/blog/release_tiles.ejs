@@ -1,0 +1,45 @@
+
+
+<% let releasedTextures = [] %> 
+<% var nicee = textures.find(x => x.cgbID === 348); %> 
+
+<script>
+
+console.log("<%= releasedTextures[0] %>");
+
+</script>
+
+<p class="readable-text"> Tiles are searched for and requested quite often, which is why I've started creating a procedural tile texture generator and dedicated this month's release to them.</p>
+
+<h2 class="readable-text">Overview</h2>
+
+
+
+<%- include("release/textureList.ejs", {listOfTextures: [434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459], textures:textures, title: ""}); %>
+
+
+<div class="space"></div>
+<h2 class="readable-text">Creating a procedural tile texture generator</h2>
+
+<p class="readable-text">I'm currently working on a tile texture generator using Substance Designer that will allow you to create all kinds of tiles textures: Marble tiles, stone tiles, metal tiles and so on, with different tile patterns and options to change a tile's color, height, roughness and more.</p>
+
+<p class="readable-text">Originally, I had wanted to publish the generator with this release but soon realized that this was unrealistic and too difficult for me. So I took some time to level up my Substance Designer skills using Daniel Thiger's <a target="_blank" href="https://gumroad.com/dete">Substance Designer fundamentals</a> and the Substance Designer docs.</p>
+<p class="readable-text">One thing I've learned about, for instance, are Sub-graphs. Sub-graphs basically are nested Substance Designer graphs which will most definitely help me tidy up this mess:</p>
+
+<div class="space"></div>
+
+<!-- <div id="imagechange" style="padding-bottom: 41.06%; background-image: url('/blog/release_fabric/generator_01.jpg'); background-size: cover; transition-duration: .3s;"></div> -->
+
+<img src="https://cdn2.cgbookcase.cloud/blog/posts/release_tiles/graph.jpg" style="width: 100%;">
+
+
+<div class="space"></div>
+
+
+<p class="readable-text">I'm looking forward to creating more tile textures and finishing the generator! If you find the content on this site, feel free to join the ranks over on Patreon and help me to continue running cgbookcase.com.</p>
+<div class="space"></div>
+
+<a target="_blank" href="https://www.patreon.com/cgbookcase" aria-label="Become a patron">
+    <div class="patreonButton"></div>
+</a>
+<div class="space"></div>
