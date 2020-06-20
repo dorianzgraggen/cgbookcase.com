@@ -62,11 +62,42 @@ app.get("/", function (req, res) {
     fs.readFile('public/textures.json', (err2, data_posts) => {
         if (err2) throw err2;
         const allTextures = JSON.parse(data_posts);
-        const allPatrons = {};
-        //console.log(parsedData);
-        res.render("more/home.ejs", { textures: allTextures, patrons: allPatrons });
 
-        
+
+        https.get('https://cgb.ams3.digitaloceanspaces.com/patrons.json', (resJSON) => {
+            const { statusCode } = resJSON;
+            const contentType = resJSON.headers['content-type'];
+
+            let error;
+            if (statusCode !== 200) {
+                error = new Error('Request Failed.\n' +
+                    `Status Code: ${statusCode}`);
+            } else if (!/^application\/json/.test(contentType)) {
+                error = new Error('Invalid content-type.\n' +
+                    `Expected application/json but received ${contentType}`);
+            }
+            if (error) {
+                console.error(error.message);
+                // Consume response data to free up memory
+                resJSON.resume();
+                return;
+            }
+
+            resJSON.setEncoding('utf8');
+            let rawData = '';
+            resJSON.on('data', (chunk) => { rawData += chunk; });
+            resJSON.on('end', () => {
+                try {
+                    const allPatrons = JSON.parse(rawData);
+                    //console.log(parsedData);
+                    res.render("more/home.ejs", { textures: allTextures, patrons: allPatrons });
+                } catch (e) {
+                    console.error(e.message);
+                }
+            });
+        }).on('error', (e) => {
+            console.error(`Got error: ${e.message}`);
+        });
 
 
     });
@@ -296,45 +327,41 @@ app.get("/textures", function (req, res) {
             //console.log(blogPosts);
 
             // get patrons
-            // https.get('https://cdn2.cgbookcase.cloud/patrons.json', (resJSON) => {
-            //     const { statusCode } = resJSON;
-            //     const contentType = resJSON.headers['content-type'];
+            https.get('https://cgb.ams3.digitaloceanspaces.com/patrons.json', (resJSON) => {
+                const { statusCode } = resJSON;
+                const contentType = resJSON.headers['content-type'];
 
-            //     let error;
-            //     if (statusCode !== 200) {
-            //         error = new Error('Request Failed.\n' +
-            //             `Status Code: ${statusCode}`);
-            //     } else if (!/^application\/json/.test(contentType)) {
-            //         error = new Error('Invalid content-type.\n' +
-            //             `Expected application/json but received ${contentType}`);
-            //     }
-            //     if (error) {
-            //         console.error(error.message);
-            //         // Consume response data to free up memory
-            //         resJSON.resume();
-            //         return;
-            //     }
+                let error;
+                if (statusCode !== 200) {
+                    error = new Error('Request Failed.\n' +
+                        `Status Code: ${statusCode}`);
+                } else if (!/^application\/json/.test(contentType)) {
+                    error = new Error('Invalid content-type.\n' +
+                        `Expected application/json but received ${contentType}`);
+                }
+                if (error) {
+                    console.error(error.message);
+                    // Consume response data to free up memory
+                    resJSON.resume();
+                    return;
+                }
 
-            //     resJSON.setEncoding('utf8');
-            //     let rawData = '';
-            //     resJSON.on('data', (chunk) => { rawData += chunk; });
-            //     resJSON.on('end', () => {
-            //         try {
-            //             // const allPatrons = JSON.parse(rawData);
-                        
-            //         } catch (e) {
-            //             console.error(e.message);
-            //         }
-            //     });
-            // }).on('error', (e) => {
-            //     console.error(`Got error: ${e.message}`);
-            // });
+                resJSON.setEncoding('utf8');
+                let rawData = '';
+                resJSON.on('data', (chunk) => { rawData += chunk; });
+                resJSON.on('end', () => {
+                    try {
+                        const allPatrons = JSON.parse(rawData);
+                        //console.log(parsedData);
+                        res.render("textures/textures.ejs", { textures: validResults, patrons: allPatrons, req: req, limit: limit, blogPost: blogPosts[0] });
+                    } catch (e) {
+                        console.error(e.message);
+                    }
+                });
+            }).on('error', (e) => {
+                console.error(`Got error: ${e.message}`);
+            });
 
-
-            const allPatrons = {};
-                        
-            //console.log(parsedData);
-            res.render("textures/textures.ejs", { textures: validResults, patrons: allPatrons, req: req, limit: limit, blogPost: blogPosts[0] });
             // fs.readFile('public/patrons.json', (err3, data_patrons) => {
             //     if (err3) throw err3;
             //     let allPatrons = JSON.parse(data_patrons);
