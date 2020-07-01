@@ -64,7 +64,7 @@ app.get("/", function (req, res) {
         const allTextures = JSON.parse(data_posts);
 
 
-        https.get('https://cgb.ams3.digitaloceanspaces.com/patrons.json', (resJSON) => {
+        https.get('https://api.cgbookcase.com/patrons/', (resJSON) => {
             const { statusCode } = resJSON;
             const contentType = resJSON.headers['content-type'];
 
@@ -327,7 +327,7 @@ app.get("/textures", function (req, res) {
             //console.log(blogPosts);
 
             // get patrons
-            https.get('https://cgb.ams3.digitaloceanspaces.com/patrons.json', (resJSON) => {
+            https.get('https://api.cgbookcase.com/patrons/', (resJSON) => {
                 const { statusCode } = resJSON;
                 const contentType = resJSON.headers['content-type'];
 
@@ -361,17 +361,6 @@ app.get("/textures", function (req, res) {
             }).on('error', (e) => {
                 console.error(`Got error: ${e.message}`);
             });
-
-            // fs.readFile('public/patrons.json', (err3, data_patrons) => {
-            //     if (err3) throw err3;
-            //     let allPatrons = JSON.parse(data_patrons);
-
-
-
-            //     res.render("textures/textures.ejs", { textures: validResults, patrons: allPatrons, req: req, limit: limit, blogPost: blogPosts[0] });
-
-            // });
-
 
         });
 
