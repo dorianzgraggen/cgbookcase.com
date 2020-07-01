@@ -384,13 +384,14 @@ app.get("/textures/:url", function (req, res) {
             includeMatches: true,
             minMatchCharLength: 2,
             findAllMatches: true,
-            threshold: 0,
+            // threshold: 0,
             keys: ["url"]
         }
 
         const fuse = new Fuse(allTextures, options);
         let searchResults = fuse.search(req.params.url);
 
+        console.log(searchResults)
         console.log(searchResults[0].item)
 
         res.render("textures/view_texture.ejs", { texture: searchResults[0].item, req: req });
