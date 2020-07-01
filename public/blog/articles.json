@@ -1,7 +1,15 @@
 [
     {
+        "title": "Tile Textures II: Overview",
+        "excerpt": "",
+        "slug": "tile-textures-II-overview-and-behind-the-scenes",
+        "folder": "release_tiles_2",
+        "date": "June 30, 2020",
+        "release_name": "Tile Textures II"
+    },
+    {
         "title": "Tile Textures: Overview and Behind the Scenes",
-        "excerpt": "The number of fabric materials on the site was a bit lacking, so this month's release is all about them",
+        "excerpt": "",
         "slug": "tile-textures-overview-and-behind-the-scenes",
         "folder": "release_tiles",
         "date": "April 27, 2020",
@@ -9,7 +17,7 @@
     },
     {
         "title": "Fabric Textures: Overview and Behind the Scenes",
-        "excerpt": "The number of fabric materials on the site was a bit lacking, so this month's release is all about them",
+        "excerpt": "",
         "slug": "fabric-textures-overview-and-making-of",
         "folder": "release_fabric",
         "date": "February 26, 2020",
