@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devNetwork": ""
+    "network": "nodemon -r dotenv/config server.js",
+    "local": "nodemon server.js"
   },
   "author": "Dorian Zgraggen",
   "license": "ISC",
