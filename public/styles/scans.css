@@ -1,0 +1,62 @@
+img {
+    max-width: 100%;
+}
+
+#scans-overview-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+}
+
+#scans-overview-features > div {
+    background: white;
+    border-radius: 4px;
+}
+#scans-overview-features > div > p,
+#scans-overview-features > div > h3 {
+    padding: 0 36px;
+}
+
+.features-infos {
+    display: flex;
+justify-content: center;
+align-items: center;
+width: 50%;
+text-align: left;
+margin-bottom: 32px;
+}
+
+#scans-pricing-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+#scans-pricing-boxes > div {
+    border-radius: 4px;
+    background: white;
+}
+
+.license-price {
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.license-name {
+    background: #384259;
+    color: white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: 50px;
+    padding: 6px 0;
+}
+
+.license-desc {
+    margin-top: 50px;
+    margin-bottom: 12px;
+}
+
+.inset-shadow {
+    box-shadow: 0px 12px 25px #0000004d inset;
+}

@@ -7,7 +7,10 @@ const Fuse = require("fuse.js");
 const http = require('http');
 const https = require('https');
 
+// require('dotenv').config()
+
 let port = 8192;
+let host = "localhost";
 
 // Set Static Path
 app.use(express.static("public"));
@@ -152,6 +155,61 @@ function simpleRoute(route, ejsPath) {
         res.render(ejsPath);
     });
 }
+
+let licenses = [
+    {
+        name: "Individual",
+        description: "For individuals",
+        price: 7.99
+    },
+    {
+        name: "Team",
+        description: "For companies of up to 10 people",
+        price: 13.99
+    },
+    {
+        name: "Studio",
+        description: "For companies of up to 200 people",
+        price: 27.99
+    }
+]
+
+let features = [
+    {
+        title: "Multiple Levels of Detail",
+        description: "Each 3D model comes with three to five different levels of detail. This comes in handy when performance is important to your project.",
+        button: "Read more about levels of detail",
+        url: "/scanned-3d-models/features#level-of-details"
+    },
+    {
+        title: "Compatible with Every Major 3D Software",
+        description: "Each 3D model is available in multiple file formats: As a Blender file (.blend), Wavefront OBJ, FBX and gLTF.",
+        button: "Read more about file formats",
+        url: "/scanned-3d-models/features#file-formats"
+    },
+    {
+        title: "MHigh Resolution PBR Maps",
+        description: "Each 3D model is UV-unwrapped and come with high resolution PBR maps for three workflows: Metalness, Specular and Game-optimized..",
+        button: "Read more about PBR maps",
+        url: "/scanned-3d-models/features#pbr-maps"
+    },
+    {
+        title: "Tutorials on how to use the 3D models",
+        description: "The tutorial section will help you to use them with various software such as Blender, Unreal Engine 4, Unity and Godot.",
+        button: "Watch the video tutorials",
+        url: "/scanned-3d-models/tutorials"
+    },
+]
+
+
+
+app.get("/scanned-3d-models/overview", function (req, res) {
+
+    res.render("scans/overview.ejs", { licenses, features });
+
+});
+
+simpleRoute("/scanned-3d-models", "scans/list.ejs");
 
 simpleRoute("/privacy-and-cookies", "more/privacy-and-cookies.ejs");
 simpleRoute("/license-information", "more/license-information.ejs");
@@ -440,6 +498,12 @@ if (process.argv[2]) {
     port = parseInt(process.argv[2], 10);
 }
 
-app.listen(port, "localhost", function () {
-    console.log("Server is running at http://localhost:" + port);
+// port = process.env.PORT;
+
+// if (process.env.NETWROKNE == true) host = "0.0.0.0";
+
+host = process.env.HOST || "localhost";
+
+app.listen(port, host, function () {
+    console.log("Server is running at http://" + host + ":" + port);
 });

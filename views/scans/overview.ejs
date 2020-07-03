@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>cgbookcase.com | Free PBR Textures and Blender Tutorials</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Discover a library of high-quality PBR textures. Free for every purpose, forever. Some Blender tutorials here and there.">
+        
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+        <link href="/styles/default.css" rel="stylesheet">
+        <link href="/styles/header.css" rel="stylesheet">
+        <link href="/styles/home.css" rel="stylesheet">
+        <link href="/styles/scans.css" rel="stylesheet">
+        <link href="/styles/font-sizes.css" rel="stylesheet">
+
+        <link href="/styles/colors.css" rel="stylesheet">
+
+
+        <link rel="canonical" href="https://www.cgbookcase.com">
+
+        <!-- START Textures.one integration -->
+        <meta name="tex1:display-name" content="cgbookcase.com">
+        <meta name="tex1:display-domain" content="cgbookcase.com">
+        <meta name="tex1:patreon" content="cgbookcase">
+        <meta name="tex1:twitter" content="dorianzgraggen">
+        <meta name="tex1:instagram" content="cgbtextures">
+        <meta name="tex1:logo" content="https://www.cgbookcase.com/media/brand/logo.svg">
+        <meta name="tex1:icon" content="https://www.cgbookcase.com/media/brand/logo_mobile.svg">
+        <!-- END Textures.one integration -->
+
+        <%- include("../partials/head.ejs") %>
+
+    </head>
+    
+    
+    <body>
+        <%- include("../partials/header.ejs") %>
+
+        <% var bgNum = Math.floor(Math.random() * 3 + 1); %>
+        <main>
+            <div id="home-backgroundImage" class="inset-shadow" style="background-image: url('https://estaticos.qdq.com/swdata/photos/908/908031437/e78a204363a0421a892840536ff15956.jpg'), linear-gradient(#dfdfdf, #a0a0a0);; height: 50vh; background-blend-mode: multiply;">
+                <div class="white-col text-center" style="display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                ">
+                    <span>
+                        <h1 class="text-shadow" style="margin-top: 0; margin-bottom: 0;">Realistic Photoscanned 3D Models</h1>
+                        <p class="text-shadow white-col" style="margin-top: 7px;">Multiple levels of detail and high-res PBR Maps included</p>
+                        <a href="/scanned-3d-models" class="text-center no-underline button-red button-center">Browse 3D Models</a>
+                    </span>
+                   
+                    
+                </div>
+                <span id="backgroundImage-credit" class="always-white-col">Image credit: <a target="_blank" href="https://www.dorianzgraggen.com" class="always-white-col">Dorian Zgraggen</a></span>
+            </div>
+            
+            <!-- What is cgbookcase.com? -->
+            <section class="">
+                <div class="margin w-1400">
+                    <h2 class="text-center">What's special about the models</h2>
+                    <p class="text-center">When buying a model, you don't just get a single file with a color texture:</p>
+
+
+                    <div class="space"></div>
+                    <div class="space"></div>
+
+
+                    <div id="scans-overview-features">
+
+                        <% features.forEach(feature => { %>
+                            <div>
+                                <img src="https://www.dorianzgraggen.com/uploads/melon_b.jpg">
+                                <h3><%= feature.title %></h3>
+                                <p><%= feature.description %></p>
+                                <p><a id="scan-feature-readmore" href="<%= feature.url %>"><%= feature.button %></a></p>
+
+                            </div>
+                        <% }) %>
+                    </div>
+                    
+                    <div class="space"></div>
+                </div>
+            </section>
+
+
+
+            <section class="margin w-1400">
+                <h2 class="text-center">Simple Pricing</h2>
+                <p class="text-center">No subscription feeds. No complicated credit point system.</p>
+
+
+
+                <div id="scans-pricing-boxes" class="margin w-900 text-center">
+
+                    <% licenses.forEach(license => { %>
+                        <div>
+                            <div class="license-name"><%= license.name %></div>
+                            
+                            
+                            <div class="license-price">$<%= license.price %></div>
+                            <div class="license-per-model">per model</div>
+    
+                            <div class="license-desc gray"><%= license.description %></div>
+                        </div>
+                 
+                    <% }) %>
+                   
+
+                </div>
+                <p class="text-center">All prices are in USD. Commercial usage is allowed for every tier. <br>Read more about the <a href="/scanned-3d-models/license">usage license</a>.</p>
+            </section>
+
+
+
+            <div id="home-backgroundImage" class="inset-shadow" style="background-image: url('https://i.imgur.com/mgX9JSQ.png'), linear-gradient(#dfdfdf, #a0a0a0);; height: 32vh; background-blend-mode: multiply;">
+                <div class="white-col text-center" style="display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                ">
+                    <span>
+                        <a href="/scanned-3d-models" class="text-center no-underline button-red button-center">Browse 3D Models</a>
+                    </span>
+                   
+                    
+                </div>
+                <span id="backgroundImage-credit" class="always-white-col">Image credit: <a target="_blank" href="https://www.dorianzgraggen.com" class="always-white-col">Dorian Zgraggen</a></span>
+            </div>
+
+
+
+        </main>
+        <%- include("../partials/footer.ejs") %>
