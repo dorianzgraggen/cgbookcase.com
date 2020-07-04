@@ -188,7 +188,7 @@ let features = [
         url: "/scanned-3d-models/features#file-formats"
     },
     {
-        title: "MHigh Resolution PBR Maps",
+        title: "High Resolution PBR Maps",
         description: "Each 3D model is UV-unwrapped and come with high resolution PBR maps for three workflows: Metalness, Specular and Game-optimized..",
         button: "Read more about PBR maps",
         url: "/scanned-3d-models/features#pbr-maps"
@@ -209,7 +209,26 @@ app.get("/scanned-3d-models/overview", function (req, res) {
 
 });
 
-simpleRoute("/scanned-3d-models", "scans/list.ejs");
+
+app.get("/scanned-3d-models", function (req, res) {
+
+
+    fs.readFile('public/blog/articles.json', (err2, data_posts) => {
+        if (err2) throw err2;
+        let blogPosts = JSON.parse(data_posts);
+        //console.log(blogPosts);
+
+
+         res.render("scans/list.ejs", { licenses, blogPost: blogPosts[0],  req });
+
+
+       
+
+    });
+
+});
+
+
 
 simpleRoute("/privacy-and-cookies", "more/privacy-and-cookies.ejs");
 simpleRoute("/license-information", "more/license-information.ejs");

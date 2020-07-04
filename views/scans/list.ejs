@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PBR Textures | cgbookcase.com</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Download more than 380 free PBR Texures from cgbookcase.com.">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css"
+        integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="/styles/default.css" rel="stylesheet">
+    <link href="/styles/header.css" rel="stylesheet">
+    <link href="/styles/textures.css" rel="stylesheet">
+    <link href="/styles/font-sizes.css" rel="stylesheet">
+    <link href="/styles/scans.css" rel="stylesheet">
+    
+    <link href="/styles/colors.css" rel="stylesheet">
+
+    <%- include("../partials/head.ejs") %>
+</head>
+
+
+<body>
+    <%- include("../partials/header.ejs") %>
+    <main id="mainM">
+        <div class="margin ">
+            <div id="textures-divider">
+
+                <!-- LEFT SIDE: FILTERS -->
+                <section id="textures-filters">
+                    <h3 class="text-center">Filters</h2>
+                        <form action="/textures" method="get" id="filtersForm">
+                            <label for="category">Pricing</label>
+                            <br>
+                            <select name="category" form="filtersForm" onchange="setCategory()">
+                                <option id="v-all" value="all">Free and Premium</option>
+                                <option id="v-premium" value="premium">Premium only</option>
+                                <option id="v-free" value="free">Free only</option>
+                               
+                            </select>
+
+                            <div class="space"></div>
+
+                            <label for="">Size</label><br>
+                            
+                            <div id="size-outer">
+                                <span class="sizePlaceholder">
+                                    <input type="text" placeholder="0"><span>cm</span>
+                                </span>
+                                <span style="padding: 10px;">-</span>
+                                <span class="sizePlaceholder">
+                                    <input type="text" placeholder="0"><span>cm</span>
+                                </span>
+                            </div>
+                          
+                            
+                            <input type="checkbox"  name="imperial" value="impercial">
+                            <label for="vehicle1">imperial units</label><br>
+                        
+    
+
+                                    <div class="space"></div>
+                        </form>
+
+
+                        <h3 class="text-center">Information</h3>
+                        <p class="text-center"><a href="/scanned-3d-models/tutorials">Tutorials</a></p>
+                        <p class="text-center"><a href="/scanned-3d-models/features">What's included</a></p>
+                        <p class="text-center"><a href="/scanned-3d-models/license-information">License information</a></p>
+                        
+                        <div class="space"></div>
+                       
+                        <h3 class="text-center">Recent Blog Posts</h3>
+                        
+                        <a href="/blog/<%= blogPost.slug %>">
+                            <div class="future-release" style="background-image: url('https://cdn2.cgbookcase.cloud/blog/posts/<%= blogPost.folder %>/thumbnail2.jpg')">
+                                <div class="future-release-overlay">
+
+                                </div>
+                                <p class="future-release-title"><%= blogPost.release_name %></p>
+                            </div>
+                        </a>
+
+                        <div class="space"></div>
+                       
+
+                        
+
+                        
+                        
+                      
+                        <div class="space"></div>
+
+                      
+                        <div class="space"></div>
+                </section>
+
+                <!-- RIGHT SIDE: TEXTURES -->
+                <section id="textures-results">
+
+
+
+
+                    <!-- <div id="textures-search">
+                        <input type="text" name="search" id="searchbar" value="lol"
+                            placeholder="Search PBR Textures">
+                        <button id="search-button" aria-label="Search" onclick="setSearch()" type="button"><i
+                                class="fas fa-search"></i></button>
+                    </div> -->
+
+                    <!-- <div style="text-align: center; margin: 24px;">
+                            <a href="https://forms.gle/Qpc68BGQJ5itLBhJ7" target="_blank">Want to help shape the future of cgbookcase.com? Fill out the survey!</a> 🖊️
+                        </div> -->
+                    
+                    <script>
+
+                        let currentlyChangingNum = 0;
+                        let bCurrentlyHovering = false;
+
+                        let hoverItem = "";
+
+                        let imagesToLoad = 0;
+                        let imagesLoaded = 0;
+
+                        function startHover(element) {
+                            let video = element.getElementsByTagName('video')[0]
+                            video.play()
+                            video.style.display = "inline"
+                        }
+
+                        function endHover(element) {
+                            let video = element.getElementsByTagName('video')[0]
+                            video.pause()
+                            video.style.display = "none"
+                            video.currentTime = 0;
+                        }
+                       
+
+                    </script>
+                    
+                    <% scannedModel = { nice: "nice"} %>
+
+                    
+                    <% images = ["https://placekitten.com/g/1280/960", "https://placekitten.com/g/1440/720"] %> 
+                    <% widths = [1, 2] %> 
+
+                    <div style="display: flex; justify-content: space-between;">
+                        <h2>Fruit Scans I</h2>
+                        <p style="margin-top: 27px;">
+                            <span style="margin-right: 12px;">
+                                Buy the entire set and save $20
+                            </span>
+                            <a style="display: inline;" href="/scanned-3d-models/sets/fruits-01" class="text-center no-underline button-red">Buy</a>
+                        </p>
+                    </div>
+
+                    <div id="scans-list">
+
+
+                        <% for(i= 0 ; i < 8; i++) { %>
+                        <a href="/scanned-3d-models/red-apple-01">
+                            <div style="position: relative;" onmouseover="startHover(this)" onmouseout="endHover(this)">
+                                <img src="<%= images[0] %>">
+                                <div style="position: absolute;top: 0;width: 100%; height: 100%">
+                                        <video preload="none" muted loop>
+                                            <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+                                            <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                </div>
+                                
+                            </div>
+                        </a>
+
+                        <!-- <a href="/textures/<%=scannedModel.url%>" class="results-itemWrapper">
+                            <div class="results-item" onmouseover="startHover(this)" onmouseout="destroyPreviews(this)" data-files="<%= scannedModel.files %>" data-category="<%= scannedModel.category %>" data-filename="<%= scannedModel.file %>"
+                                style="transition-duration: 0.2s; background-image: url('https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=scannedModel.file%>_default.jpg')">
+                                
+                                <div class="prev-container"></div>
+
+                                <span class="results-item-resolution"><%=scannedModel.resolution%>K</span>
+                                <span class="results-item-name"><%=scannedModel.title%></span>
+                                <div class="progress-bar" style="display: none; position: absolute; top: 0; left: 0; background-color: #f73859; height: 4px; transition-duration: .2s;"></div>
+
+                            </div>
+                            <div class="previews-container"></div>
+                        </a> -->
+
+                        <% } %>
+
+                        <% if(false) { %>
+                        <a id="notexture-meme" href="/request-a-texture" aria-label="Request a texture">
+                            <img src="https://cdn2.cgbookcase.cloud/textures/texturerequest_meme.jpg">
+                        </a>
+
+                      
+                        
+                       
+                        <% } %>
+                    </div>
+                   
+
+                    <div id="page-controls" <% if(req.query.page == 1 || !req.query.page){%>
+                        style="flex-direction: row-reverse;" <%}%>>
+                            <% if(req.query.page > 1) { %> <button onclick="previousPage()"><i
+                            style="font-size: 24px; margin-right: 12px;" class="fas fa-angle-left"></i> Previous
+                        Page</button>
+                        <%}%>
+                            <% if(false) { %>
+                        <button onclick="nextPage()">Next Page <i style="font-size: 24px; margin-left: 12px;"
+                                class="fas fa-angle-right"></i></button>
+                        <%}%>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+
+    </main>
+    <%- include("../partials/footer.ejs") %>
