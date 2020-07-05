@@ -176,6 +176,10 @@ footer div {
     text-decoration: none;
 }
 
+.w-700, .w-900, .w-1200, .w-1400 {
+    width: 100%;
+}
+
 .w-700 {
     max-width: 700px;
 }
