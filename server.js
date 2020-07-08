@@ -202,12 +202,45 @@ let features = [
 ]
 
 
+let scans = [
+    {
+        name: "Melon 01",
+        dimensions: {
+            x: 12.2,
+            y: 14.3,
+            z: 9.3
+        },
+        textureResolution: 8,
+        lods: [
+            343, 898, 3201, 6382, 12930, 36920, 58290, 72001, 98873
+        ],
+        gumroadID: "lDpIA",
+    }
+]
+
+let maps = {
+    MetalnessRoughness : ["BaseColor", "Roughness"],
+    SpecularGlossiness : ["Albedo", "Glossiness", "Specular"],
+    WorkflowIndependent : ["AO", "Height", "NormalDirectX", "NormalOpenGL"],
+    GameOptimized: ["RoughAO", "NormalRough", "BaseColorRough"]
+}
+
 
 app.get("/scanned-3d-models/overview", function (req, res) {
 
     res.render("scans/overview.ejs", { licenses, features });
 
 });
+
+app.get("/scanned-3d-models/:url", function (req, res) {
+
+      
+
+        res.render("scans/view_scan.ejs", { scan: scans[0], maps });
+
+
+});
+
 
 
 app.get("/scanned-3d-models", function (req, res) {

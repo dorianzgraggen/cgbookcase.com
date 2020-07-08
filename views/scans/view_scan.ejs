@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Melon 01 | Free PBR texture from cgbookcase.com</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+
+        <meta name="description" content=xxxxxxxxxxxxxxxx.">
+        
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-/pOR6TNYPdUaQQQRKQ4XHznZ4U2K/Lscb3u6jshUngC/31fLTuyX9FZb24gp4O3J" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+        <link href="/styles/default.css" rel="stylesheet">
+        <link href="/styles/header.css" rel="stylesheet">
+        <link href="/styles/textures.css" rel="stylesheet">
+        <link href="/styles/scans.css" rel="stylesheet">
+        <link href="/styles/font-sizes.css" rel="stylesheet">
+
+        <link href="/styles/colors.css" rel="stylesheet">
+
+
+        
+
+        <%- include("../partials/head.ejs") %>
+
+
+
+    </head>
+    
+    
+    <body>
+        <%- include("../partials/header.ejs") %>
+        <main class="margin w-1400">
+          
+            
+            <div id="view-texture">
+
+                <div id="view-imageContainer">
+                    <img class="rounded box-shadow-5-l" alt="" src="https://i.imgur.com/QCBYThe.jpg">
+                    
+                
+                </div>
+
+                <div id="view-downloadSection">
+                    <h1>Melon 01</h1>
+
+                    <table id="scan-table" style="">
+                        <tr>
+                            <th>Dimensions</th>
+                            <td><%= scan.dimensions.x %>cm x <%= scan.dimensions.y %>cm x <%= scan.dimensions.z %>cm</td>
+                        </tr>
+                        <tr>
+                            <th>File formats</th>
+                            <td>blend, OBJ, FBX, gLTF</td>
+                        </tr>
+                        <tr>
+                            <th>Texture workflows</th>
+                            <td>Metallness, Specular, Game-optimized</td>
+                        </tr>
+                        <tr>
+                            <th>Max. texture resolution</th>
+                            <td><%= scan.textureResolution * 1024 %> x <%= scan.textureResolution * 1024 %></td>
+                        </tr>
+                        <tr>
+                            <th>LODs</th>
+                            <td><%= scan.lods.length %></td>
+                        </tr>
+                    </table>
+
+                    <p class="text-center margin" style="padding-top: 0;">For more information, see the <a href="#details">details section</a>.</p>
+                    <div class="space"></div>
+
+                    <div style="margin: 0 auto; width: max-content;">
+                        <a target="" style="display: inline-flex;" href="https://gumroad.com/l/lDpIA" class="text-center no-underline button-red button-center box-shadow-5-l">
+                        
+                            <div style="width: 30px;"><img src="/media/brand/gumroad.svg"></div>
+                            <div style="margin: 6px 15px">Buy via Gumroad</div>
+                        </a>
+ 
+                    </div>
+
+                   
+                    
+                    
+
+                    
+                    <div class="space"></div>
+                </div>
+
+            </div>
+
+
+            
+
+            <div class="space"></div>
+
+            <h2 id="details" class="text-center">Details</h2>
+            <div class="whiteBG border margin w-1400 box-shadow-5-l">
+                
+                <h3>Additional Renders</h3>
+                
+                
+                
+                
+                <h3>Levels of Detail</h3>
+
+
+
+                
+                <h3>PBR Maps</h3>
+
+
+                <script>
+                    function openClose(folder, id) {
+                        folder.querySelector(".expand-arrow").classList.toggle("closed");
+                        document.getElementById(id).classList.toggle("files-hidden");
+                        console.log(document.getElementById(id))
+                    }
+                </script>
+
+                <h3>Files</h3>
+                <p>Overview of all the files you will get when buying. Click on folders to expand.</p>
+
+                <% let lodNums = [] %>
+                <% for( let i = 0; i < scan.lods.length; i++ ) { %>
+
+                    <% let num = scan.lods[i] %>
+                    <% if (num > 999) { %>
+                    <% num = Math.round(num / 1000) + "K" %>
+                        
+                    <% } %>
+
+                    <% lodNums.push(num) %>
+                
+                <% } %>
+
+
+                <div id="scan-files" class="box-shadow-5-li" style="">
+                        <div onclick="openClose(this, 'folder-models')"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> Models</div>
+
+                        <span class="expansion files-hidden" id="folder-models">
+                            
+                            <div onclick="openClose(this, 'folder-fbx')"  class="t-1"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> FBX</div>
+                            
+                            <span class="expansion files-hidden" id="folder-fbx">
+                                <% lodNums.forEach(element => { %>
+                                    <div class="t-2"><i class="far fa-cube"></i> Melon01_<%= element %>.fbx</div>
+                                <% }) %>
+                   
+                            </span>
+
+
+                            
+                        
+
+                            <div onclick="openClose(this, 'folder-obj')" class="t-1 folder"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> OBJ</div>
+                            <span class="expansion files-hidden" id="folder-obj">
+                                <% lodNums.forEach(element => { %>
+                                    <div class="t-2"><i class="far fa-cube"></i> Melon01_<%= element %>.obj</div>
+                                <% }) %>
+                            </span>
+
+                            <div onclick="openClose(this, 'folder-blender')" class="t-1 folder"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> Blender</div>
+                            <span class="expansion files-hidden" id="folder-blender">
+                                <div class="t-2"><i class="far fa-cube"></i> Melon01.blend</div>
+                            </span>
+                        
+                        </span>
+                        
+                        
+                       
+
+                        <div onclick="openClose(this, 'folder-textures')"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> Textures</div>
+
+                        <span class="expansion files-hidden" id="folder-textures">
+
+                        
+                            <!-- METALNESS ROUGHNESS -->
+                            <div onclick="openClose(this, 'folder-metalness')" class="t-1"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> MetalnessRoughness <span class="files-comment">For software like Blender, Unreal Engine 4, Twinmotion, V-Ray and much more</span></div>
+
+                            <span class="expansion files-hidden" id="folder-metalness">
+                                <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
+                                    <% for( let j = 0; j < maps.MetalnessRoughness.length; j++ ) { %>
+                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= i %>K_<%= maps.MetalnessRoughness[j] %>.png</div>
+                                    
+                                    <% } %>
+                                <% } %>
+                                
+                            </span>
+
+                            <!-- SPECULAR GLOSSINESS -->
+                            <div onclick="openClose(this, 'folder-specular')" class="t-1"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> SpecularGlossiness <span class="files-comment">For software like Unity, Ehrenmann and Ricola</span></div>
+                            <span class="expansion files-hidden" id="folder-specular">
+                                <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
+                                    <% for( let j = 0; j < maps.SpecularGlossiness.length; j++ ) { %>
+                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= i %>K_<%= maps.SpecularGlossiness[j] %>.png</div>
+                                    
+                                    <% } %>
+                                <% } %>
+                                
+                            </span>
+
+                            <!-- WORKFLOW INDEPENDENT -->
+                            <div onclick="openClose(this, 'folder-independent')" class="t-1"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> WorkflowIndependent <span class="files-comment">Textures that are the same in both workflows</span></div>
+                            <span class="expansion files-hidden" id="folder-independent">
+                                <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
+                                    <% for( let j = 0; j < maps.WorkflowIndependent.length; j++ ) { %>
+                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= i %>K_<%= maps.WorkflowIndependent[j] %>.png</div>
+                                    
+                                    <% } %>
+                                <% } %>
+                                
+                            </span>
+                        
+                            <!-- GAME OPTIMIZED -->
+                            <div onclick="openClose(this, 'folder-game')" class="t-1"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> GameOptimized <span class="files-comment">Channel packed textures, for when performance matters</span></div>
+                            <span class="expansion files-hidden" id="folder-game">
+                                <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
+                                    <% for( let j = 0; j < maps.GameOptimized.length; j++ ) { %>
+                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= i %>K_<%= maps.GameOptimized[j] %>.png</div>
+                                    
+                                    <% } %>
+                                <% } %>
+                                
+                            </span>
+                       
+                        </span>
+
+
+                        
+                        <div><i class="far fa-file-alt"></i> License.txt</div>
+                        <div><i class="far fa-file-alt"></i> Guides.txt</div>
+                </div>
+
+                <p>If you're not sure which types of textures you should use for your software, take a look at our <a href="/learn/pbr-workflows-which-software-uses-what-kind-of-texture-maps">PBR workflows software list</a>.<br>
+                    For any questions, feel free to mail us at <a href="mailto:support@cgbookcase.com">support[at]cgbookcase.com</a>.</p>
+
+
+
+                <h3></h3>
+
+            </div>
+
+
+          
+            
+            
+        </main>
+
+
+       
+        
+<%- include("../partials/footer.ejs") %>
