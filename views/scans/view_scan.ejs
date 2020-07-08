@@ -111,13 +111,7 @@
                 <h3>PBR Maps</h3>
 
 
-                <script>
-                    function openClose(folder, id) {
-                        folder.querySelector(".expand-arrow").classList.toggle("closed");
-                        document.getElementById(id).classList.toggle("files-hidden");
-                        console.log(document.getElementById(id))
-                    }
-                </script>
+                
 
                 <h3>Files</h3>
                 <p>Overview of all the files you will get when buying. Click on folders to expand.</p>
@@ -137,11 +131,11 @@
 
 
                 <div id="scan-files" class="box-shadow-5-li" style="">
-                        <div onclick="openClose(this, 'folder-models')"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> Models</div>
+                        <div onclick="openClose(this, 'folder-models')" class="folder"><i class="fas fa-caret-down expand-arrow"></i> <i class="fas fa-folder"></i> Models</div>
 
-                        <span class="expansion files-hidden" id="folder-models">
+                        <span class="expansion s-blue" id="folder-models">
                             
-                            <div onclick="openClose(this, 'folder-fbx')"  class="t-1"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> FBX</div>
+                            <div id="f-fbx" onclick="openClose(this, 'folder-fbx')"  class="t-1 f-blue folder"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> FBX</div>
                             
                             <span class="expansion files-hidden" id="folder-fbx">
                                 <% lodNums.forEach(element => { %>
@@ -161,9 +155,16 @@
                                 <% }) %>
                             </span>
 
-                            <div onclick="openClose(this, 'folder-blender')" class="t-1 folder"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> Blender</div>
+                            <div id="f-blender" onclick="openClose(this, 'folder-blender')" class="t-1 f-blue folder"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> Blender</div>
                             <span class="expansion files-hidden" id="folder-blender">
                                 <div class="t-2"><i class="far fa-cube"></i> Melon01.blend</div>
+                            </span>
+
+                            <div id="f-gltf" onclick="openClose(this, 'folder-gltf')" class="t-1 folder"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> gLTF</div>
+                            <span class="expansion files-hidden" id="folder-gltf">
+                                <% lodNums.forEach(element => { %>
+                                    <div class="t-2"><i class="far fa-cube"></i> Melon01_<%= element %>.gltf</div>
+                                <% }) %>
                             </span>
                         
                         </span>
@@ -171,13 +172,14 @@
                         
                        
 
-                        <div onclick="openClose(this, 'folder-textures')"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> Textures</div>
+                        <!-- TEXTURES  -->
+                        <div id="f-textures" class="f-blue folder" onclick="openClose(this, 'folder-textures')"><i class="fas fa-caret-down expand-arrow"></i> <i class="fas fa-folder"></i> Textures</div>
 
-                        <span class="expansion files-hidden" id="folder-textures">
+                        <span class="expansion" id="folder-textures">
 
                         
                             <!-- METALNESS ROUGHNESS -->
-                            <div onclick="openClose(this, 'folder-metalness')" class="t-1"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> MetalnessRoughness <span class="files-comment">For software like Blender, Unreal Engine 4, Twinmotion, V-Ray and much more</span></div>
+                            <div onclick="openClose(this, 'folder-metalness')" class="t-1 folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> MetalnessRoughness <span class="files-comment">For software like Blender, Unreal Engine 4, Twinmotion, V-Ray and much more</span></div>
 
                             <span class="expansion files-hidden" id="folder-metalness">
                                 <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
@@ -190,7 +192,7 @@
                             </span>
 
                             <!-- SPECULAR GLOSSINESS -->
-                            <div onclick="openClose(this, 'folder-specular')" class="t-1"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> SpecularGlossiness <span class="files-comment">For software like Unity, Ehrenmann and Ricola</span></div>
+                            <div id="f-specularglossiness" onclick="openClose(this, 'folder-specular')" class="f-blue t-1 folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> SpecularGlossiness <span class="files-comment">For software like Unity, Ehrenmann and Ricola</span></div>
                             <span class="expansion files-hidden" id="folder-specular">
                                 <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
                                     <% for( let j = 0; j < maps.SpecularGlossiness.length; j++ ) { %>
@@ -202,7 +204,7 @@
                             </span>
 
                             <!-- WORKFLOW INDEPENDENT -->
-                            <div onclick="openClose(this, 'folder-independent')" class="t-1"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> WorkflowIndependent <span class="files-comment">Textures that are the same in both workflows</span></div>
+                            <div onclick="openClose(this, 'folder-independent')" class="t-1 folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> WorkflowIndependent <span class="files-comment">Textures that are the same in both workflows</span></div>
                             <span class="expansion files-hidden" id="folder-independent">
                                 <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
                                     <% for( let j = 0; j < maps.WorkflowIndependent.length; j++ ) { %>
@@ -214,7 +216,7 @@
                             </span>
                         
                             <!-- GAME OPTIMIZED -->
-                            <div onclick="openClose(this, 'folder-game')" class="t-1"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> GameOptimized <span class="files-comment">Channel packed textures, for when performance matters</span></div>
+                            <div id="f-game" onclick="openClose(this, 'folder-game')" class="t-1 f-blue folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> GameOptimized <span class="files-comment">Channel packed textures, for when performance matters</span></div>
                             <span class="expansion files-hidden" id="folder-game">
                                 <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
                                     <% for( let j = 0; j < maps.GameOptimized.length; j++ ) { %>
@@ -229,8 +231,8 @@
 
 
                         
-                        <div><i class="far fa-file-alt"></i> License.txt</div>
-                        <div><i class="far fa-file-alt"></i> Guides.txt</div>
+                        <div id="t-license"><i class="far fa-file-alt"></i> License.txt</div>
+                        <div id="t-guides" class="f-blue"><i class="far fa-file-alt"></i> Guides.txt</div>
                 </div>
 
                 <p>If you're not sure which types of textures you should use for your software, take a look at our <a href="/learn/pbr-workflows-which-software-uses-what-kind-of-texture-maps">PBR workflows software list</a>.<br>
@@ -247,6 +249,36 @@
             
             
         </main>
+
+        <script>
+            function openClose(folder, id) {
+                folder.querySelector(".expand-arrow").classList.toggle("closed");
+                document.getElementById(id).classList.toggle("files-hidden");
+                console.log(document.getElementById(id))
+            }
+
+            function handleKey(folder, id) {
+                if (x == 13 || x == 32) { 
+                    alert ("You pressed the Escape key!");
+                }
+            }
+
+
+            let folders = document.querySelectorAll(".folder");
+            console.log(folders)
+            folders.forEach(folder => {
+                folder.setAttribute("tabindex", "0")
+                
+                folder.addEventListener("keypress", () => {
+                    let x = event.keyCode;
+                    if (x == 13) { 
+
+                        let target = folder.getAttribute("onclick").match(/'([^']+)'/)[1];
+                        openClose(folder, target);
+                    }
+                })
+            });
+        </script>
 
 
        

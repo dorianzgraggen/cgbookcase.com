@@ -149,8 +149,38 @@ th {
     padding: 3px 10px;
 }
 
-#scan-files div:nth-child(even) {
-    background: rgb(248, 248, 248);
+/* #scan-files div:nth-child(even) {
+    background: rgb(243, 248, 250);
+} */
+
+/* #f-textures,
+#t-guides,
+#f-fbx,
+#f-blender,
+#f-specularglossiness,
+#f-game
+{
+    background: rgb(243, 248, 250);
+} */
+
+
+.folder {
+    cursor: default;
+}
+.f-blue {
+    background: rgb(243, 248, 250);
+}
+
+.expansion > .expansion > div:nth-child(odd) {
+    background: rgb(243, 248, 250);
+}
+
+.expansion .t-2:nth-child(even) {
+    background: rgb(243, 248, 250) !important;
+}
+
+.expansion .t-2:nth-child(odd) {
+    background: rgb(255, 255, 255) !important;
 }
 
 .t-1 {
