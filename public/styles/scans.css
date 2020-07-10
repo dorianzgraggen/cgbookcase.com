@@ -223,3 +223,23 @@ th {
     display: none;
 }
 
+.nice {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.nice > div:first-child {
+    /* overflow: hidden; */
+    margin-right: 16px;
+}
+
+
+
+.nice img {
+    /* display: block;
+    width: auto;
+    height: 100%; */
+    display: block;
+    max-width: 100%;
+}
