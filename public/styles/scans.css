@@ -243,3 +243,22 @@ th {
     display: block;
     max-width: 100%;
 }
+
+
+#lod-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 12px;
+}
+
+
+.maps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 12px;
+}
+
+.maps-grid > div > p {
+    text-align: center;
+    margin-top: 6px;
+}

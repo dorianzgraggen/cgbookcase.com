@@ -183,7 +183,7 @@ let features = [
     },
     {
         title: "Compatible with Every Major 3D Software",
-        description: "Each 3D model is available in multiple file formats: As a Blender file (.blend), Wavefront OBJ, FBX and gLTF.",
+        description: "Each 3D model is available in multiple file formats: As a Blender file (.blend), Wavefront OBJ and FBX.",
         button: "Read more about file formats",
         url: "/scanned-3d-models/features#file-formats"
     },
@@ -212,17 +212,15 @@ let scans = [
         },
         textureResolution: 8,
         lods: [
-            343, 898, 3201, 6382, 12930, 36920, 58290, 72001, 98873
+            98, 196, 392, 786, 1572, 3146, 6294, 12588, 25176, 50354
         ],
         gumroadID: "lDpIA",
     }
 ]
 
 let maps = {
-    MetalnessRoughness : ["BaseColor", "Roughness"],
-    SpecularGlossiness : ["Albedo", "Glossiness", "Specular"],
-    WorkflowIndependent : ["AO", "Height", "NormalDirectX", "NormalOpenGL"],
-    GameOptimized: ["RoughAO", "NormalRough", "BaseColorRough"]
+    Standard : ["AO", "BaseColor", "Normal_DirectX", "Normal_OpenGL", "Roughness"],
+    ChannelPacked: ["RoughAO", "NormalRough", "BaseColorRough"]
 }
 
 

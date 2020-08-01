@@ -52,11 +52,11 @@
                         </tr>
                         <tr>
                             <th>File formats</th>
-                            <td>blend, OBJ, FBX, gLTF</td>
+                            <td>blend, OBJ, FBX</td>
                         </tr>
                         <tr>
                             <th>Texture workflows</th>
-                            <td>Metallness, Specular, Game-optimized</td>
+                            <td>Metallness, Channel-packed</td>
                         </tr>
                         <tr>
                             <th>Max. texture resolution</th>
@@ -125,16 +125,64 @@
 
                 <p>This scanned model comes with <%= scan.lods.length %> levels of detail:</p>
 
-                <img src="https://i.imgur.com/rsATXoR.png">
-                <img src="https://i.imgur.com/5VOyJKv.png">
+                <% function makeReadable(num) { if(num < 1000) { return num.toString()} else { return Math.round(num / 1000).toString() + "K" }  } %> 
+
+                            
+               
+                <div id="lod-grid">
+
+                <% for( let i = scan.lods.length - 1; i >= 0; i-- ) { %>
+                    <img src="https://cdn.cgbookcase.cloud/file/cgbookcase/test/Nectarine01/Nectarine_01_<%= makeReadable(scan.lods[i])%>.jpg">
+                
+                <% } %>
+
+              
+                </div>
+
 
                 
                 <h3>PBR Maps</h3>
-                <h4>Metalness</h4>
-                <h4>Specular</h4>
-                <h4>Both Workflows</h4>
-                <h4>Optimized</h4>
 
+                <% var allResolutions = [1, 2, 3, 4]%>
+                <% if (scan.textureResolution == 8) {
+                    allResolutions.push(6, 8)
+                }
+                %>
+
+                <p>For instructions on how to use these maps, check out the <a href="/scanned-3d-models/tutorials">tutorials section</a>. All textures of this model are available in the following resolutions:
+                </p>
+               <ul>
+                    <% for( let i = allResolutions.length - 1; i >= 0; i-- ) { %>
+                
+                        <li>
+                            <%= allResolutions[i] * 1024 %> x <%= allResolutions[i] * 1024 %>
+
+                        </li>
+
+                    <% } %>
+               </ul>
+               
+
+                <h4>Standard</h4>
+
+                <div class="maps-grid">
+                    <% maps.Standard.forEach(map => { %>
+                        <div>
+                            <img src="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/downloads/Pumpkin_seeds_01/Pumpkin_seeds_01_1K_Height.png">
+                            <p><%= map %></p>
+                        </div>
+                    <% }) %>
+                </div>
+                
+                <h4>Optimized (Channel-packed)</h4>
+                <div class="maps-grid">
+                    <% maps.ChannelPacked.forEach(map => { %>
+                        <div>
+                            <img src="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/downloads/Pumpkin_seeds_01/Pumpkin_seeds_01_1K_Height.png">
+                            <p><%= map %></p>
+                        </div>
+                    <% }) %>
+                </div>
                 
 
                 <h3>Files</h3>
@@ -181,15 +229,10 @@
 
                             <div id="f-blender" onclick="openClose(this, 'folder-blender')" class="t-1 f-blue folder"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> Blender</div>
                             <span class="expansion files-hidden" id="folder-blender">
-                                <div class="t-2"><i class="far fa-cube"></i> Melon01.blend</div>
+                                <div class="t-2"><i class="far fa-cube"></i> Melon01.blend <span class="files-comment">This file contains all the levels of detail</span></div>
                             </span>
 
-                            <div id="f-gltf" onclick="openClose(this, 'folder-gltf')" class="t-1 folder"><i class="fas fa-caret-down expand-arrow closed"></i> <i class="fas fa-folder"></i> gLTF</div>
-                            <span class="expansion files-hidden" id="folder-gltf">
-                                <% lodNums.forEach(element => { %>
-                                    <div class="t-2"><i class="far fa-cube"></i> Melon01_<%= element %>.gltf</div>
-                                <% }) %>
-                            </span>
+                            
                         
                         </span>
                         
@@ -202,49 +245,28 @@
                         <span class="expansion" id="folder-textures">
 
                         
-                            <!-- METALNESS ROUGHNESS -->
-                            <div onclick="openClose(this, 'folder-metalness')" class="t-1 folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> MetalnessRoughness <span class="files-comment">For software like Blender, Unreal Engine 4, Twinmotion, V-Ray and much more</span></div>
+                            <!-- STANDARD -->
+                            <div onclick="openClose(this, 'folder-metalness')" class="t-1 folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> Standard </div>
 
                             <span class="expansion files-hidden" id="folder-metalness">
-                                <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
-                                    <% for( let j = 0; j < maps.MetalnessRoughness.length; j++ ) { %>
-                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= i %>K_<%= maps.MetalnessRoughness[j] %>.png</div>
+                                <% for( let i = 0; i < allResolutions.length; i++ ) { %>
+                                    <% for( let j = 0; j < maps.Standard.length; j++ ) { %>
+                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= allResolutions[i] %>K_<%= maps.Standard[j] %>.png</div>
                                     
                                     <% } %>
                                 <% } %>
                                 
                             </span>
 
-                            <!-- SPECULAR GLOSSINESS -->
-                            <div id="f-specularglossiness" onclick="openClose(this, 'folder-specular')" class="f-blue t-1 folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> SpecularGlossiness <span class="files-comment">For software like Unity, Ehrenmann and Ricola</span></div>
-                            <span class="expansion files-hidden" id="folder-specular">
-                                <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
-                                    <% for( let j = 0; j < maps.SpecularGlossiness.length; j++ ) { %>
-                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= i %>K_<%= maps.SpecularGlossiness[j] %>.png</div>
-                                    
-                                    <% } %>
-                                <% } %>
-                                
-                            </span>
 
-                            <!-- WORKFLOW INDEPENDENT -->
-                            <div onclick="openClose(this, 'folder-independent')" class="t-1 folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> WorkflowIndependent <span class="files-comment">Textures that are the same in both workflows</span></div>
-                            <span class="expansion files-hidden" id="folder-independent">
-                                <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
-                                    <% for( let j = 0; j < maps.WorkflowIndependent.length; j++ ) { %>
-                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= i %>K_<%= maps.WorkflowIndependent[j] %>.png</div>
-                                    
-                                    <% } %>
-                                <% } %>
-                                
-                            </span>
+                        
                         
                             <!-- GAME OPTIMIZED -->
-                            <div id="f-game" onclick="openClose(this, 'folder-game')" class="t-1 f-blue folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> GameOptimized <span class="files-comment">Channel packed textures, for when performance matters</span></div>
+                            <div id="f-game" onclick="openClose(this, 'folder-game')" class="t-1 f-blue folder"><i class="fas fa-caret-down closed expand-arrow"></i> <i class="fas fa-folder"></i> ChannelPacked</div>
                             <span class="expansion files-hidden" id="folder-game">
-                                <% for( let i = 1; i <= scan.textureResolution; i++ ) { %>
-                                    <% for( let j = 0; j < maps.GameOptimized.length; j++ ) { %>
-                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= i %>K_<%= maps.GameOptimized[j] %>.png</div>
+                                <% for( let i = 0; i < allResolutions.length; i++  ) { %>
+                                    <% for( let j = 0; j < maps.ChannelPacked.length; j++ ) { %>
+                                        <div class="t-2"><i class="far fa-image"></i> Melon01_<%= allResolutions[i] %>K_<%= maps.ChannelPacked[j] %>.png</div>
                                     
                                     <% } %>
                                 <% } %>
@@ -264,7 +286,7 @@
                 </p>
 
 
-                <div style="margin: 0 auto; width: max-content;">
+                <div style="margin: 40px auto 18px auto; width: max-content;">
                     <a target="" style="display: inline-flex;" href="https://gumroad.com/l/lDpIA" class="text-center no-underline button-red button-center box-shadow-5-l">
                     
                         <div style="width: 30px;"><img src="/media/brand/gumroad.svg"></div>
