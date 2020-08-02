@@ -164,34 +164,21 @@
                         
                         <div class="space"></div>
                         <div class="space"></div>
-
-                        <% if (Math.random() >= 0.5) { %>
+                        
                          
-                            <div style="background:white;border-radius: 4px;">
-                                <a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank">
-                                    <img class="affiliate-img-search" style="width: 100%;" src="https://cdn2.cgbookcase.cloud/media/affiliate/evo.jpg">
-                                    
-                                </a>
-                                <p class="" style="margin: 0;padding: 7px 14px 12px 14px;">Extreme PBR Evo makes using PBR Materials in Blender easier and comes with more than 1100 ready-made materials.</p>
-                                <p class="" style="margin: 0;padding: 7px 14px 12px 14px;"><a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank">Use the code '<strong>cgbookcase</strong>' for 20% off.</a> <span style="color: lightgray">[affiliate link]</span></p>
-                            </div>
-
-                        <% } else { %>
+                        <div style="background:white;border-radius: 4px;">
+                            <a href="<%= affiliate.url %>" target="_blank">
+                                <img class="affiliate-img-search" style="width: 100%;" src="https:<%= affiliate.image.fields.file.url%>?fm=jpg&q=45&w=600">
+                                
+                            </a>
                             
-                        
-                            <div style="background:white;border-radius: 4px;">
-                                <a href="https://blendermarket.com/products/botaniq-trees?ref=92" target="_blank">
-                                    <img class="affiliate-img-search" style="width: 100%;" src="https://cdn.cgbookcase.cloud/file/cgbookcase/media/rest/botaniq.jpg">
-                                    
-                                </a>
-                                <p class="" style="margin: 0;padding: 7px 14px 12px 14px;">
-                                    Botaniq is a library of optimized & realistic trees, palms, shrubs and plants for Blender, perfect for any scene that could use a bit of greenery.</p>
-                                <p class="" style="margin: 0;padding: 7px 14px 12px 14px;"><a href="https://blendermarket.com/products/botaniq-trees?ref=92" target="_blank">Use the code '<strong>CGCOOKBASE</strong>' (typo intended) for 15% off.</a> <span style="color: lightgray">[affiliate link]</span></p>
-                            </div>
-                        
-                        <% } %>
-                         
 
+                            <% affiliate.description.content.forEach(e => { %>
+                                <p style="margin: 0;padding: 7px 14px 12px 14px; hyphens: auto"><%= e.content[0].value %></p>
+                            <% }) %>
+                            
+                            <p class="" style="margin: 0;padding: 7px 14px 12px 14px;"><a href="<%= affiliate.url %>" target="_blank"><%= affiliate.linkText %></a><br><span style="color: lightgray">[affiliate link]</span></p>
+                        </div>
                         
                       
                         

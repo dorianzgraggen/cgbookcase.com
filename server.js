@@ -6,8 +6,16 @@ var timestamp = require("unix-timestamp")
 const Fuse = require("fuse.js");
 const http = require('http');
 const https = require('https');
+var contentful = require('contentful');
+var cms = contentful.createClient({
+    space: 'hv9pvdicr8yj',
+    accessToken: '1R3gdYmNYXzS0FRU-j1r38GDpOwRmWPWyq6z7cOdaTk' // This is read-only, so there's no problem with this being public
+})
 
 let port = 8192;
+
+
+
 
 // Set Static Path
 app.use(express.static("public"));
@@ -353,7 +361,30 @@ app.get("/textures", function (req, res) {
                     try {
                         const allPatrons = JSON.parse(rawData);
                         //console.log(parsedData);
-                        res.render("textures/textures.ejs", { textures: validResults, patrons: allPatrons, req: req, limit: limit, blogPost: blogPosts[0] });
+
+                        cms.getEntries(
+                            {
+                                'content_type': 'affiliate'
+                            }
+                        )
+                        .then(function (entries) {
+                            let frequencies = [];
+                            entries.items.forEach(element => {
+                                frequencies.push(element.fields.frequency);            
+                            });
+                
+                            let index = Math.floor(Math.random() * entries.items.length);
+                            
+                            res.render("textures/textures.ejs", { 
+                                textures: validResults,
+                                patrons: allPatrons,
+                                req: req,
+                                limit: limit,
+                                blogPost: blogPosts[0],
+                                affiliate: entries.items[index].fields
+                            });
+                
+                        })
                     } catch (e) {
                         console.error(e.message);
                     }
@@ -394,7 +425,27 @@ app.get("/textures/:url", function (req, res) {
         console.log(searchResults)
         console.log(searchResults[0].item)
 
-        res.render("textures/view_texture.ejs", { texture: searchResults[0].item, req: req });
+        cms.getEntries(
+            {
+                'content_type': 'affiliate'
+            }
+        )
+        .then(function (entries) {
+            let frequencies = [];
+            entries.items.forEach(element => {
+                console.log("==========");
+                console.log(element);
+                frequencies.push(element.fields.frequency);            
+            });
+            console.log("*****************")
+
+            let index = Math.floor(Math.random() * entries.items.length);
+            console.log(index)
+            
+            res.render("textures/view_texture.ejs", { texture: searchResults[0].item, req: req, affiliate: entries.items[index].fields });
+
+        })
+
 
 
     });

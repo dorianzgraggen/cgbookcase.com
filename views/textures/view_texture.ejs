@@ -66,8 +66,6 @@
     <body>
         <%- include("../partials/header.ejs") %>
         <main class="margin w-1400">
-          
-            
             <div id="view-texture">
 
                 <div id="view-imageContainer">
@@ -244,53 +242,28 @@
                 <a aria-label="Learn how to use this texture in Godot" href="/textures/how-to-use-pbr-textures-in-godot?texture=<%=texture.url%>"><img alt="" src="/media/brand/software/godot_logo.svg"></a> -->
             </div>
 
-            <h2 style="font-size: 1.4em;" class="text-center desktop-only">Blender Add-on</h2>
+            <h2 style="font-size: 1.4em;" class="text-center desktop-only">Affiliate</h2>
 
-            <% if (Math.random() >= 0.5) { %>
+  
 
             <div style="max-width: 1460px;margin: 17px auto 12px auto;display: flex;background:white;" class="desktop-only">
             
-                <a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank"
+                <a href="<%= affiliate.url %>" target="_blank"
                     style="width: 50%;">
                     <img style="width: 100%;border-top-left-radius: 4px;border-bottom-left-radius: 4px;height: 100%;"
-                        src="https://cdn2.cgbookcase.cloud/media/affiliate/evo.jpg">
+                        src="https:<%= affiliate.image.fields.file.url%>?fm=jpg&q=45&w=1000">
             
                 </a>
                 <div style="width: 50%;padding: 23px 32px;">
-                    <h4 style="margin-top: 12px;">Extreme PBR Evo - 1100+ PBR Materials for Blender</h4>
-                    <p>Using and managing PBR materials in Blender can be a bit of a headache, so you might enjoy using the Extreme PBR
-                        Evo add-on! It comes with more than 1100 PBR materials (some of which are from this site).
-                    </p>
-                    <p><a href="https://blendermarket.com/products/extreme-pbr-addon-for-blender-279-2?ref=92" target="_blank">Use the code '<strong>cgbookcase</strong>' at checkout for 20% off.</a> <span style="color: lightgray">[affiliate link]</span></p>
+                    <h4 style="margin-top: 12px;"><%= affiliate.title %></h4>
+                    <% affiliate.description.content.forEach(e => { %>
+                        <p><%= e.content[0].value %></p>
+                    <% }) %>
+                    <p><a href="<%= affiliate.url %>" target="_blank"><%= affiliate.linkText %></a> <span style="color: lightgray">[affiliate link]</span></p>
                 
                 </div>
             
             </div>
-  
-
-            <% } else { %>
-
-
-            <div style="max-width: 1460px;margin: 17px auto 12px auto;display: flex;background:white;" class="desktop-only">
-            
-                <a href="https://blendermarket.com/products/botaniq-trees?ref=92" target="_blank"
-                    style="width: 50%;">
-                    <img style="width: 100%;border-top-left-radius: 4px;border-bottom-left-radius: 4px;height: 100%;"
-                        src="https://cdn.cgbookcase.cloud/file/cgbookcase/media/rest/botaniq.jpg">
-            
-                </a>
-                <div style="width: 50%;padding: 23px 32px;">
-                    <h4 style="margin-top: 12px;">Botaniq - Trees, Palms, Shrubs and Plants for Blender</h4>
-                    <p>
-                        Botaniq is an ever expanding library of optimized & realistic 3D vegetation. It contains various trees, palms, succulents, shrubs, plants and pots suitable for all kinds of scenes that could use a bit of greenery.
-                    </p>
-                    <p><a href="https://blendermarket.com/products/botaniq-trees?ref=92" target="_blank">Use the code '<strong>CGCOOKBASE</strong>' (typo intended) for 15% off.</a> <span style="color: lightgray">[affiliate link]</span></p>
-                
-                </div>
-            
-            </div>
-  
-            <% } %>
 
 
             
