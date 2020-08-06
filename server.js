@@ -84,12 +84,12 @@ app.get("/", function (req, res) {
                 error = new Error('Invalid content-type.\n' +
                     `Expected application/json but received ${contentType}`);
             }
-            if (error) {
-                console.error(error.message);
-                // Consume response data to free up memory
-                resJSON.resume();
-                return;
-            }
+            // if (error) {
+            //     console.error(error.message);
+            //     // Consume response data to free up memory
+            //     resJSON.resume();
+            //     return;
+            // }
 
             resJSON.setEncoding('utf8');
             let rawData = '';
@@ -101,6 +101,8 @@ app.get("/", function (req, res) {
                     res.render("more/home.ejs", { textures: allTextures, patrons: allPatrons });
                 } catch (e) {
                     console.error(e.message);
+                    res.render("more/home.ejs", { textures: allTextures, patrons: {} });
+
                 }
             });
         }).on('error', (e) => {
@@ -347,12 +349,12 @@ app.get("/textures", function (req, res) {
                     error = new Error('Invalid content-type.\n' +
                         `Expected application/json but received ${contentType}`);
                 }
-                if (error) {
-                    console.error(error.message);
-                    // Consume response data to free up memory
-                    resJSON.resume();
-                    return;
-                }
+                // if (error) {
+                //     console.error(error.message);
+                //     // Consume response data to free up memory
+                //     resJSON.resume();
+                //     return;
+                // }
 
                 resJSON.setEncoding('utf8');
                 let rawData = '';
@@ -387,6 +389,30 @@ app.get("/textures", function (req, res) {
                         })
                     } catch (e) {
                         console.error(e.message);
+
+                        cms.getEntries(
+                            {
+                                'content_type': 'affiliate'
+                            }
+                        )
+                        .then(function (entries) {
+                            let frequencies = [];
+                            entries.items.forEach(element => {
+                                frequencies.push(element.fields.frequency);            
+                            });
+                
+                            let index = Math.floor(Math.random() * entries.items.length);
+                            
+                            res.render("textures/textures.ejs", { 
+                                textures: validResults,
+                                patrons: {},
+                                req: req,
+                                limit: limit,
+                                blogPost: blogPosts[0],
+                                affiliate: entries.items[index].fields
+                            });
+                
+                        })
                     }
                 });
             }).on('error', (e) => {
