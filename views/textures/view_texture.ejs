@@ -23,8 +23,6 @@
 
         <link rel="canonical" href="https://www.cgbookcase.com/textures/<%=texture.url%>">
 
-        
-
         <%- include("../partials/head.ejs") %>
         <% var tags = ""; %>
         <% texture.tags.forEach(function(item, index){ tags = tags + item + ","})%>
@@ -38,26 +36,18 @@
             <meta name="tex1:preview-image" content="https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/<%=texture.file%>_default.jpg">
             
             <meta name="tex1:resolution" content="<%=texture.resolution%>">
-            <% var oneType = "tex-pbr" %>
-            <% if(texture.category == "Cutout Objects"){oneType = "plain" } %>
+            <% var oneType = "pbr-approximated" %>
+
+            <% if(texture.method == "procedural") {oneType = "pbr-procedural" } %>
+            <% if(texture.category == "Cutout Objects") {oneType = "plain-photo" } %>
+            <% if(texture.category == "Patterns") {oneType = "plain-design" } %>
+            <% if(texture.title == "Rag 01") {oneType = "pbr-multiangle" } %>
+
             <meta name="tex1:type" content="<%= oneType %>">
 
-
             <% var releasedate = "2019-05-01" %>
-
             <% if(texture.cgbID > 381){releasedate = texture.releasedate } %>
-
-
-
-            <meta name="tex1:releasedate" content="<%=texture.releasedate%>">
-
-            <% var method = "generic" %>
-
-            <% if(texture.method == "bitmap"){method = "from-bitmap" } %>
-            
-            <% if(texture.method == "procedural"){method = "substance" } %>
-
-            <meta name="tex1:method" content="<%=method%>">
+            <meta name="tex1:release-date" content="<%=texture.releasedate%>">
             
         <!-- END Textures.one integration -->
     </head>
