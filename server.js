@@ -72,7 +72,7 @@ app.get("/", function (req, res) {
         const allTextures = JSON.parse(data_posts);
 
 
-        https.get('https://api.cgbookcase.com/patrons/', (resJSON) => {
+        https.get('https://api.cgbookcase.com/patrons?_limit=200', (resJSON) => {
             const { statusCode } = resJSON;
             const contentType = resJSON.headers['content-type'];
 
@@ -337,7 +337,7 @@ app.get("/textures", function (req, res) {
             //console.log(blogPosts);
 
             // get patrons
-            https.get('https://api.cgbookcase.com/patrons/', (resJSON) => {
+            https.get('https://api.cgbookcase.com/patrons?_limit=200', (resJSON) => {
                 const { statusCode } = resJSON;
                 const contentType = resJSON.headers['content-type'];
 
@@ -369,24 +369,24 @@ app.get("/textures", function (req, res) {
                                 'content_type': 'affiliate'
                             }
                         )
-                        .then(function (entries) {
-                            let frequencies = [];
-                            entries.items.forEach(element => {
-                                frequencies.push(element.fields.frequency);            
-                            });
-                
-                            let index = Math.floor(Math.random() * entries.items.length);
-                            
-                            res.render("textures/textures.ejs", { 
-                                textures: validResults,
-                                patrons: allPatrons,
-                                req: req,
-                                limit: limit,
-                                blogPost: blogPosts[0],
-                                affiliate: entries.items[index].fields
-                            });
-                
-                        })
+                            .then(function (entries) {
+                                let frequencies = [];
+                                entries.items.forEach(element => {
+                                    frequencies.push(element.fields.frequency);
+                                });
+
+                                let index = Math.floor(Math.random() * entries.items.length);
+
+                                res.render("textures/textures.ejs", {
+                                    textures: validResults,
+                                    patrons: allPatrons,
+                                    req: req,
+                                    limit: limit,
+                                    blogPost: blogPosts[0],
+                                    affiliate: entries.items[index].fields
+                                });
+
+                            })
                     } catch (e) {
                         console.error(e.message);
 
@@ -395,24 +395,24 @@ app.get("/textures", function (req, res) {
                                 'content_type': 'affiliate'
                             }
                         )
-                        .then(function (entries) {
-                            let frequencies = [];
-                            entries.items.forEach(element => {
-                                frequencies.push(element.fields.frequency);            
-                            });
-                
-                            let index = Math.floor(Math.random() * entries.items.length);
-                            
-                            res.render("textures/textures.ejs", { 
-                                textures: validResults,
-                                patrons: {},
-                                req: req,
-                                limit: limit,
-                                blogPost: blogPosts[0],
-                                affiliate: entries.items[index].fields
-                            });
-                
-                        })
+                            .then(function (entries) {
+                                let frequencies = [];
+                                entries.items.forEach(element => {
+                                    frequencies.push(element.fields.frequency);
+                                });
+
+                                let index = Math.floor(Math.random() * entries.items.length);
+
+                                res.render("textures/textures.ejs", {
+                                    textures: validResults,
+                                    patrons: {},
+                                    req: req,
+                                    limit: limit,
+                                    blogPost: blogPosts[0],
+                                    affiliate: entries.items[index].fields
+                                });
+
+                            })
                     }
                 });
             }).on('error', (e) => {
@@ -456,21 +456,21 @@ app.get("/textures/:url", function (req, res) {
                 'content_type': 'affiliate'
             }
         )
-        .then(function (entries) {
-            let frequencies = [];
-            entries.items.forEach(element => {
-                console.log("==========");
-                console.log(element);
-                frequencies.push(element.fields.frequency);            
-            });
-            console.log("*****************")
+            .then(function (entries) {
+                let frequencies = [];
+                entries.items.forEach(element => {
+                    console.log("==========");
+                    console.log(element);
+                    frequencies.push(element.fields.frequency);
+                });
+                console.log("*****************")
 
-            let index = Math.floor(Math.random() * entries.items.length);
-            console.log(index)
-            
-            res.render("textures/view_texture.ejs", { texture: searchResults[0].item, req: req, affiliate: entries.items[index].fields });
+                let index = Math.floor(Math.random() * entries.items.length);
+                console.log(index)
 
-        })
+                res.render("textures/view_texture.ejs", { texture: searchResults[0].item, req: req, affiliate: entries.items[index].fields });
+
+            })
 
 
 
